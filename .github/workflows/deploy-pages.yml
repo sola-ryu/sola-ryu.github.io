@@ -36,7 +36,7 @@ jobs:
 
       - name: Build site
         env:
-          SITE_URL: https://astro.navfolio.site
+          SITE_URL: https://sola-ryu.github.io
           SITE_BASE: /
         run: bun run build
 
