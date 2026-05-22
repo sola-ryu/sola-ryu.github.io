@@ -72,6 +72,10 @@ label = "Home"
 href = "/"
 
 [[config.topNav.links]]
+label = "Blog"
+href = "/blog"
+
+[[config.topNav.links]]
 label = "Projects"
 href = "/projects"
 
