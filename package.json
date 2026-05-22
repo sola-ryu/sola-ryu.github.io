@@ -10,8 +10,8 @@
     "build": "astro build && pagefind --site dist --output-subdir pagefind --root-selector main --exclude-selectors \"[data-pagefind-ignore]\"",
     "preview": "astro preview",
     "astro": "astro",
-    "post:new": "bun scripts/new-content.ts blog",
-    "vibe:new": "bun scripts/new-content.ts vibe",
+    "post:new": "node scripts/new-content.ts blog",
+    "vibe:new": "node scripts/new-content.ts vibe",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -20,12 +20,12 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "@fontsource/maple-mono": "^5.2.6",
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/vite": "^4.2.0",
     "astro": "^6.3.5",
     "lucide-astro": "^0.556.0",
     "lxgw-wenkai-webfont": "^1.7.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
     "pagefind": "^1.5.2",
