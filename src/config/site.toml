@@ -6,8 +6,6 @@ pageDescription = "An ancient warrior displaced into the machine age. Notes, cod
 repository = "https://github.com/sola-ryu/sola-ryu.github.io"
 footerNote = "Built with Astro. Inspired by a character who slept 2000 years for less."
 
-[config.vibe]
-showTrail = true
 
 [config.theme]
 # Available palettes:
