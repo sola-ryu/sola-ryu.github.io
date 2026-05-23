@@ -15,50 +15,30 @@ function withBase(href: string) {
 }
 ---
 
-<header>
-  <nav>
-    <h2><a href={withBase('/')}>{site.title}</a></h2>
+<header class="m-0 p-4 bg-paper-nav border-b border-paper-line shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+  <nav class="flex items-center justify-between">
+    <h2 class="m-0 text-base"><a href={withBase('/')} class="no-underline">{site.title}</a></h2>
     <div class="internal-links">
       {topNav.links.map((link) => <HeaderLink href={link.href}>{link.label}</HeaderLink>)}
     </div>
-    <div class="social-links">
-      <a href={profile.website} target="_blank" rel="noreferrer">
+    <div class="social-links flex">
+      <a href={profile.website} target="_blank" rel="noreferrer" class="flex items-center justify-center w-[44px] h-[44px] p-0">
         <span class="sr-only">Open website</span>
         <Icon name="compass" size={18} />
       </a>
-      <a href={profile.github} target="_blank" rel="noreferrer">
+      <a href={profile.github} target="_blank" rel="noreferrer" class="flex items-center justify-center w-[44px] h-[44px] p-0">
         <span class="sr-only">Open GitHub profile</span>
         <Icon name="github" size={18} />
       </a>
-      <a href={`mailto:${profile.email}`}>
+      <a href={`mailto:${profile.email}`} class="flex items-center justify-center w-[44px] h-[44px] p-0">
         <span class="sr-only">Email</span>
         <Icon name="mail" size={18} />
       </a>
     </div>
   </nav>
 </header>
-<style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: var(--paper-nav);
-    border-bottom: 1px solid var(--paper-line);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-  }
-  h2 {
-    margin: 0;
-    font-size: 1em;
-  }
 
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+<style>
   nav a {
     padding: 1em 0.5em;
     color: var(--paper-ink);
@@ -68,17 +48,6 @@ function withBase(href: string) {
   nav a.active {
     text-decoration: none;
     border-bottom-color: var(--paper-accent);
-  }
-  .social-links,
-  .social-links a {
-    display: flex;
-  }
-  .social-links a {
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
   }
   @media (max-width: 720px) {
     .social-links {

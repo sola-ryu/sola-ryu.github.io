@@ -106,15 +106,15 @@ const isArchiveHeader = variant === 'archive';
 <style>
   .article-header {
     display: grid;
-    gap: 14px;
+    gap: 3.5px;
     width: 100%;
     max-width: var(--article-content-max, 720px);
-    margin-bottom: 34px;
+    margin-bottom: 8.5px;
   }
 
   .article-header-archive {
     max-width: none;
-    margin-bottom: 54px;
+    margin-bottom: 13.5px;
   }
 
   .archive-heading {
@@ -130,14 +130,14 @@ const isArchiveHeader = variant === 'archive';
   }
 
   .archive-heading .meta-line {
-    margin-top: 14px;
+    margin-top: 3.5px;
   }
 
   .meta-line {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    row-gap: 6px;
+    row-gap: 1.5px;
     color: var(--paper-ink-faint);
     font-family: var(--font-meta);
     font-size: 0.84rem;
@@ -151,7 +151,7 @@ const isArchiveHeader = variant === 'archive';
   }
 
   .meta-item + .meta-item::before {
-    margin: 0 9px;
+    margin: 0 2.25px;
     color: var(--paper-ink-faint);
     content: '\00b7';
     opacity: 0.7;
@@ -159,7 +159,7 @@ const isArchiveHeader = variant === 'archive';
 
   .tag-list {
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 1.5px;
   }
 
   .tag {
@@ -170,8 +170,8 @@ const isArchiveHeader = variant === 'archive';
 
   .article-hero-image {
     width: 100%;
-    height: 84px;
-    margin: 10px 0 0;
+    height: 21px;
+    margin-top: 2.5px;
     overflow: hidden;
     border: 1px solid var(--paper-line);
     border-radius: 7px;
@@ -181,7 +181,7 @@ const isArchiveHeader = variant === 'archive';
   .article-hero-image :global(img) {
     display: block;
     width: 100%;
-    height: 84px;
+    height: 21px;
     object-fit: cover;
     border: 0;
     border-radius: 0;
@@ -191,12 +191,12 @@ const isArchiveHeader = variant === 'archive';
 
   @media (max-width: 640px) {
     .article-header {
-      gap: 12px;
-      margin-bottom: 30px;
+      gap: 3px;
+      margin-bottom: 7.5px;
     }
 
     .article-header-archive {
-      margin-bottom: 34px;
+      margin-bottom: 8.5px;
     }
 
     h1 {
@@ -206,7 +206,7 @@ const isArchiveHeader = variant === 'archive';
 
     .article-hero-image,
     .article-hero-image :global(img) {
-      height: 84px;
+      height: 21px;
       border-radius: 6px;
     }
   }

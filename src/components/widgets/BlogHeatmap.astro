@@ -61,32 +61,32 @@ function getTooltipPosts(posts: HeatmapPost[]) {
 }
 ---
 
-<article class="glass-card heatmap-card">
-  <div class="stats-row">
-    <div class="stat-item">
-      <strong>{heatmap.totalPosts}</strong>
-      <span>Total posts</span>
+<article class="grid gap-4 p-5 border-transparent bg-transparent shadow-none overflow-visible hover:border-transparent hover:shadow-none">
+  <div class="grid grid-cols-3 gap-2">
+    <div class="grid gap-0.5 min-w-0">
+      <strong class="text-paper-ink text-xl leading-none">{heatmap.totalPosts}</strong>
+      <span class="overflow-hidden text-paper-ink-soft text-[0.72rem] leading-[1.2] truncate">Total posts</span>
     </div>
-    <div class="stat-item">
-      <strong>{heatmap.activeDays}</strong>
-      <span>Active days</span>
+    <div class="grid gap-0.5 min-w-0">
+      <strong class="text-paper-ink text-xl leading-none">{heatmap.activeDays}</strong>
+      <span class="overflow-hidden text-paper-ink-soft text-[0.72rem] leading-[1.2] truncate">Active days</span>
     </div>
-    <div class="stat-item">
-      <strong>{heatmap.currentStreak}</strong>
-      <span>Day streak</span>
+    <div class="grid gap-0.5 min-w-0">
+      <strong class="text-paper-ink text-xl leading-none">{heatmap.currentStreak}</strong>
+      <span class="overflow-hidden text-paper-ink-soft text-[0.72rem] leading-[1.2] truncate">Day streak</span>
     </div>
   </div>
 
   {
     showLatest && heatmap.latestPosts.length > 0 && (
-      <aside class="latest-tip" aria-label="Latest published posts">
-        <strong>Latest</strong>
-        <div class="latest-list">
+      <aside class="grid gap-1.5 p-2.5 border border-paper-line rounded-md bg-paper-surface-muted" aria-label="Latest published posts">
+        <strong class="text-paper-accent text-[0.7rem] leading-[1.15]">Latest</strong>
+        <div class="grid gap-1">
           {heatmap.latestPosts.map((post) => (
-            <a class="latest-link" href={post.href} aria-label={`Open latest post: ${post.title}`}>
-              <em>{post.title}</em>
-              <time datetime={post.date.toISOString()}>{formatDate.format(post.date)}</time>
-              <span class="latest-icon" aria-hidden="true">
+            <a class="latest-link grid grid-cols-[minmax(0,1fr)_max-content_24px] items-center min-w-0 gap-2 text-inherit no-underline hover:rounded-md focus-visible:rounded-md focus-visible:outline-2 focus-visible:outline-[color-mix(in_srgb,var(--paper-accent)_28%,transparent)] focus-visible:outline-offset-3" href={post.href} aria-label={`Open latest post: ${post.title}`}>
+              <em class="overflow-hidden text-paper-ink text-sm font-semibold leading-[1.2] truncate">{post.title}</em>
+              <time class="text-paper-ink-soft text-[0.68rem] leading-none whitespace-nowrap">{formatDate.format(post.date)}</time>
+              <span class="latest-icon grid place-items-center w-6 h-6 rounded-lg text-paper-accent transition-all duration-180 hover:bg-paper-control-hover hover:-translate-y-0.5" aria-hidden="true">
                 <Icon name="external" size={15} />
               </span>
             </a>
@@ -96,36 +96,36 @@ function getTooltipPosts(posts: HeatmapPost[]) {
     )
   }
 
-  <div class="rhythm-grid" aria-label={heatmapLabel}>
-    <div class="weekday-column" aria-hidden="true">
+  <div class="rhythm-grid grid grid-cols-[24px_minmax(0,1fr)] gap-2 items-center w-full max-w-full overflow-visible" aria-label={heatmapLabel}>
+    <div class="weekday-column grid grid-rows-3 gap-1 text-paper-ink-faint text-[0.62rem] leading-none" aria-hidden="true">
       <span>Mon</span>
       <span>Wed</span>
       <span>Fri</span>
     </div>
 
-    <div class="heatmap-cells" style={`--week-count: ${heatmap.weeks};`}>
+    <div class="heatmap-cells grid grid-flow-col grid-rows-[repeat(7,8px)] auto-cols-[8px] gap-0.625 w-[calc((8px_*_var(--week-count))_+_(_2.5px_*_(var(--week-count)_-_1)))] max-w-full" style={`--week-count: ${heatmap.weeks};`}>
       {
         heatmap.days.map((day) => {
           if (day.isFuture) {
-            return <span class="heatmap-cell future-cell" aria-hidden="true" />;
+            return <span class="heatmap-cell future-cell w-2 h-2 min-w-2 min-h-2 bg-transparent shadow-none" aria-hidden="true" />;
           }
 
           const href = getDayHref(day);
           const content = (
             <span
-              class={`heatmap-cell level-${day.level}`}
+              class={`heatmap-cell level-${day.level} block w-2 h-2 min-w-2 min-h-2 rounded-[2.5px] bg-[rgba(102,125,109,0.12)] shadow-[inset_0_0_0_1px_var(--paper-line)]`}
               title={getDayTitle(day)}
               aria-hidden="true"
             />
           );
           const tooltip = (
-            <span class="tooltip" role="tooltip">
-              <strong>{formatDate.format(new Date(day.date))}</strong>
+            <span class="tooltip absolute left-1/2 -bottom-[calc(100%+_9px)] z-4 grid w-max max-w-[230px] gap-1.5 p-2.5 border border-paper-line rounded-md bg-paper-surface shadow-paper-shadow-lift text-paper-ink text-[0.78rem] leading-[1.35] opacity-0 pointer-events-none translate-x-[-50%] translate-y-1.5 transition-all duration-140">
+              <strong class="text-paper-ink text-base">{formatDate.format(new Date(day.date))}</strong>
               <span>{getPostLabel(day.count)}</span>
               {day.posts.length > 0 && (
-                <ul>
+                <ul class="grid gap-0.5 mt-1 pl-4">
                   {getTooltipPosts(day.posts).map((post) => (
-                    <li>{post.title}</li>
+                    <li class="break-all">{post.title}</li>
                   ))}
                   {day.posts.length > 5 && <li>...</li>}
                 </ul>
@@ -134,12 +134,12 @@ function getTooltipPosts(posts: HeatmapPost[]) {
           );
 
           return href ? (
-            <a class="cell-link" href={href} aria-label={getDayTitle(day)}>
+            <a class="cell-link relative text-inherit no-underline hover:z-10 hover:.heatmap-cell:outline-1 hover:.heatmap-cell:outline-paper-line-strong hover:.heatmap-cell:outline-offset-1 focus-visible:z-10" href={href} aria-label={getDayTitle(day)}>
               {content}
               {tooltip}
             </a>
           ) : (
-            <span class="cell-link static-cell" aria-label={getDayTitle(day)}>
+            <span class="cell-link static-cell relative text-inherit no-underline hover:z-10 hover:.heatmap-cell:outline-1 hover:.heatmap-cell:outline-paper-line-strong hover:.heatmap-cell:outline-offset-1 focus-visible:z-10" aria-label={getDayTitle(day)}>
               {content}
               {tooltip}
             </span>
@@ -149,241 +149,43 @@ function getTooltipPosts(posts: HeatmapPost[]) {
     </div>
   </div>
 
-  <footer>
+  <footer class="flex items-center gap-1.5 text-paper-ink-faint text-[0.72rem]">
     <span>Less</span>
-    {[0, 1, 2, 3, 4].map((level) => <i class={`heatmap-cell level-${level}`} />)}
+    {[0, 1, 2, 3, 4].map((level) => <i class={`heatmap-cell level-${level} w-[9px] h-[9px]`} />)}
     <span>More</span>
   </footer>
 </article>
 
 <style>
-  .heatmap-card {
-    display: grid;
-    gap: 16px;
-    padding: 20px;
-    border-color: transparent;
-    background: transparent;
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  .heatmap-card:hover {
-    border-color: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .stat-item {
-    display: grid;
-    gap: 2px;
-    min-width: 0;
-  }
-
-  .stat-item strong {
-    color: var(--paper-ink);
-    font-size: 1.12rem;
-    line-height: 1;
-  }
-
-  .stat-item span {
-    overflow: hidden;
-    color: var(--paper-ink-soft);
-    font-size: 0.72rem;
-    line-height: 1.2;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .latest-tip {
-    display: grid;
-    gap: 6px;
-    padding: 10px 11px;
-    border: 1px solid var(--paper-line);
-    border-radius: 7px;
-    background: var(--paper-surface-muted);
-  }
-
-  .latest-list {
-    display: grid;
-    gap: 4px;
-  }
-
-  .latest-link {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) max-content 24px;
-    align-items: center;
-    min-width: 0;
-    gap: 8px;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .latest-tip strong {
-    color: var(--paper-accent);
-    font-size: 0.7rem;
-    line-height: 1.15;
-  }
-
-  .latest-tip em {
-    overflow: hidden;
-    color: var(--paper-ink);
-    font-size: 0.8rem;
-    font-style: normal;
-    font-weight: 650;
-    line-height: 1.2;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .latest-tip time {
-    color: var(--paper-ink-soft);
-    font-size: 0.68rem;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .latest-icon {
-    display: grid;
-    place-items: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 8px;
-    color: var(--paper-accent);
-    transition:
-      background 180ms ease,
-      transform 180ms ease;
-  }
-
-  .latest-link:hover .latest-icon,
-  .latest-link:focus-visible .latest-icon {
-    background: var(--paper-control-hover);
-    transform: translateY(-1px);
-  }
-
-  .latest-link:focus-visible {
-    border-radius: 7px;
-    outline: 2px solid color-mix(in srgb, var(--paper-accent) 28%, transparent);
-    outline-offset: 3px;
-  }
-
   .rhythm-grid {
     --cell-size: 8px;
     --cell-gap: 2.5px;
-    display: grid;
-    grid-template-columns: 24px minmax(0, 1fr);
-    gap: 8px;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    overflow: visible;
-  }
-
-  .weekday-column {
-    display: grid;
-    grid-template-rows: repeat(3, var(--cell-size));
-    gap: calc(var(--cell-size) + var(--cell-gap));
-    color: var(--paper-ink-faint);
-    font-size: 0.62rem;
-    line-height: 1;
   }
 
   .heatmap-cells {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(7, var(--cell-size));
-    grid-auto-columns: var(--cell-size);
-    gap: var(--cell-gap);
     width: calc(
       (var(--cell-size) * var(--week-count)) + (var(--cell-gap) * (var(--week-count) - 1))
     );
-    max-width: 100%;
   }
 
   .heatmap-cell,
   .cell-link {
-    display: block;
     width: var(--cell-size);
     height: var(--cell-size);
     min-width: 8px;
     min-height: 8px;
   }
 
-  .cell-link {
-    position: relative;
-    color: inherit;
-    text-decoration: none;
-  }
+  .level-0 { background: rgba(102, 125, 109, 0.16); }
+  .level-1 { background: #dce8dc; }
+  .level-2 { background: #b9cbb9; }
+  .level-3 { background: #8fa58f; }
+  .level-4 { background: #667d6d; }
 
-  .cell-link:hover,
-  .cell-link:focus-visible {
-    z-index: 10;
-  }
-
-  .cell-link:hover .heatmap-cell {
-    outline: 1px solid var(--paper-line-strong);
-    outline-offset: 1px;
-  }
-
-  .heatmap-cell {
-    border-radius: 2.5px;
-    background: rgba(102, 125, 109, 0.12);
-    box-shadow: inset 0 0 0 1px var(--paper-line);
-  }
-
-  .future-cell {
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .level-0 {
-    background: rgba(102, 125, 109, 0.16);
-  }
-
-  .level-1 {
-    background: #dce8dc;
-  }
-
-  .level-2 {
-    background: #b9cbb9;
-  }
-
-  .level-3 {
-    background: #8fa58f;
-  }
-
-  .level-4 {
-    background: #667d6d;
-  }
-
-  .tooltip {
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% + 9px);
-    z-index: 4;
-    display: grid;
-    width: max-content;
-    max-width: 230px;
-    gap: 5px;
-    padding: 10px 12px;
-    border: 1px solid var(--paper-line);
-    border-radius: 7px;
-    background: var(--paper-surface);
-    box-shadow: var(--paper-shadow-lift);
-    color: var(--paper-ink);
-    font-size: 0.78rem;
-    line-height: 1.35;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 6px);
-    transition:
-      opacity 140ms ease,
-      transform 140ms ease;
+  .cell-link:hover .tooltip,
+  .cell-link:focus-visible .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
   .cell-link:nth-child(n + 19) .tooltip {
@@ -395,40 +197,6 @@ function getTooltipPosts(posts: HeatmapPost[]) {
   .cell-link:nth-child(n + 19):hover .tooltip,
   .cell-link:nth-child(n + 19):focus-visible .tooltip {
     transform: translate(0, 0);
-  }
-
-  .tooltip strong {
-    color: var(--paper-ink);
-    font-size: 0.86rem;
-  }
-
-  .tooltip ul {
-    display: grid;
-    gap: 3px;
-    margin: 4px 0 0;
-    padding-left: 16px;
-  }
-
-  .tooltip li {
-    overflow-wrap: anywhere;
-  }
-
-  .cell-link:hover .tooltip,
-  .cell-link:focus-visible .tooltip {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-
-  footer {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--paper-ink-faint);
-    font-size: 0.72rem;
-  }
-
-  footer .heatmap-cell {
-    --cell-size: 9px;
   }
 
   @media (max-width: 1180px) and (min-width: 821px) {

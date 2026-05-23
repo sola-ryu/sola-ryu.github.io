@@ -10,70 +10,19 @@ interface Props {
 const { date, readingTime, tags } = Astro.props;
 ---
 
-<aside class="article-info blog-card">
-  <dl>
-    <div>
-      <dt>Reading time</dt>
-      <dd>{readingTime}</dd>
+<aside class="p-[22px] border border-paper-line rounded-lg bg-paper-surface shadow-paper-shadow">
+  <dl class="grid gap-[14px] m-0">
+    <div class="grid gap-[3px]">
+      <dt class="text-paper-ink-faint font-ui text-[0.75rem] font-bold uppercase">Reading time</dt>
+      <dd class="m-0 text-paper-ink font-meta text-[0.92rem] font-bold">{readingTime}</dd>
     </div>
-    <div>
-      <dt>Created</dt>
-      <dd><FormattedDate date={date} /></dd>
+    <div class="grid gap-[3px]">
+      <dt class="text-paper-ink-faint font-ui text-[0.75rem] font-bold uppercase">Created</dt>
+      <dd class="m-0 text-paper-ink font-meta text-[0.92rem] font-bold"><FormattedDate date={date} /></dd>
     </div>
   </dl>
 
-  <div class="tags" aria-label="Article tags">
-    {tags.map((tag) => <span>{tag}</span>)}
+  <div class="flex flex-wrap gap-2 mt-[18px]" aria-label="Article tags">
+    {tags.map((tag) => <span class="px-[10px] py-1.5 border border-paper-line rounded-lg bg-paper-control text-paper-accent font-meta text-[0.76rem] font-bold">{tag}</span>)}
   </div>
 </aside>
-
-<style>
-  .article-info {
-    padding: 22px;
-  }
-
-  dl {
-    display: grid;
-    gap: 14px;
-    margin: 0;
-  }
-
-  div {
-    display: grid;
-    gap: 3px;
-  }
-
-  dt {
-    color: var(--paper-ink-faint);
-    font-family: var(--font-ui-label);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  dd {
-    margin: 0;
-    color: var(--paper-ink);
-    font-family: var(--font-meta);
-    font-size: 0.92rem;
-    font-weight: 700;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
-
-  .tags span {
-    padding: 6px 10px;
-    border: 1px solid var(--paper-line);
-    border-radius: 8px;
-    background: var(--paper-control);
-    color: var(--paper-accent);
-    font-family: var(--font-meta);
-    font-size: 0.76rem;
-    font-weight: 700;
-  }
-</style>
