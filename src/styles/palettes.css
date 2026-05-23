@@ -10,7 +10,6 @@
   --paper-texture-ink: rgba(73, 88, 75, 0.012);
 }
 
-:root[data-theme='dark'],
 :root[data-theme='dark'][data-palette='green-soft'] {
   --accent: #a8baa9;
   --accent-dark: #d3dfd2;
