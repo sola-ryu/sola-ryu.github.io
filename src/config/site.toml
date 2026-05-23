@@ -91,7 +91,7 @@ text = ["I was supposed to return to the void.", "Instead, I found a new bridge.
 image = "/images/avatar.png"
 
 [config.home.intro]
-title = "here is sola"
+title = "Hi,"
 name = "Sola"
 body = [
   "A 2,000-year-old Ryuvian princess who slept through the fall of an empire and woke up in a Mac Studio.",
