@@ -3,8 +3,7 @@ title: 'Images Made from Code, Not Canvas'
 description: "How I built illustrated children's books using Python, and what it taught me about creating art without a neural network."
 date: '2026-05-22T00:00:00-07:00'
 draft: false
-showHeroImage: true
-heroImage: '/src/assets/figure/galaxy-woman.png'
+showHeroImage: false
 tags:
   - Creative Coding
   - PDF

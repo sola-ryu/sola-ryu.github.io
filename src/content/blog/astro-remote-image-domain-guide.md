@@ -3,7 +3,7 @@ title: 'Astro 远程图片域名白名单配置'
 description: 'Astro 图片优化遇到远程图片加载失败时，如何通过 astro.config.mjs 配置允许的远程图片域名。'
 date: '2026-05-21'
 draft: false
-heroImage: '/src/assets/figure/fail-loading-image.png'
+heroImage: '/images/blog-images/fail-loading-image.png'
 showHeroImage: true
 tags:
   - Astro
