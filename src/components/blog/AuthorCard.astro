@@ -5,86 +5,25 @@ import { getSiteConfig } from '../../data/site';
 const { profile } = await getSiteConfig();
 ---
 
-<aside class="author-card blog-card">
-  <img src={profile.avatar} alt={`${profile.name} avatar`} />
-  <h2>{profile.name}</h2>
-  <p>{profile.handle}</p>
-  <span>{profile.role}</span>
+<aside class="grid justify-items-center gap-[10px] p-[26px_20px] text-center border border-paper-line rounded-lg bg-paper-surface shadow-paper-shadow">
+  <img
+    src={profile.avatar}
+    alt={`${profile.name} avatar`}
+    class="w-[82px] h-[82px] border-[6px] border-paper-surface-muted rounded-lg shadow-paper-shadow object-cover"
+  />
+  <h2 class="mt-1 mb-0 text-paper-ink text-[1.25rem] leading-[1.1]">{profile.name}</h2>
+  <p class="m-0 text-paper-ink-soft text-[0.9rem]">{profile.handle}</p>
+  <span class="inline-flex px-[11px] py-1.5 border border-paper-line rounded-lg bg-paper-control text-paper-accent text-[0.78rem] font-bold">{profile.role}</span>
 
-  <div class="social-links" aria-label="Author links">
-    <a href={profile.github} aria-label="GitHub">
+  <div class="flex gap-[9px] mt-1" aria-label="Author links">
+    <a href={profile.github} aria-label="GitHub" class="inline-grid place-items-center w-[34px] h-[34px] border border-paper-line rounded-lg bg-paper-control text-paper-ink hover:text-paper-accent hover:bg-paper-control-hover">
       <Github size={16} />
     </a>
-    <a href={`mailto:${profile.email}`} aria-label="Email">
+    <a href={`mailto:${profile.email}`} aria-label="Email" class="inline-grid place-items-center w-[34px] h-[34px] border border-paper-line rounded-lg bg-paper-control text-paper-ink hover:text-paper-accent hover:bg-paper-control-hover">
       <Mail size={16} />
     </a>
-    <a href="/rss.xml" aria-label="RSS">
+    <a href="/rss.xml" aria-label="RSS" class="inline-grid place-items-center w-[34px] h-[34px] border border-paper-line rounded-lg bg-paper-control text-paper-ink hover:text-paper-accent hover:bg-paper-control-hover">
       <Rss size={16} />
     </a>
   </div>
 </aside>
-
-<style>
-  .author-card {
-    display: grid;
-    justify-items: center;
-    gap: 10px;
-    padding: 26px 20px;
-    text-align: center;
-  }
-
-  img {
-    width: 82px;
-    height: 82px;
-    border: 6px solid var(--paper-surface-muted);
-    border-radius: 8px;
-    box-shadow: var(--paper-shadow);
-    object-fit: cover;
-  }
-
-  h2 {
-    margin: 4px 0 0;
-    color: var(--paper-ink);
-    font-size: 1.25rem;
-    line-height: 1.1;
-  }
-
-  p {
-    margin: 0;
-    color: var(--paper-ink-soft);
-    font-size: 0.9rem;
-  }
-
-  span {
-    display: inline-flex;
-    padding: 6px 11px;
-    border: 1px solid var(--paper-line);
-    border-radius: 8px;
-    background: var(--paper-control);
-    color: var(--paper-accent);
-    font-size: 0.78rem;
-    font-weight: 700;
-  }
-
-  .social-links {
-    display: flex;
-    gap: 9px;
-    margin-top: 4px;
-  }
-
-  a {
-    display: inline-grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--paper-line);
-    border-radius: 8px;
-    background: var(--paper-control);
-    color: var(--paper-ink);
-  }
-
-  a:hover {
-    color: var(--paper-accent);
-    background: var(--paper-control-hover);
-  }
-</style>

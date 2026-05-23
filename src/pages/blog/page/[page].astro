@@ -51,23 +51,10 @@ const { page, postOffset } = Astro.props;
       title={`${site.title} | Blog page ${page.currentPage}`}
       description={site.description}
     />
-    <style>
-      main {
-        width: min(100%, var(--layout-shell-width));
-        max-width: none;
-        padding: 118px var(--layout-page-gutter) var(--layout-page-bottom);
-      }
-
-      @media (max-width: 720px) {
-        main {
-          padding-top: 88px;
-        }
-      }
-    </style>
   </head>
   <body>
     <BlogTopNav />
-    <main data-pagefind-body>
+    <main class="w-full max-w-[1168px] pt-[118px] px-8 pb-[72px] max-[720px]:pt-[88px]" data-pagefind-body>
       <BlogArchive page={page} postOffset={postOffset} />
     </main>
     <Footer />

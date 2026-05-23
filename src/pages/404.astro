@@ -14,146 +14,40 @@ function withBase(href: string) {
 
 <BaseLayout title="404 Not Found" description="这页暂时没有找到，可能已经迁移或还没有写下。">
   <div class="publication-bg" aria-hidden="true"></div>
-  <main class="not-found-shell" aria-labelledby="not-found-title">
-    <section class="not-found-panel">
-      <p class="not-found-kicker">404 Not Found</p>
-      <h1 id="not-found-title">这页还没有落在纸上</h1>
-      <p class="not-found-copy">
+  <main
+    class="grid min-h-[calc(100vh-56px)] place-items-center pt-[116px] pb-[72px] max-[720px]:min-h-screen max-[720px]:pt-[92px] max-[720px]:pb-[42px]"
+    aria-labelledby="not-found-title"
+  >
+    <section class="w-[min(100%,860px)] px-[clamp(6px,3vw,18px)] py-[clamp(22px,5vw,56px)] animate-not-found-in max-[720px]:py-6 max-[720px]:px-0">
+      <p class="m-0 mb-3 text-paper-accent font-ui text-[0.78rem] font-bold tracking-[0.12em] uppercase leading-[1.2]">
+        404 Not Found
+      </p>
+      <h1
+        id="not-found-title"
+        class="max-w-[11em] m-0 text-paper-ink text-[clamp(2.3rem,7vw,4.6rem)] leading-[1.08] max-[720px]:max-w-[8em] max-[720px]:text-[2.34rem]"
+      >
+        这页还没有落在纸上
+      </h1>
+      <p class="max-w-[42rem] mt-6 mb-0 text-paper-ink-soft text-[1.04rem] leading-[1.86] max-[720px]:mt-[18px] max-[720px]:text-[0.98rem]">
         也许链接换了位置，也许这只是一次走岔的小路。先回到熟悉的入口，继续慢慢翻。
       </p>
-      <nav class="not-found-actions" aria-label="404 page links">
-        <a class="primary-link" href={withBase('/')}>回到首页</a>
-        <a href={withBase('/blog')}>去博客</a>
+      <nav
+        class="flex flex-wrap gap-[10px] mt-[30px] max-[720px]:grid max-[720px]:grid-cols-1 max-[720px]:mt-6"
+        aria-label="404 page links"
+      >
+        <a
+          class="primary-link inline-flex items-center justify-center min-h-[42px] px-[14px] py-2 border border-[color-mix(in_srgb,var(--paper-accent)_24%,var(--paper-line))] rounded-lg bg-paper-control text-paper-ink font-ui text-[0.88rem] font-bold leading-[1.2] no-underline transition-[transform,border-color,background,color] duration-[180ms] ease hover:border-paper-line-strong hover:bg-paper-control-hover hover:text-paper-accent hover:-translate-y-px focus-visible:border-paper-line-strong focus-visible:bg-paper-control-hover focus-visible:text-paper-accent focus-visible:-translate-y-px focus-visible:[outline:2px_solid_var(--paper-accent)] focus-visible:[outline-offset:3px]"
+          href={withBase('/')}
+        >
+          回到首页
+        </a>
+        <a
+          class="inline-flex items-center justify-center min-h-[42px] px-[14px] py-2 border border-paper-line rounded-lg bg-paper-control text-paper-ink font-ui text-[0.88rem] font-bold leading-[1.2] no-underline transition-[transform,border-color,background,color] duration-[180ms] ease hover:border-paper-line-strong hover:bg-paper-control-hover hover:text-paper-accent hover:-translate-y-px focus-visible:border-paper-line-strong focus-visible:bg-paper-control-hover focus-visible:text-paper-accent focus-visible:-translate-y-px focus-visible:[outline:2px_solid_var(--paper-accent)] focus-visible:[outline-offset:3px]"
+          href={withBase('/blog')}
+        >
+          去博客
+        </a>
       </nav>
     </section>
   </main>
 </BaseLayout>
-
-<style>
-  .not-found-shell {
-    display: grid;
-    min-height: calc(100vh - 56px);
-    place-items: center;
-    padding-top: 116px;
-    padding-bottom: 72px;
-  }
-
-  .not-found-panel {
-    width: min(100%, 860px);
-    padding: clamp(22px, 5vw, 56px) clamp(6px, 3vw, 18px);
-    animation: not-found-in 420ms ease both;
-  }
-
-  .not-found-kicker {
-    margin: 0 0 12px;
-    color: var(--paper-accent);
-    font-family: var(--font-ui-label);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    line-height: 1.2;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    max-width: 11em;
-    margin: 0;
-    color: var(--paper-ink);
-    font-size: clamp(2.3rem, 7vw, 4.6rem);
-    line-height: 1.08;
-  }
-
-  .not-found-copy {
-    max-width: 42rem;
-    margin: 24px 0 0;
-    color: var(--paper-ink-soft);
-    font-size: 1.04rem;
-    line-height: 1.86;
-  }
-
-  .not-found-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 30px;
-  }
-
-  .not-found-actions a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
-    padding: 8px 14px;
-    border: 1px solid var(--paper-line);
-    border-radius: 8px;
-    background: var(--paper-control);
-    color: var(--paper-ink);
-    font-family: var(--font-ui-label);
-    font-size: 0.88rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-decoration: none;
-    transition:
-      transform 180ms ease,
-      border-color 180ms ease,
-      background 180ms ease,
-      color 180ms ease;
-  }
-
-  .not-found-actions a:hover,
-  .not-found-actions a:focus-visible {
-    border-color: var(--paper-line-strong);
-    background: var(--paper-control-hover);
-    color: var(--paper-accent);
-    transform: translateY(-1px);
-  }
-
-  .not-found-actions a:focus-visible {
-    outline: 2px solid var(--paper-accent);
-    outline-offset: 3px;
-  }
-
-  .not-found-actions .primary-link {
-    border-color: color-mix(in srgb, var(--paper-accent) 24%, var(--paper-line));
-  }
-
-  @keyframes not-found-in {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 720px) {
-    .not-found-shell {
-      min-height: 100vh;
-      padding-top: 92px;
-      padding-bottom: 42px;
-    }
-
-    .not-found-panel {
-      padding: 24px 0;
-    }
-
-    h1 {
-      max-width: 8em;
-      font-size: 2.34rem;
-    }
-
-    .not-found-copy {
-      margin-top: 18px;
-      font-size: 0.98rem;
-    }
-
-    .not-found-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      margin-top: 24px;
-    }
-  }
-</style>

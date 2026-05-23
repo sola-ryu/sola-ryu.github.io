@@ -20,10 +20,14 @@ const shouldRender = provider ? canRenderProvider(comments, provider) : false;
 
 {
   shouldRender && provider && (
-    <section class="comment-section" aria-label="Comments" data-comment-path={pathname}>
-      <div class="comment-section-heading">
-        <p>Comments</p>
-        <span>Quiet notes for this article.</span>
+    <section
+      class="comment-section w-[min(100%,720px)] mt-[42px] pt-7 border-t border-paper-line"
+      aria-label="Comments"
+      data-comment-path={pathname}
+    >
+      <div class="grid gap-1 mb-[18px] text-paper-ink-faint font-meta text-[0.82rem] leading-[1.5]">
+        <p class="m-0 text-paper-ink text-[0.9rem] font-bold">Comments</p>
+        <span class="block">Quiet notes for this article.</span>
       </div>
 
       {provider === 'giscus' && <GiscusComment config={comments.giscus} />}
@@ -32,37 +36,3 @@ const shouldRender = provider ? canRenderProvider(comments, provider) : false;
     </section>
   )
 }
-
-<style>
-  .comment-section {
-    width: min(100%, var(--article-content-max, 720px));
-    margin-top: 42px;
-    padding-top: 28px;
-    border-top: 1px solid var(--paper-line);
-  }
-
-  .comment-section-heading {
-    display: grid;
-    gap: 4px;
-    margin-bottom: 18px;
-    color: var(--paper-ink-faint);
-    font-family: var(--font-meta);
-    font-size: 0.82rem;
-    line-height: 1.5;
-  }
-
-  .comment-section-heading p {
-    margin: 0;
-    color: var(--paper-ink);
-    font-size: 0.9rem;
-    font-weight: 700;
-  }
-
-  .comment-section-heading span {
-    display: block;
-  }
-
-  :global(.blog-layout-centered .comment-section) {
-    width: 100%;
-  }
-</style>

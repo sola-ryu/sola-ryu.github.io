@@ -9,81 +9,18 @@ interface DoingItem {
 const { items } = Astro.props as { items: DoingItem[] };
 ---
 
-<article class="glass-card doing-card">
-  <h2><Icon name="calendar" /> Recently</h2>
-  <ul>
+<article class="pt-6">
+  <h2 class="flex items-center gap-[10px] m-0 mb-4 text-paper-ink text-[1.06rem] [&_svg]:w-[21px] [&_svg]:h-[21px] [&_svg]:text-paper-accent">
+    <Icon name="calendar" /> Recently
+  </h2>
+  <ul class="grid m-0 p-0 list-none">
     {
       items.map((item) => (
-        <li>
+        <li class="relative grid grid-cols-[minmax(0,1fr)_32px] gap-3 items-center py-[14px] pl-[18px] border-t border-paper-line text-paper-ink text-[0.98rem] before:content-[''] before:absolute before:left-0 before:w-[5px] before:h-[5px] before:rounded-full before:bg-paper-accent">
           <span>{item.text}</span>
-          <strong aria-hidden="true">{item.mark}</strong>
+          <strong class="text-[0.82rem] text-right">{item.mark}</strong>
         </li>
       ))
     }
   </ul>
 </article>
-
-<style>
-  .doing-card {
-    padding: 24px 0 0;
-    border-color: transparent;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .doing-card:hover {
-    border-color: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 16px;
-    color: var(--paper-ink);
-    font-size: 1.06rem;
-  }
-
-  h2 svg {
-    width: 21px;
-    height: 21px;
-    color: var(--paper-accent);
-  }
-
-  ul {
-    display: grid;
-    gap: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 32px;
-    gap: 12px;
-    align-items: center;
-    padding: 14px 0 14px 18px;
-    border-top: 1px solid var(--paper-line);
-    color: var(--paper-ink);
-    font-size: 0.98rem;
-  }
-
-  li::before {
-    position: absolute;
-    left: 0;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--paper-accent);
-    content: '';
-  }
-
-  strong {
-    font-size: 0.82rem;
-    text-align: right;
-  }
-</style>

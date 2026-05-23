@@ -12,130 +12,27 @@ interface Quote {
 const { intro, quote } = Astro.props as { intro: Intro; quote?: Quote };
 ---
 
-<article class="glass-card intro-card">
-  <div class="intro-copy">
+<article class="flex flex-col min-h-[280px] p-0 border-transparent bg-transparent shadow-none hover:border-transparent hover:shadow-none hover:transform-none">
+  <div class="relative z-1 flex w-full max-w-none flex-col items-start">
     {
       quote && (
-        <div class="quote-mark" aria-hidden="true">
+        <div class="mb-2 text-[rgba(102,125,109,0.32)] font-display text-3xl leading-[0.7]" aria-hidden="true">
           "
         </div>
       )
     }
-    <h2>
-      <span aria-hidden="true">Hi,</span>
-      {intro.title}<em> {intro.name}</em>
+    <h2 class="m-0 mb-4.5 text-paper-ink max-w-none text-2xl md:text-3.35rem md:leading-[1.04] whitespace-nowrap">
+      <span class="mr-3 text-paper-accent font-normal" aria-hidden="true">Hi,</span>
+      {intro.title}<em class="text-paper-accent italic"> {intro.name}</em>
     </h2>
     {
       quote && (
-        <blockquote>
-          <span>- {quote.text.slice(0, 2).join(' ')}</span>
-          <span>{quote.text.slice(2).join(' ')}</span>
+        <blockquote class="block max-w-[52ch] m-0 mb-6.5 p-0 border-0 text-paper-ink-soft font-note text-sm md:text-base italic leading-[1.72] text-right">
+          <span class="block">- {quote.text.slice(0, 2).join(' ')}</span>
+          <span class="block">{quote.text.slice(2).join(' ')}</span>
         </blockquote>
       )
     }
-    {intro.body.map((paragraph) => <p>{paragraph}</p>)}
+    {intro.body.map((paragraph) => <p class="w-full m-0 mb-3 text-paper-ink max-w-[66ch] text-base md:text-[1.02rem] leading-[1.92]">{paragraph}</p>)}
   </div>
 </article>
-
-<style>
-  .intro-card {
-    display: flex;
-    flex-direction: column;
-    min-height: 280px;
-    padding: 0;
-    border-color: transparent;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .intro-card:hover {
-    border-color: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  .intro-copy {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    width: 100%;
-    max-width: none;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .quote-mark {
-    margin-bottom: 2px;
-    color: rgba(102, 125, 109, 0.32);
-    font-family: var(--font-display);
-    font-size: 3rem;
-    line-height: 0.7;
-  }
-
-  h2 {
-    margin: 0 0 18px;
-    color: var(--paper-ink);
-    max-width: none;
-    font-size: clamp(2.2rem, 4vw, 3.35rem);
-    line-height: 1.04;
-    white-space: nowrap;
-  }
-
-  h2 span {
-    margin-right: 0.35rem;
-    color: var(--paper-accent);
-    font-style: normal;
-  }
-
-  h2 em {
-    color: var(--paper-accent);
-    font-style: italic;
-  }
-
-  blockquote {
-    display: block;
-    max-width: 52ch;
-    margin: 0 0 26px auto;
-    padding: 0;
-    border: 0;
-    color: var(--paper-ink-soft);
-    font-family: var(--font-note);
-    font-size: clamp(0.96rem, 1.35vw, 1.12rem);
-    font-style: italic;
-    line-height: 1.72;
-    text-align: right;
-  }
-
-  blockquote span {
-    display: block;
-  }
-
-  p {
-    width: 100%;
-    margin: 0 0 12px;
-    color: var(--paper-ink);
-    max-width: 66ch;
-    font-size: 1.02rem;
-    line-height: 1.92;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 640px) {
-    .intro-card {
-      padding: 0;
-    }
-
-    h2 {
-      font-size: 1.7rem;
-      white-space: normal;
-    }
-
-    blockquote {
-      margin-left: 0;
-      text-align: left;
-    }
-  }
-</style>

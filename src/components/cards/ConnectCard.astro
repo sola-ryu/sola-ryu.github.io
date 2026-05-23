@@ -23,12 +23,15 @@ function withBase(href: string) {
 }
 ---
 
-<article class="glass-card connect-card">
-  <h2><Icon name="link" /> Connect</h2>
-  <div class="connect-list">
+<article class="p-4.5 border border-paper-line rounded-lg bg-paper-control text-paper-ink shadow-paper-shadow hover:bg-paper-control-hover hover:text-paper-accent hover:transform-none transition-transform duration-180 ease-in-out">
+  <h2 class="flex items-center gap-2.5 m-0 mb-3.5 text-paper-ink text-base">
+    <Icon name="link" />
+    Connect
+  </h2>
+  <div class="grid grid-cols-5 gap-3">
     {
       items.map((item) => (
-        <a href={withBase(item.href)} aria-label={item.label}>
+        <a href={withBase(item.href)} aria-label={item.label} class="inline-flex items-center justify-center gap-2 min-h-[48px] p-3 border border-paper-line rounded-lg bg-paper-control text-paper-ink no-underline shadow-paper-shadow hover:bg-paper-control-hover hover:text-paper-accent transition-transform duration-180 ease-in-out">
           <Icon name={item.icon} />
           <span>{item.label}</span>
         </a>
@@ -36,67 +39,3 @@ function withBase(href: string) {
     }
   </div>
 </article>
-
-<style>
-  .connect-card {
-    padding: 18px 24px 24px;
-  }
-
-  h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 14px;
-    color: var(--paper-ink);
-    font-size: 1.05rem;
-  }
-
-  h2 svg {
-    width: 20px;
-    height: 20px;
-    color: var(--paper-accent);
-  }
-
-  .connect-list {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 48px;
-    padding: 0 12px;
-    border: 1px solid var(--paper-line);
-    border-radius: 8px;
-    background: var(--paper-control);
-    color: var(--paper-ink);
-    text-decoration: none;
-    box-shadow: var(--paper-shadow);
-    transition:
-      transform 180ms ease,
-      background 180ms ease,
-      color 180ms ease;
-  }
-
-  a:hover {
-    background: var(--paper-control-hover);
-    color: var(--paper-accent);
-    transform: translateY(-1px);
-  }
-
-  svg {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 auto;
-  }
-
-  @media (max-width: 640px) {
-    .connect-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-</style>
