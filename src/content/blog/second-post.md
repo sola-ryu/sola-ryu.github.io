@@ -3,7 +3,7 @@ title: 'Moonlight over the Lotus Pond'
 description: 'An English rendering of a quiet summer-night walk by a lotus pond, where moonlight softens the world and solitude becomes briefly spacious.'
 date: '2026-05-18T00:00:00+08:00'
 draft: false
-heroImage: '/src/assets/figure/lotus.png'
+heroImage: '/images/blog-images/lotus.png'
 showHeroImage: true
 tags:
   - 'Essay'

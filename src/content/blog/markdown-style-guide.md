@@ -3,7 +3,7 @@ title: 'Markdown 语法渲染示例'
 description: '这是一篇用于展示 Astro 中常见 Markdown 语法渲染效果的中文示例文章。'
 date: '2026-05-19T00:00:00+08:00'
 draft: false
-heroImage: '/src/assets/figure/blog-sample-picture.png'
+heroImage: '/images/blog-images/blog-sample-picture.png'
 showHeroImage: true
 tags:
   - 'Markdown'
@@ -49,7 +49,7 @@ sidebar:
 
 ### 渲染效果
 
-![blog placeholder](/src/assets/figure//blog-sample-picture.png)
+![blog placeholder](/images/blog-images/blog-sample-picture.png)
 
 ## 引用
 

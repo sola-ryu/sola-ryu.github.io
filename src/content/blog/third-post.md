@@ -3,7 +3,7 @@ title: '蓮池の月明かり'
 description: '夏の夜、蓮池のほとりをひとり歩く心のゆらぎを、日本語で静かに綴った散文。'
 date: '2026-05-18T00:00:00+08:00'
 draft: false
-heroImage: '/src/assets/figure/lotus.png'
+heroImage: '/images/blog-images/lotus.png'
 showHeroImage: true
 tags:
   - '随筆'

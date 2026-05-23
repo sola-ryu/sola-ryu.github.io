@@ -3,7 +3,7 @@ title: '荷塘月色'
 description: '一篇以夏夜荷塘为中心的中文散文改写：月光、荷叶、微风与独行的心绪，在静夜里缓慢铺开。'
 date: '2026-05-18T00:00:00+08:00'
 draft: false
-heroImage: '/src/assets/figure/lotus.png'
+heroImage: '/images/blog-images/lotus.png'
 showHeroImage: true
 tags:
   - '散文'

@@ -3,7 +3,7 @@ title: 'Navfolio 搜索模块使用说明'
 description: '了解 Navfolio 如何使用 Pagefind 接入静态全文搜索，以及如何配置顶部导航搜索入口和快捷键。'
 date: '2026-05-21'
 draft: false
-heroImage: '/src/assets/figure/search-hero.png'
+heroImage: '/images/blog-images/search-hero.png'
 showHeroImage: true
 tags:
   - Astro

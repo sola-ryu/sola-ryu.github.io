@@ -3,7 +3,7 @@ title: '为 Navfolio 接入可配置评论系统'
 description: '记录一次为 Astro 博客主题添加 giscus、utterances 和 Waline 评论系统的过程。'
 date: '2026-05-20T00:00:00+08:00'
 draft: false
-heroImage: '/src/assets/figure/comment-hero.png'
+heroImage: '/images/blog-images/comment-hero.png'
 showHeroImage: false
 tags:
   - Astro
