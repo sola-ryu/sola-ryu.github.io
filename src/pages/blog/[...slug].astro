@@ -1,22 +1,95 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogArticle from '../../layouts/BlogArticle.astro';
-import ZoomableImage from '../../components/mdx/ZoomableImage.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+interface Props {
+  slug: string;
+}
+
+const { slug: postSlug } = Astro.props;
+
+// Get all blog posts for prev/next navigation
+const allPosts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const postIndex = allPosts.findIndex(p => p.slug === postSlug);
+const prevPost = postIndex < allPosts.length - 1 ? allPosts[postIndex + 1] : null;
+const nextPost = postIndex > 0 ? allPosts[postIndex - 1] : null;
+
+// Get the current post
+let post: CollectionEntry<'blog'> | undefined;
+try {
+  const raw = await getCollection('blog', ({ id }) => id === `blog:${postSlug}`);
+  if (raw.length > 0) post = raw[0];
+} catch {}
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Rough reading time estimate
+const wordCount = post.body.split(/\s+/).length;
+const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: post,
-  }));
+  const posts = await getCollection('blog');
+  return posts
+    .filter(p => !p.data.draft)
+    .map(post => ({
+      params: { slug: post.slug },
+      props: {},
+    }));
 }
-type Props = CollectionEntry<'blog'>;
-
-const post = Astro.props;
-const { Content, headings } = await render(post);
 ---
 
-<BlogArticle post={post} headings={headings}>
-  <Content components={{ img: ZoomableImage }} />
-  <ZoomableImage />
-</BlogArticle>
+<Layout title={post.data.title}>
+<article class="max-w-2xl mx-auto px-6 py-16 md:py-24 prose-custom">
+  <!-- Post header -->
+  <header class="fade-up mb-8">
+    <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
+    {readTime > 0 && (
+      <span class="reading-time ml-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        {readTime} min read
+      </span>
+    )}
+    <h1 class="text-3xl md:text-4xl font-bold text-silver-light tracking-tight mt-2 mb-4">{post.data.title}</h1>
+    <p class="text-text-muted leading-relaxed">{post.data.description}</p>
+    {post.data.tags.length > 0 && (
+      <div class="flex gap-2 mt-4">
+        {post.data.tags.map(tag => <span class="tag-pill">{tag}</span>)}
+      </div>
+    )}
+  </header>
+
+  <div class="divider my-8" />
+
+  <!-- Post content -->
+  <div class="fade-up prose-custom">
+    <Content />
+  </div>
+
+  <!-- Post footer / navigation -->
+  {(prevPost || nextPost) && (
+    <>
+      <div class="divider my-8" />
+      <nav class="fade-up flex justify-between gap-4 text-sm">
+        {prevPost ? (
+          <a href={`/blog/${prevPost.slug}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors">
+            ← {prevPost.data.title}
+          </a>
+        ) : <span />}
+        {nextPost ? (
+          <a href={`/blog/${nextPost.slug}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors ml-auto">
+            {nextPost.data.title} →
+          </a>
+        ) : <span />}
+      </nav>
+    </>
+  )}
+</article>
+</Layout>
