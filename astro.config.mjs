@@ -1,9 +1,5 @@
-// @ts-check
-
-import mdx from '@astrojs/mdx';
+import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { defineConfig, fontProviders } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
 
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
@@ -27,12 +23,10 @@ const resolvedSite =
 const resolvedBase =
   customBase || (isGitHubActions && isProjectPage && repositoryName ? `/${repositoryName}` : '/');
 
-// https://astro.build/config
 export default defineConfig({
   site: resolvedSite,
   base: resolvedBase,
-  integrations: [mdx(), sitemap()],
-
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },

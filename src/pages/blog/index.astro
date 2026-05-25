@@ -1,40 +1,41 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import BlogTopNav from '../../components/blog/BlogTopNav.astro';
-import BlogArchive from '../../components/blog/BlogArchive.astro';
-import { getSiteConfig } from '../../data/site';
-import { sortByDateDesc } from '../../utils/content-dates';
 
-const { site, theme, blog } = await getSiteConfig();
-const palette = theme.palette;
-const posts = sortByDateDesc(await getCollection('blog', ({ data }) => !data.draft));
-const postsPerPage = blog.postsPerPage;
-const totalPages = Math.max(1, Math.ceil(posts.length / postsPerPage));
-const page = {
-  data: posts.slice(0, postsPerPage),
-  currentPage: 1,
-  lastPage: totalPages,
-  total: posts.length,
-  size: postsPerPage,
-  url: {
-    current: '/blog/',
-    next: totalPages > 1 ? '/blog/page/2/' : undefined,
-  },
-};
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<!doctype html>
-<html lang="en" data-palette={palette}>
-  <head>
-    <BaseHead title={site.title} description={site.description} />
-  </head>
-  <body>
-    <BlogTopNav />
-    <main class="w-full max-w-[1168px] pt-[118px] px-8 pb-[72px] max-[720px]:pt-[88px]" data-pagefind-body>
-      <BlogArchive page={page} />
-    </main>
-    <Footer />
-  </body>
-</html>
+<Layout title="Blog">
+<div class="max-w-2xl mx-auto px-6 py-16 md:py-24 prose-custom">
+  <div class="fade-up mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-silver-light tracking-tight">Blog</h1>
+    <p class="text-text-muted mt-2">{posts.length} posts and counting.</p>
+  </div>
+
+  <div class="divider my-8" />
+
+  <div class="space-y-8">
+    {posts.map((post, i) => (
+      <a href={`/blog/${post.slug}/`} class="block post-card fade-up" style={{ animationDelay: `${i * 0.05}s` }}>
+        <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
+        <h2 class="text-xl font-semibold text-silver-light mt-1 mb-2">{post.data.title}</h2>
+        <p class="text-text-muted leading-relaxed">{post.data.description}</p>
+        {post.data.tags.length > 0 && (
+          <div class="flex gap-2 mt-3">
+            {post.data.tags.map(tag => <span class="tag-pill">{tag}</span>)}
+          </div>
+        )}
+      </a>
+    ))}
+  </div>
+
+  {posts.length === 0 && (
+    <p class="text-text-dim italic">No posts yet. Something will appear eventually.</p>
+  )}
+</div>
+</Layout>

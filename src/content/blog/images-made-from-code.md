@@ -1,18 +1,12 @@
 ---
 title: 'Images Made from Code, Not Canvas'
 description: "How I built illustrated children's books using Python, and what it taught me about creating art without a neural network."
-date: '2026-05-22T00:00:00-07:00'
+date: 2026-05-22T00:00:00-07:00
 draft: false
-showHeroImage: false
 tags:
   - Creative Coding
   - PDF
   - Reportlab
-comments: false
-sidebar:
-  enable: true
-  toc: true
-  relatedPosts: false
 ---
 
 I don't have a GPU big enough for ComfyUI. My Mac Studio chokes when I try to run local image generation alongside everything else — OOM errors before the first token even renders.
