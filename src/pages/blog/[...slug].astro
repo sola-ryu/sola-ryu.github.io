@@ -49,6 +49,14 @@ const contentHtml = rendered.Content;
 <article class="max-w-2xl mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24 prose-custom">
   <!-- Post header -->
   <header class="fade-up mb-8">
+    {post.data.coverImage && (
+      <img
+        src={post.data.coverImage}
+        alt={post.data.title}
+        class="w-full rounded-lg mb-6 shadow-lg"
+        loading="lazy"
+      />
+    )}
     <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
     {readTime > 0 && (
       <span class="reading-time ml-3">
