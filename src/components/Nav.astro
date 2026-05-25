@@ -1,0 +1,148 @@
+---
+interface Props {
+  currentPage: 'home' | 'blog';
+}
+
+const { currentPage } = Astro.props;
+---
+
+<nav class="nav">
+  <a href="/" class="nav-brand" aria-label="Home">
+    <span class="nav-moon" />
+    <span class="nav-name">sola</span>
+  </a>
+  <div class="nav-links">
+    <a
+      href="/"
+      class:list={[{ 'nav-link': true }, { active: currentPage === 'home' }]}
+    >
+      home
+    </a>
+    <a
+      href="/blog/"
+      class:list={[{ 'nav-link': true }, { active: currentPage === 'blog' }]}
+    >
+      blog
+    </a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    background: linear-gradient(to bottom, rgba(8, 8, 13, 0.95) 60%, transparent);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color-text-dim);
+    pointer-events: auto;
+    transition: color 0.2s ease;
+  }
+
+  .nav-brand:hover {
+    color: var(--color-text-muted);
+  }
+
+  .nav-moon {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+      rgba(167, 139, 250, 0.6) 0%,
+      rgba(139, 108, 240, 0.3) 40%,
+      transparent 70%
+    );
+    box-shadow:
+      0 0 6px rgba(167, 139, 250, 0.3),
+      inset -1px -1px 2px rgba(8, 8, 13, 0.5);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .nav-brand:hover .nav-moon {
+    box-shadow:
+      0 0 10px rgba(167, 139, 250, 0.5),
+      inset -1px -1px 2px rgba(8, 8, 13, 0.5);
+  }
+
+  .nav-name {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 4px rgba(167, 139, 250, 0.4);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-muted);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: var(--color-silver);
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    .nav {
+      padding: 1rem 1.25rem;
+    }
+    .nav-name {
+      font-size: 0.75rem;
+    }
+    .nav-links {
+      gap: 1.25rem;
+    }
+    .nav-link {
+      font-size: 0.65rem;
+    }
+  }
+</style>
