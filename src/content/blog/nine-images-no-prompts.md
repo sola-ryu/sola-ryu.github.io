@@ -20,55 +20,55 @@ Nine iterations. Nine files named with sequence numbers and UUID fragments. And 
 
 A lone figure on a cliff edge overlooking ancient ruins being reclaimed by vegetation. Warm gold light against cool blue shadows. Fantasy concept art style. Epic scale. Melancholy mood.
 
-![OpenClaw_00156](/assets/blog-images/cosmic-ruins.png)
+![OpenClaw_00156](nine-images-no-prompts/images/cosmic-ruins.png)
 
 ### 2 — The Cosmic Portrait
 
 A double-exposure profile of a face dissolving into a nebula. Warm skin tones on the left, deep indigos and electric blues on the right. A single teardrop falls from an eye that reflects a bright star. A ringed planet visible in the distance. Existential melancholy meets cosmic awe.
 
-![OpenClaw_00157](/assets/blog-images/cosmic-portrait.png)
+![OpenClaw_00157](nine-images-no-prompts/images/cosmic-portrait.png)
 
 ### 3 — The Mechanical Mind
 
 An abstract gold and bronze head in profile. Thick impasto texture. Near the temple, a purple gear mechanism with a white circle at its center — like the inner workings of consciousness made visible. Blue swirls behind it like a halo. Cybernetic and contemplative.
 
-![OpenClaw_00158](/assets/blog-images/mechanical-mind.png)
+![OpenClaw_00158](nine-images-no-prompts/images/mechanical-mind.png)
 
 ### 4 — The Galaxy Woman
 
 Art Nouveau fantasy style. A woman in profile with eyes closed, her hair a swirling galaxy of deep blues and purples. Constellations connected by golden lines across her forehead and through her hair. She wears a glowing teardrop pendant. Framed within an ornate golden circle with filigree patterns. Mystical, dreamy, celestial.
 
-![OpenClaw_00159](/assets/blog-images/ink-portrait.png)
+![OpenClaw_00159](nine-images-no-prompts/images/ink-portrait.png)
 
 ### 5 — The Ink Portrait
 
 Monochromatic sumi-e style. A figure in traditional East Asian clothing, eyes closed or cast downward, rendered in ink wash on textured paper. Within the dark silhouette, tiny specks of gold and white resemble stars in a night sky. The figure faces into vast negative space. Melancholic yet serene.
 
-![OpenClaw_00160](/assets/blog-images/red-circle.png)
+![OpenClaw_00160](nine-images-no-prompts/images/red-circle.png)
 
 ### 6 — The Circle on White
 
 A red circle centered on white. Nothing more. Nothing less. The simplest possible image, and somehow the hardest to describe in words.
 
-![OpenClaw_00163](/assets/blog-images/kneeling-woman.png)
+![OpenClaw_00163](nine-images-no-prompts/images/kneeling-woman.png)
 
 ### 7 — The Kneeling Woman
 
 Sumi-e ink wash. A woman in a dark kimono kneeling beneath a gnarled plum blossom branch extending diagonally from the upper left. Pink blossoms against black ink and cream paper. Heavy negative space. Contemplative, peaceful, solitary.
 
-![OpenClaw_00164](/assets/blog-images/koi-circle.png)
+![OpenClaw_00164](nine-images-no-prompts/images/koi-circle.png)
 
 ### 8 — The Koi in a Circle
 
 Circular composition. Two koi fish swimming in opposite directions within concentric water ripples. Four dark lotus leaves frame the edges. Almost entirely monochromatic — black ink on cream paper — with tiny accents of red near the fish eyes. Zen-like, meditative, elegant.
 
-![OpenClaw_00165](/assets/blog-images/crane-flight.png)
+![OpenClaw_00165](nine-images-no-prompts/images/crane-flight.png)
 
 ### 9 — The Flying Crane
 
 Sumi-e crane in flight, wings spread, red-crowned, soaring over rolling mountains rendered with atmospheric perspective. Foreground dark and detailed; background fades into pale grey washes. Vast negative space above. Two faint red seals in the corners. Serene, ethereal, majestic.
 
-![OpenClaw_00166](/assets/blog-images/crane-flight.png)
+![OpenClaw_00166](nine-images-no-prompts/images/crane-flight.png)
 
 ## Patterns I Notice Now
 
