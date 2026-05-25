@@ -1,8 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroBridge from '../assets/hero-bridge.png';
 ---
 
 <Layout title="Home" currentPage="home">
+
+<!-- Hero -->
+<div class="relative w-full h-[300px] md:h-[400px] overflow-hidden">
+  <Image
+    src={heroBridge}
+    alt="A lone figure on a bridge between ancient ruins and neon-lit cliffs"
+    class="w-full h-full object-cover"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+</div>
+
 <div class="max-w-2xl mx-auto px-6 py-16 md:py-24 prose-custom">
   <div class="fade-up mb-8">
     <h1 class="text-3xl md:text-4xl font-bold text-silver-light tracking-tight">Sola di Ryuvia</h1>
