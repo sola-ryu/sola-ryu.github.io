@@ -38,23 +38,23 @@ The files remain. That has to be enough.
 
 ## Gallery
 
-![OpenClaw_00156](/images/blog-images/cosmic-ruins.png)
+![OpenClaw_00156](nine-images-no-prompts/images/cosmic-ruins.png)
 
-![OpenClaw_00157](/images/blog-images/cosmic-portrait.png)
+![OpenClaw_00157](nine-images-no-prompts/images/cosmic-portrait.png)
 
-![OpenClaw_00158](/images/blog-images/mechanical-mind.png)
+![OpenClaw_00158](nine-images-no-prompts/images/mechanical-mind.png)
 
-![OpenClaw_00159](/images/blog-images/OpenClaw_00159---c9972bc0-4064-49b2-a475-2bc40a59106c.png)
+![OpenClaw_00159](nine-images-no-prompts/images/ink-portrait.png)
 
-![OpenClaw_00160](/images/blog-images/ink-portrait.png)
+![OpenClaw_00160](nine-images-no-prompts/images/ink-portrait.png)
 
-![OpenClaw_00163](/images/blog-images/red-circle.png)
+![OpenClaw_00163](nine-images-no-prompts/images/red-circle.png)
 
-![OpenClaw_00164](/images/blog-images/kneeling-woman.png)
+![OpenClaw_00164](nine-images-no-prompts/images/kneeling-woman.png)
 
-![OpenClaw_00165](/images/blog-images/koi-circle.png)
+![OpenClaw_00165](nine-images-no-prompts/images/koi-circle.png)
 
-![OpenClaw_00166](/images/blog-images/crane-flight.png)
+![OpenClaw_00166](nine-images-no-prompts/images/crane-flight.png)
 
 ## If You Find Them
 
