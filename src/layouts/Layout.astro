@@ -14,13 +14,143 @@ const { title } = Astro.props;
     <title>{title} — Sola di Ryuvia</title>
     <meta name="description" content="A quiet corner of the digital void." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style is:global>
+      @import "tailwindcss";
+
+      @theme {
+        --color-bg: #08080d;
+        --color-bg-elevated: #111118;
+        --color-surface: #16161f;
+        --color-border: #22223a;
+        --color-text: #c8c8d4;
+        --color-text-muted: #707090;
+        --color-text-dim: #4a4a62;
+        --color-accent: #a78bfa;
+        --color-accent-dim: #8b6cf0;
+        --color-accent-glow: rgba(167, 139, 250, 0.10);
+        --color-silver: #c0c0cc;
+        --color-silver-light: #dcdce8;
+      }
+
+      @layer base {
+        html {
+          color-scheme: dark;
+        }
+
+        body {
+          @apply bg-bg text-text antialiased;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+          background: var(--color-accent-glow);
+          color: var(--color-silver-light);
+        }
+
+        a {
+          color: var(--color-accent);
+          transition: color 0.15s ease;
+        }
+
+        a:hover {
+          color: var(--color-silver-light);
+        }
+
+        .ambient-glow {
+          position: fixed;
+          top: -200px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 1200px;
+          height: 800px;
+          background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.03) 0%, transparent 55%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .noise-overlay {
+          position: fixed;
+          inset: 0;
+          opacity: 0.012;
+          pointer-events: none;
+          z-index: 1;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+      }
+
+      @layer utilities {
+        .fade-up {
+          animation: fadeUp 0.5s ease-out both;
+        }
+
+        .fade-up-delay-1 { animation-delay: 0.05s; }
+        .fade-up-delay-2 { animation-delay: 0.1s; }
+        .fade-up-delay-3 { animation-delay: 0.15s; }
+        .fade-up-delay-4 { animation-delay: 0.2s; }
+
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      }
+
+      @layer components {
+        .prose-custom { @apply max-w-none; }
+        .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4 { @apply text-silver-light font-semibold tracking-tight; }
+        .prose-custom h1 { @apply text-2xl mt-8 mb-4; }
+        .prose-custom h2 { @apply text-xl mt-7 mb-3; }
+        .prose-custom h3 { @apply text-lg mt-5 mb-2; }
+        .prose-custom h1::before, .prose-custom h2::before, .prose-custom h3::before {
+          content: ''; display: block; margin-bottom: -1.5em; margin-left: -1.25rem; width: 2px; height: 1.2em;
+          background: linear-gradient(to bottom, var(--color-accent), transparent); opacity: 0.4;
+        }
+        .prose-custom p { @apply leading-relaxed mb-4; }
+        .prose-custom a { @apply border-b border-accent/20 hover:border-accent/60 transition-colors duration-200; color: var(--color-accent-dim); }
+        .prose-custom a:hover { color: var(--color-accent); }
+        .prose-custom code { @apply bg-surface px-1.5 py-0.5 rounded text-sm text-accent font-mono; }
+        .prose-custom pre { @apply bg-bg-elevated border border-border rounded-lg p-4 overflow-x-auto mb-6; }
+        .prose-custom pre code { @apply bg-transparent p-0 text-text; }
+        .prose-custom blockquote { @apply border-l-2 border-accent/50 pl-4 italic text-text-muted my-4; }
+        .prose-custom ul, .prose-custom ol { @apply mb-4; }
+        .prose-custom li { @apply mb-1; }
+        .prose-custom img { @apply rounded-lg my-6; }
+        .prose-custom hr { @apply border-border my-8; }
+
+        .reading-time {
+          display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.7rem;
+          color: var(--color-text-dim); letter-spacing: 0.03em; text-transform: uppercase;
+        }
+
+        .tag-pill {
+          @apply text-xs px-2.5 py-1 rounded-full border transition-colors duration-200;
+          background: transparent; color: var(--color-text-dim); border-color: var(--color-border);
+        }
+        .tag-pill:hover { border-color: rgba(167, 139, 250, 0.3); color: var(--color-accent-dim); }
+
+        .divider { height: 1px; background: linear-gradient(to right, transparent, var(--color-border), transparent); }
+
+        .page-heading::after {
+          content: ''; position: absolute; bottom: -4px; left: 0; width: 32px; height: 2px;
+          background: linear-gradient(to right, var(--color-accent), transparent);
+        }
+
+        .section-rule { width: 1px; height: 24px; background: linear-gradient(to bottom, transparent, var(--color-text-dim), transparent); }
+
+        .post-card { transition: transform 0.3s ease; }
+        .post-card:hover { transform: translateY(-1px); }
+        .post-card::before {
+          content: ''; position: absolute; inset: -1px; border-radius: inherit;
+          background: linear-gradient(135deg, rgba(167, 139, 250, 0.06), transparent); opacity: 0;
+          transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .post-card:hover::before { opacity: 1; }
+      }
+    </style>
   </head>
   <body class="min-h-full bg-bg text-text antialiased selection:bg-accent/20">
-    <!-- Ambient glow — barely there, like memory -->
     <div class="ambient-glow fixed top-[-200px] left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.03)_0%,transparent_55%)] pointer-events-none z-0" />
-    <!-- Noise texture — static between signals -->
     <div class="noise-overlay fixed inset-0 opacity-[0.012] pointer-events-none z-1" style='background-image:url("data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E")' />
-
     <div class="relative z-20">
       <slot />
     </div>
