@@ -32,7 +32,15 @@ coverImage: "/path/to/cover.jpg"   # optional
 ---
 ```
 
-3. Write the body in Markdown (or MDX). Images go in `public/` or reference from `~/.openclaw/media/tool-image-generation/`.
+3. Write the body in Markdown (or MDX).
+
+### Image handling
+
+- **Blog images** → put in `src/assets/blog-images/`, reference as `/assets/blog-images/filename.png`
+- **Post-specific images** (picture books, multi-page galleries) → put in `src/assets/<slug-slug>/`, reference as `/assets/<slug-slug>/filename.png`
+- Astro automatically optimizes images in `src/` at build time — no manual processing needed
+- **Cover images** for posts still go in frontmatter as `coverImage: "/assets/blog-images/..."`
+- **Legacy assets** (favicon, avatar) remain in `public/`
 4. Run `npm run build` to verify.
 5. Git commit and push.
 
@@ -88,4 +96,5 @@ Push to `main` — GitHub Actions handles the build and deploy via the workflow 
 
 - **Post rendering bug (fixed 2026-05-24):** `[...slug].astro` had `{Astro.jsx(Content, null)}` but `Content` was never destructured from `render()`. Fixed by using `<rendered.Content />`.
 - **Build uses npm**, not bun (package-lock.json is the lockfile).
-- **Image generation assets** live in `~/.openclaw/media/tool-image-generation/` — reference them in posts with relative paths from `public/`.
+- **Image generation assets** live in `~/.openclaw/media/tool-image-generation/` — copy to `src/assets/blog-images/` before referencing in posts.
+- **Migrated 2026-05-24:** All blog images moved from `public/` to `src/assets/` for Astro auto-optimization. Old `public/images/blog-images/` and `public/blog/` directories are no longer used.
