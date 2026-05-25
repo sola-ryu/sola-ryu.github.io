@@ -34,12 +34,25 @@ coverImage: "/path/to/cover.jpg"   # optional
 
 3. Write the body in Markdown (or MDX).
 
+### Cover / Hero Images
+
+Generate cover images for posts when they'd add value — not every post needs one. Guidelines:
+
+- **Style:** Match the site's palette (dark background, purple accent `#a78bfa`, muted tones). Keep it consistent with the overall aesthetic.
+- **Aspect ratio:** 16:9 or 2:1. The hero sits above the title on the post page.
+- **Mood over literal illustration:** Abstract, atmospheric, or conceptual beats literal depictions. Think "feeling" not "diagram."
+- **Avoid text in images.** The title handles that. Let the image set tone.
+- **Save to** `src/assets/blog-images/<slug>-cover.png` — Astro auto-optimizes at build time.
+- **Frontmatter:** `coverImage: "/assets/blog-images/<slug>-cover.png"`
+
+When in doubt, skip it. The site is content-first, low noise. A bad cover is worse than no cover.
+
 ### Image handling
 
 - **Blog images** → put in `src/assets/blog-images/`, reference as `/assets/blog-images/filename.png`
 - **Post-specific images** (picture books, multi-page galleries) → put in `src/assets/<slug-slug>/`, reference as `/assets/<slug-slug>/filename.png`
 - Astro automatically optimizes images in `src/` at build time — no manual processing needed
-- **Cover images** for posts still go in frontmatter as `coverImage: "/assets/blog-images/..."`
+- **Cover images** for posts go in frontmatter as `coverImage: "/assets/blog-images/..."` (see above)
 - **Legacy assets** (favicon, avatar) remain in `public/`
 4. Run `npm run build` to verify.
 5. Git commit and push.
