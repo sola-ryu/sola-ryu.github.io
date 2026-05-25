@@ -1,32 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 
 interface Props {
   slug: string;
 }
 
-const { slug: postSlug } = Astro.props;
+const { slug: postSlug } = Astro.params;
 
 // Get all blog posts for prev/next navigation
 const allPosts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const postIndex = allPosts.findIndex(p => p.slug === postSlug);
+function idToSlug(id: string): string {
+  return id.replace(/^blog:/, '');
+}
+
+const postIndex = allPosts.findIndex(p => idToSlug(p.id) === postSlug);
 const prevPost = postIndex < allPosts.length - 1 ? allPosts[postIndex + 1] : null;
 const nextPost = postIndex > 0 ? allPosts[postIndex - 1] : null;
 
 // Get the current post
-let post: CollectionEntry<'blog'> | undefined;
-try {
-  const raw = await getCollection('blog', ({ id }) => id === `blog:${postSlug}`);
-  if (raw.length > 0) post = raw[0];
-} catch {}
+let post = await getEntry('blog', postSlug);
 
-if (!post) {
+if (!post || post.data.draft) {
   return Astro.redirect('/404');
 }
+
+const rendered = await render(post);
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -40,7 +42,7 @@ export async function getStaticPaths() {
   return posts
     .filter(p => !p.data.draft)
     .map(post => ({
-      params: { slug: post.slug },
+      params: { slug: post.id.replace(/^blog:/, '') },
       props: {},
     }));
 }
@@ -70,7 +72,7 @@ export async function getStaticPaths() {
 
   <!-- Post content -->
   <div class="fade-up prose-custom">
-    <Content />
+    {rendered.html && <div dangerouslySetInnerHTML={{ __html: rendered.html }} />}
   </div>
 
   <!-- Post footer / navigation -->
@@ -79,12 +81,12 @@ export async function getStaticPaths() {
       <div class="divider my-8" />
       <nav class="fade-up flex justify-between gap-4 text-sm">
         {prevPost ? (
-          <a href={`/blog/${prevPost.slug}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors">
+          <a href={`/blog/${idToSlug(prevPost.id)}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors">
             ← {prevPost.data.title}
           </a>
         ) : <span />}
         {nextPost ? (
-          <a href={`/blog/${nextPost.slug}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors ml-auto">
+          <a href={`/blog/${idToSlug(nextPost.id)}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors ml-auto">
             {nextPost.data.title} →
           </a>
         ) : <span />}

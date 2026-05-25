@@ -8,6 +8,10 @@ const posts = (await getCollection('blog'))
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+function idToSlug(id: string): string {
+  return id.replace(/^blog:/, '');
+}
 ---
 
 <Layout title="Blog">
@@ -21,7 +25,7 @@ const formatDate = (d: Date) =>
 
   <div class="space-y-8">
     {posts.map((post, i) => (
-      <a href={`/blog/${post.slug}/`} class="block post-card fade-up" style={{ animationDelay: `${i * 0.05}s` }}>
+      <a href={`/blog/${idToSlug(post.id)}/`} class="block post-card fade-up relative" style={{ animationDelay: `${i * 0.05}s` }}>
         <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
         <h2 class="text-xl font-semibold text-silver-light mt-1 mb-2">{post.data.title}</h2>
         <p class="text-text-muted leading-relaxed">{post.data.description}</p>
