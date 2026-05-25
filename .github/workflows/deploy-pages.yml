@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v6
         with:
           lfs: true
+      - name: Pull LFS assets
+        run: git lfs pull
       - name: Astro Build
         uses: withastro/action@v6
         with:
