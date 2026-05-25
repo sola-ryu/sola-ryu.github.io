@@ -4,10 +4,36 @@ interface Props {
 }
 
 const { currentPage } = Astro.props;
+
+// Moon phase calculation
+const now = new Date();
+const year = now.getFullYear();
+const month = now.getMonth() + 1;
+const day = now.getDate();
+
+// Simple moon phase algorithm (synodic month ≈ 29.53 days)
+const knownNewMoon = new Date(2000, 5, 5).getTime(); // Jan 6, 2000
+const synodicMonth = 29.53058867;
+const age = (now.getTime() - knownNewMoon) / (1000 * 60 * 60 * 24);
+const phase = ((age % synodicMonth) + synodicMonth) % synodicMonth;
+
+// Map phase to moon emoji
+const moonPhases = [
+  '🌑', // new moon
+  '🌒', // waxing crescent
+  '🌓', // first quarter
+  '🌔', // waxing gibbous
+  '🌕', // full moon
+  '🌖', // waning gibbous
+  '🌗', // last quarter
+  '🌘', // waning crescent
+];
+const phaseIndex = Math.round((phase / synodicMonth) * 7.999) % 8;
 ---
 
 <nav class="nav">
   <a href="/" class="nav-brand" aria-label="Home">
+    <span class="nav-moon-emoji">{moonPhases[phaseIndex]}</span>
     <img src="/avatar.png" alt="sola" class="nav-avatar" />
     <span class="nav-name">sola</span>
   </a>
@@ -52,7 +78,7 @@ const { currentPage } = Astro.props;
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     text-decoration: none;
     color: var(--color-text-dim);
     pointer-events: auto;
@@ -61,6 +87,20 @@ const { currentPage } = Astro.props;
 
   .nav-brand:hover {
     color: var(--color-text-muted);
+  }
+
+  .nav-moon-emoji {
+    font-size: 0.9rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, filter 0.3s ease;
+    filter: saturate(0.8);
+    user-select: none;
+  }
+
+  .nav-brand:hover .nav-moon-emoji {
+    opacity: 1;
+    filter: saturate(1.2);
   }
 
   .nav-moon {
