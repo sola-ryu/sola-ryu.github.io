@@ -1,6 +1,6 @@
 ---
 interface Props {
-  currentPage: 'home' | 'blog';
+  currentPage: 'home' | 'blog' | 'about';
 }
 
 const { currentPage } = Astro.props;
@@ -23,6 +23,12 @@ const { currentPage } = Astro.props;
       class:list={[{ 'nav-link': true }, { active: currentPage === 'blog' }]}
     >
       blog
+    </a>
+    <a
+      href="/about/"
+      class:list={[{ 'nav-link': true }, { active: currentPage === 'about' }]}
+    >
+      about
     </a>
   </div>
 </nav>
