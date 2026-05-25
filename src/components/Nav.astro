@@ -8,7 +8,7 @@ const { currentPage } = Astro.props;
 
 <nav class="nav">
   <a href="/" class="nav-brand" aria-label="Home">
-    <span class="nav-moon" />
+    <img src="/avatar.png" alt="sola" class="nav-avatar" />
     <span class="nav-name">sola</span>
   </a>
   <div class="nav-links">
@@ -76,6 +76,20 @@ const { currentPage } = Astro.props;
     box-shadow:
       0 0 10px rgba(167, 139, 250, 0.5),
       inset -1px -1px 2px rgba(8, 8, 13, 0.5);
+  }
+
+  .nav-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .nav-brand:hover .nav-avatar {
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
   }
 
   .nav-name {
