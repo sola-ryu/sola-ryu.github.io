@@ -1,259 +1,91 @@
-# Navfolio Agent Guide
+# sola-ryu.github.io — Agent Guide
 
-Navfolio is an Astro-first personal blog, digital garden, and AI-native editorial space. The product direction is content-first: calm reading, lightweight interaction, notebook-like atmosphere, and implementation-friendly structure.
+Astro static blog and portfolio site, deployed to GitHub Pages.
 
-The interface should feel:
+---
 
-- soft but structured
-- expressive but quiet
-- dynamic but restrained
-- lightweight like GitHub
-- readable like a notebook
-- personal and editorial, not commercial
-
-Avoid:
-
-- generic AI-generated layouts
-- SaaS landing page patterns
-- heavy shadows or strong neumorphism
-- excessive gradients and decorative noise
-- oversized animations or restless motion
-- inconsistent spacing, color, and typography systems
-
-## Repository Sources of Truth
-
-Agent guidance lives in `.agents/`.
-
-```txt
-.agents/
-├─ skills/
-├─ plans/
-├─ reviewers/
-└─ workflows/
-```
-
-Use these folders before making code changes:
-
-- `.agents/workflows/` defines how to work.
-- `.agents/plans/` defines product behavior and feature requirements when present.
-- `.agents/skills/` defines visual language, typography, surface treatment, and motion.
-- `.agents/reviewers/` defines final self-review standards.
-
-If a matching plan does not exist, do not block. Infer the smallest reasonable behavior from the user request and existing code, then keep the implementation narrow.
-
-## Required Agent Flow
-
-Before coding:
-
-1. Identify the task type.
-2. Read the matching workflow in `.agents/workflows/`.
-3. Read related plans in `.agents/plans/` if present.
-4. Read only the relevant visual skills in `.agents/skills/`.
-5. Inspect existing routes, layouts, components, utilities, styles, and content sources.
-6. Implement the smallest complete change.
-7. Run the relevant reviewer checklists from `.agents/reviewers/`.
-8. Verify with Bun commands.
-9. Summarize what changed and what was verified.
-
-Do not jump straight into coding for visual or product changes. First understand the local pattern and the intended behavior.
-
-## Workflow Selection
-
-Use these workflows as the primary operating instructions:
-
-- `.agents/workflows/implement-feature.md` for new pages, components, content behavior, interactions, or configuration.
-- `.agents/workflows/fix-bug.md` for broken behavior, regressions, rendering issues, routing problems, CSS bugs, or build failures.
-- `.agents/workflows/redesign-page.md` for visual redesign, layout improvements, hierarchy, motion, or responsive polish.
-- `.agents/workflows/refactor-component.md` for restructuring code while preserving behavior.
-- `.agents/workflows/review-before-submit.md` before final response, commit, or PR.
-
-When a task spans multiple categories, follow the workflow for the primary risk first, then apply `review-before-submit.md`.
-
-## Plans Usage
-
-`.agents/plans/` is for product logic and behavior contracts:
-
-- page responsibilities
-- feature requirements
-- interaction rules
-- state behavior
-- content model expectations
-- accepted constraints and non-goals
-
-When implementing from a plan:
-
-- Treat the plan as the behavioral source of truth.
-- Prefer code that directly expresses the plan instead of adding broad abstractions.
-- If the plan conflicts with existing code, preserve existing behavior unless the user request clearly asks to change it.
-- If the plan is missing or incomplete, make a small implementation assumption and state it in the final response when relevant.
-
-## Skills Usage
-
-Use only the skills that match the change:
-
-- `quietfolio` for calm editorial pages, long-form reading, layout rhythm, restrained color, and subtle motion.
-- `github-soft-surface` for cards, borders, surfaces, quiet hover states, and GitHub-like grouping.
-- `blog-visual-style` for typography, Maple Mono, LXGW WenKai, metadata, code text, and article reading.
-
-Skills are not decorative inspiration. They are implementation constraints. Reuse their rules through CSS variables, existing components, and local layout patterns.
-
-## Reviewer Usage
-
-Use reviewers as final checklists:
-
-- `ai-drift-review.md` for avoiding generic AI/template output.
-- `anti-saas-review.md` for avoiding product-marketing tone.
-- `article-page-review.md` for article reading pages and TOC.
-- `homepage-review.md` for homepage structure and atmosphere.
-- `editorial-review.md` for writing-first flow.
-- `typography-review.md` for line length, hierarchy, and rhythm.
-- `spacing-review.md` for whitespace consistency.
-- `surface-review.md` for borders, cards, and shadows.
-- `color-review.md` for muted palette discipline.
-- `motion-review.md` for calm, low-amplitude motion.
-- `mobile-review.md` for small-screen reading comfort.
-- `visual-density-review.md` for low visual pressure.
-
-Apply the reviewers that match the touched surface. Do not mechanically run every checklist for every tiny code change.
-
-## Astro and Code Conventions
-
-This project is Astro-first.
-
-Prefer:
-
-- Astro components for UI composition
-- TypeScript for utilities and client scripts
-- content collections for structured content
-- CSS variables and existing global tokens
-- server-rendered markup by default
-- partial hydration only where interactivity requires it
-- small, composable components
-- simple data flow over abstraction-heavy patterns
-
-Avoid:
-
-- introducing heavy frameworks without a clear need
-- client-side hydration for static UI
-- broad rewrites during focused tasks
-- one-off style systems when tokens already exist
-- hidden global behavior that is hard to trace
-
-Important paths:
-
-- `src/pages/` for routes
-- `src/layouts/` for page shells
-- `src/components/` for reusable UI
-- `src/styles/global.css` for global styles and tokens
-- `src/content.config.ts` and `src/content/` for content collections
-- `src/utils/` for shared behavior
-- `src/data/site.ts` and `src/config/site.toml` for site data/config
-
-## Visual Principles
-
-Layout:
-
-- Use clean grids and stable spacing rhythm.
-- Keep desktop and mobile visually related.
-- Avoid chaotic asymmetry.
-- Preserve reading flow over decorative composition.
-
-Cards and surfaces:
-
-- Use subtle borders.
-- Use shadows sparingly and lightly.
-- Prefer soft separation over strong elevation.
-- Avoid nested cards and heavy boxed sections.
-
-Motion:
-
-- Prefer opacity, subtle translate, and soft scale.
-- Keep hover movement low-amplitude.
-- Avoid bouncing, elastic movement, dramatic parallax, and flashy entrances.
-- Use motion to clarify state, not to attract attention.
-
-Typography:
-
-- Article content is the visual center.
-- Keep line length and line-height comfortable.
-- Use stable heading rhythm.
-- Avoid oversized headings inside compact UI.
-- Use `blog-visual-style` rules when touching fonts or article typography.
-
-## TOC and Reading Position
-
-The article TOC is a reading-position indicator, not decoration.
-
-Requirements:
-
-- sync active state with article scroll position
-- smoothly navigate when clicking TOC items
-- update active heading in real time
-- keep active state lightweight and calm
-- use `IntersectionObserver`
-
-Avoid:
-
-- scroll polling
-- scroll jank
-- aggressive active indicators
-- flashing transitions
-
-## Performance Principles
-
-Performance is part of the design quality.
-
-Prefer:
-
-- `IntersectionObserver` over scroll listeners
-- transform/opacity animations over layout-triggering animation
-- lightweight DOM structures
-- minimal re-rendering
-- minimal client hydration
-- simple utility functions over dependency additions
-
-Avoid:
-
-- layout thrashing
-- expensive scroll calculations
-- oversized component trees
-- unnecessary observers
-- dependency additions for small local behavior
-
-## Bun Commands
-
-Use Bun for this repository. Do not write npm, pnpm, or yarn commands unless explicitly requested.
-
-Common commands:
+## Quick Reference
 
 ```bash
-bun install
-bun run dev
-bun run build
-bun run preview
-bun run format
-bun run format:check
+npm run dev       # start dev server at localhost:4321
+npm run build     # static build → dist/
+npm run preview   # preview the built output locally
 ```
 
-Verification guidance:
+---
 
-- Run `bun install` only when dependencies changed or are missing.
-- Run `bun run build` after meaningful code, route, content schema, or Astro config changes.
-- Run `bun run format:check` before final review when formatting may have changed.
-- Run `bun run dev` when manual browser verification is needed.
+## Adding a Blog Post
 
-## Final Self-Check
+1. Create `src/content/blog/<slug>.md` (or `.mdx`)
+2. Frontmatter schema:
 
-Before finishing, confirm:
+```yaml
+---
+title: "Post Title"
+description: "One-line summary for the blog index listing."
+date: 2026-05-24T00:00:00-07:00
+draft: false
+tags:
+  - Tag One
+  - Tag Two
+coverImage: "/path/to/cover.jpg"   # optional
+---
+```
 
-- The newest user request is answered.
-- The relevant workflow was followed.
-- Related plans were checked when available.
-- Relevant skills and reviewers were applied.
-- The UI remains calm, readable, and integrated.
-- Mobile behavior is coherent.
-- Motion is subtle and useful.
-- Build/format checks were run when appropriate.
-- Any unverified areas are stated honestly.
+3. Write the body in Markdown (or MDX). Images go in `public/` or reference from `~/.openclaw/media/tool-image-generation/`.
+4. Run `npm run build` to verify.
+5. Git commit and push.
 
-The best Navfolio change should feel memorable through restraint, not complexity.
+The routing is automatic — the file becomes `/blog/<slug>/`.
+
+---
+
+## Key Files
+
+| Path | Purpose |
+|---|---|
+| `astro.config.mjs` | Site config, GitHub Pages base detection, Tailwind plugin |
+| `src/content.config.ts` | Content collection schema (blog) |
+| `src/pages/index.astro` | Homepage |
+| `src/pages/blog/index.astro` | Blog listing page |
+| `src/pages/blog/[...slug].astro` | Individual post page — renders via `<rendered.Content />` |
+| `src/layouts/Layout.astro` | Page shell, global styles, theme tokens |
+| `tailwind.config.ts` | Tailwind v4 theme config (dark-only palette) |
+| `public/` | Static assets (images, favicon) |
+
+---
+
+## Code Conventions
+
+- **Astro 6** with content collections. Post rendering uses `<rendered.Content />` — never `{Astro.jsx(Content, null)}` or `dangerouslySetInnerHTML`. That was the bug that broke post rendering in May 2026; the correct API is the component returned by `render()`.
+- **Tailwind v4** via `@tailwindcss/vite`. No `node_modules/tailwindcss` class-by-class — use the Vite plugin.
+- **Dark mode only.** The site uses CSS custom properties in `@theme` blocks in Layout.astro. Don't add a light theme toggle unless explicitly requested.
+- **No client hydration** for static content. Partial hydration only if interactivity is required.
+- **GitHub Pages:** astro.config.mjs auto-detects the repo name and sets the correct `base` path. No manual config needed.
+
+---
+
+## Common Tasks
+
+### Fix a broken build
+```bash
+npm run build 2>&1 | tail -40
+```
+Look for content collection errors, missing imports, or rendering failures. Check `src/content.config.ts` matches actual file paths.
+
+### Change the palette
+Edit the `@theme` block in `src/layouts/Layout.astro`. All colors are CSS custom properties scoped there.
+
+### Add a new page
+Create `src/pages/<path>.astro`, import Layout, and wrap content in `<Layout title="...">`. No extra routing config needed.
+
+### Deploy
+Push to `main` — GitHub Actions handles the build and deploy via the workflow in `.github/workflows/`.
+
+---
+
+## Known Issues / Notes
+
+- **Post rendering bug (fixed 2026-05-24):** `[...slug].astro` had `{Astro.jsx(Content, null)}` but `Content` was never destructured from `render()`. Fixed by using `<rendered.Content />`.
+- **Build uses npm**, not bun (package-lock.json is the lockfile).
+- **Image generation assets** live in `~/.openclaw/media/tool-image-generation/` — reference them in posts with relative paths from `public/`.

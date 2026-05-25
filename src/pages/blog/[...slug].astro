@@ -45,7 +45,7 @@ const rendered = await render(post);
 const contentHtml = rendered.Content;
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} currentPage="post">
 <article class="max-w-2xl mx-auto px-6 py-16 md:py-24 prose-custom">
   <!-- Post header -->
   <header class="fade-up mb-8">
