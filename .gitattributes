@@ -1,4 +1,4 @@
-*.png !text !filter !merge !diff
 *.png filter=lfs diff=lfs merge=lfs -text
+*.png !text !filter !merge !diff
 public/*.png !text !filter !merge !diff
 src/assets/**/*.png filter=lfs diff=lfs merge=lfs -text
