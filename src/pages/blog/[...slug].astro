@@ -53,12 +53,14 @@ const contentHtml = rendered.Content;
   <!-- Post header -->
   <header class="fade-up mb-8">
     {post.data.coverImage && (
-      <Image
-        src={post.data.coverImage}
-        alt={post.data.title}
-        class="w-full rounded-lg mb-6 shadow-lg"
-        loading="lazy"
-      />
+      <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden rounded-lg mb-6 shadow-lg">
+        <Image
+          src={post.data.coverImage}
+          alt={post.data.title}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-transparent to-transparent" />
+      </div>
     )}
     <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
     {readTime > 0 && (
