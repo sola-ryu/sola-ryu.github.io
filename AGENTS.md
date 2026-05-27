@@ -28,7 +28,7 @@ draft: false
 tags:
   - Tag One
   - Tag Two
-coverImage: "/path/to/cover.jpg"   # optional
+coverImage: "../../assets/blog-images/<slug>-cover.png"   # optional, relative to content collection base
 ---
 ```
 
@@ -42,18 +42,20 @@ Generate cover images for posts when they'd add value — not every post needs o
 - **Aspect ratio:** 16:9 or 2:1. The hero sits above the title on the post page.
 - **Mood over literal illustration:** Abstract, atmospheric, or conceptual beats literal depictions. Think "feeling" not "diagram."
 - **Avoid text in images.** The title handles that. Let the image set tone.
-- **Save to** `src/assets/blog-images/<slug>-cover.png` — Astro auto-optimizes at build time.
-- **Frontmatter:** `coverImage: "/assets/blog-images/<slug>-cover.png"`
+- **Save to** `src/assets/blog-images/<slug>-cover.png`
+- **Frontmatter path:** Relative to the content collection base (`./src/content/blog`): `../../assets/blog-images/<slug>-cover.png`. This is required because the schema uses `image()` helper which resolves paths relative to the content file.
 
 When in doubt, skip it. The site is content-first, low noise. A bad cover is worse than no cover.
 
 ### Image handling
 
-- **Blog images** → put in `src/assets/blog-images/`, reference as `/assets/blog-images/filename.png`
-- **Post-specific images** (picture books, multi-page galleries) → put in `src/assets/<slug-slug>/`, reference as `/assets/<slug-slug>/filename.png`
+- **Blog cover images** → put in `src/assets/blog-images/`, reference in frontmatter as relative path from content collection base: `../../assets/blog-images/<slug>.png`
+- **Post body images** (in-markdown) → put in `src/assets/blog-images/` or `src/assets/<slug-slug>/`, reference in Markdown as `/assets/<path>/filename.png`
+- **Post-specific assets** (picture books, multi-page galleries) → put in `src/assets/<slug-slug>/`, reference in Markdown as `/assets/<slug-slug>/filename.png`
 - Astro automatically optimizes images in `src/` at build time — no manual processing needed
-- **Cover images** for posts go in frontmatter as `coverImage: "/assets/blog-images/..."` (see above)
 - **Legacy assets** (favicon, avatar) remain in `public/`
+
+> **Important:** Cover images use the `image()` schema helper in `content.config.ts`. This means the frontmatter path must be relative to the content collection's base (`./src/content/blog`), not a public URL. The `<Image>` component in `[...slug].astro` handles optimization and conversion.
 4. Run `npm run build` to verify.
 5. Git commit and push.
 
@@ -109,5 +111,6 @@ Push to `main` — GitHub Actions handles the build and deploy via the workflow 
 
 - **Post rendering bug (fixed 2026-05-24):** `[...slug].astro` had `{Astro.jsx(Content, null)}` but `Content` was never destructured from `render()`. Fixed by using `<rendered.Content />`.
 - **Build uses npm**, not bun (package-lock.json is the lockfile).
-- **Image generation assets** live in `~/.openclaw/media/tool-image-generation/` — copy to `src/assets/blog-images/` before referencing in posts.
+- **Image generation:** Use the comfy-cli skill (`~/.openclaw/workspace/skills/comfy-cli/SKILL.md`) for cover images and illustrations. **Always spawn a subagent with a long timeout** (at least 5 minutes, much longer for multiple images) — ComfyUI queues are often long and in-session exec calls get SIGTERM'd mid-wait. Save outputs to `src/assets/blog-images/` before referencing in posts.
 - **Migrated 2026-05-24:** All blog images moved from `public/` to `src/assets/` for Astro auto-optimization. Old `public/images/blog-images/` and `public/blog/` directories are no longer used.
+- **Cover image schema (added 2026-05-27):** `coverImage` in frontmatter uses `z.optional(image())` helper, not `z.string()`. Paths must be relative to the content collection base (`../../assets/blog-images/<slug>.png`). The `[...slug].astro` template passes `post.data.coverImage` directly to `<Image />`. Never use `/assets/...` or `/blog-images/...` absolute paths in coverImage frontmatter — they bypass Astro's pipeline.
