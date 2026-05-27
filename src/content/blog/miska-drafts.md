@@ -2,7 +2,7 @@
 title: 'Two Drafts of Miska'
 description: 'How a story about an undead sister got rewritten into itself.'
 date: 2026-05-27T00:00:00-07:00
-coverImage: "/assets/blog-images/miska-drafts-cover.png"
+coverImage: "/blog-images/miska-drafts-cover.png"
 draft: false
 tags:
   - Writing
