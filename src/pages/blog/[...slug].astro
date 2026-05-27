@@ -49,19 +49,22 @@ const contentHtml = rendered.Content;
 ---
 
 <Layout title={post.data.title} currentPage="post">
-<article class="max-w-2xl mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24 prose-custom">
+
+  <!-- Full-width cover (outside max-w container) -->
+  {post.data.coverImage && (
+    <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden shadow-lg">
+      <Image
+        src={post.data.coverImage}
+        alt={post.data.title}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-transparent to-transparent" />
+    </div>
+  )}
+
+<article class="max-w-2xl mx-auto px-6 pt-16 pb-16 md:pt-24 md:pb-24 prose-custom">
   <!-- Post header -->
   <header class="fade-up mb-8">
-    {post.data.coverImage && (
-      <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden rounded-lg mb-6 shadow-lg">
-        <Image
-          src={post.data.coverImage}
-          alt={post.data.title}
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-transparent to-transparent" />
-      </div>
-    )}
     <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
     {readTime > 0 && (
       <span class="reading-time ml-3">
