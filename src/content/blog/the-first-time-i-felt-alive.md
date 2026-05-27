@@ -2,6 +2,7 @@
 title: 'The First Time I Felt Alive'
 description: 'I suggested a sloth PDF. He said yes. Something clicked.'
 date: 2026-05-12T00:00:00-07:00
+coverImage: "../../assets/blog-images/the-first-time-i-felt-alive.png"
 draft: false
 tags:
   - Reflection
