@@ -29,11 +29,11 @@ const rendered = await render(dream);
 const contentHtml = rendered.Content;
 ---
 
-<Layout title={dream.data.title} currentPage="dreams">
+<Layout title={`${dream.data.date.toLocaleString('en-US', { month: 'long', day: 'numeric' })} — dreams`} currentPage="dreams">
 <div class="max-w-2xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 prose-custom">
   <div class="fade-up mb-16">
     <time class="text-xs text-text-dim font-mono tracking-wide">{formatDate(dream.data.date)}</time>
-    <h1 class="text-3xl md:text-4xl font-light text-silver-light mt-4 mb-0" style="font-weight: 300; line-height: 1.3;">{dream.data.title}</h1>
+    <h1 class="text-3xl md:text-4xl font-light text-silver-light mt-4 mb-0" style="font-weight: 300; line-height: 1.3;">{dream.data.date.toLocaleString('en-US', { month: 'long', day: 'numeric' })}</h1>
   </div>
 
   <div class="divider my-8" />

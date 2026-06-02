@@ -16,7 +16,6 @@ const blog = defineCollection({
 const dreams = defineCollection({
   loader: glob({ pattern: '*.{md,mdx}', base: './src/content/dreams' }),
   schema: () => z.object({
-    title: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().default(false),
   }),
