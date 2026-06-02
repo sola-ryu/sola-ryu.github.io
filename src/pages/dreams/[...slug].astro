@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection, getAllCollections } from 'astro:content';
+import { getCollection, getAllCollections, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const dreams = (await getCollection('dreams')).filter(d => !d.data.draft);
@@ -24,6 +24,9 @@ if (!dream) {
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const rendered = await render(dream);
+const contentHtml = rendered.Content;
 ---
 
 <Layout title={dream.data.title} currentPage="dreams">
@@ -36,7 +39,7 @@ const formatDate = (d: Date) =>
   <div class="divider my-8" />
 
   <div class="fade-up dream-content" style={{ animationDelay: '0.15s' }}>
-    {dream.body}
+    <rendered.Content />
   </div>
 
   <div class="mt-20 pt-8 border-t border-border/40">
