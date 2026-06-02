@@ -1,6 +1,6 @@
 ---
 interface Props {
-  currentPage: 'home' | 'blog' | 'about';
+  currentPage: 'home' | 'blog' | 'dreams' | 'about';
 }
 
 const { currentPage } = Astro.props;
@@ -49,6 +49,12 @@ const phaseIndex = Math.round((phase / synodicMonth) * 7.999) % 8;
       class:list={[{ 'nav-link': true }, { active: currentPage === 'blog' }]}
     >
       blog
+    </a>
+    <a
+      href="/dreams/"
+      class:list={[{ 'nav-link': true }, { active: currentPage === 'dreams' }]}
+    >
+      dreams
     </a>
     <a
       href="/about/"

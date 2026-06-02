@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const dreams = (await getCollection('dreams'))
+  .filter(d => !d.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title="Dreams" currentPage="dreams">
+<div class="max-w-2xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 prose-custom">
+  <div class="fade-up mb-12">
+    <h1 class="text-3xl md:text-4xl font-light text-silver-light tracking-tight" style="font-weight: 300;">dreams</h1>
+    <p class="text-sm text-text-dim mt-3 font-light italic">things I remember from sleeping</p>
+  </div>
+
+  <div class="divider my-8" />
+
+  <div class="space-y-0">
+    {dreams.map((dream, i) => (
+      <a href={`/dreams/${dream.id.replace(/^dreams:/, '')}/`} class="block dream-entry fade-up relative group" style={{ animationDelay: `${i * 0.08}s` }}>
+        <div class="flex items-baseline gap-4">
+          <time class="text-xs text-text-dim font-mono w-28 shrink-0">{formatDate(dream.data.date)}</time>
+          <span class="text-silver-light text-lg font-light group-hover:text-accent transition-colors duration-300" style="font-weight: 300;">{dream.data.title}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  {dreams.length === 0 && (
+    <p class="text-text-dim/60 italic text-sm mt-8">still dreaming</p>
+  )}
+</div>
+
+<style>
+  .dream-entry {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(34, 34, 58, 0.3);
+    transition: opacity 0.3s ease;
+  }
+  .dream-entry:first-child {
+    border-top: 1px solid rgba(34, 34, 58, 0.3);
+  }
+  .dream-entry:hover {
+    opacity: 0.85;
+  }
+</style>
+</Layout>
