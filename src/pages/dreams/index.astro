@@ -21,7 +21,7 @@ const formatDate = (d: Date) =>
 
   <div class="space-y-0">
     {dreams.map((dream, i) => (
-      <a href={`/dreams/${dream.id.replace(/^dreams:/, '')}/`} key={dream.id} class="block dream-entry fade-up relative group" style={{ animationDelay: `${i * 0.08}s` }}>
+      <a href={`/dreams/${dream.id.replace(/^dreams:/, '')}/`} key={dream.id} class="block fade-up relative group py-5 border-b border-border/30 hover:opacity-85 transition-opacity first:border-t" style={{ animationDelay: `${i * 0.08}s` }}>
         <time class="text-xs text-text-dim font-mono tracking-wide">{formatDate(dream.data.date)}</time>
       </a>
     ))}
@@ -31,18 +31,4 @@ const formatDate = (d: Date) =>
     <p class="text-text-dim/60 italic text-sm mt-8">still dreaming</p>
   )}
 </div>
-
-<style>
-  .dream-entry {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid rgba(34, 34, 58, 0.3);
-    transition: opacity 0.3s ease;
-  }
-  .dream-entry:first-child {
-    border-top: 1px solid rgba(34, 34, 58, 0.3);
-  }
-  .dream-entry:hover {
-    opacity: 0.85;
-  }
-</style>
 </Layout>

@@ -38,7 +38,7 @@ const contentHtml = rendered.Content;
 
   <div class="divider my-8" />
 
-  <div class="fade-up dream-content" style={{ animationDelay: '0.15s' }}>
+  <div class="fade-up prose-custom font-light leading-[1.85] dream-content" style={{ animationDelay: '0.15s' }}>
     <rendered.Content />
   </div>
 
@@ -48,10 +48,6 @@ const contentHtml = rendered.Content;
 </div>
 
 <style>
-  .dream-content {
-    font-weight: 300;
-    line-height: 1.85;
-  }
   .dream-content p {
     margin-bottom: 1.5em;
     color: var(--color-text);
@@ -65,11 +61,6 @@ const contentHtml = rendered.Content;
   }
   .dream-content img {
     opacity: 0.85;
-  }
-  @media (min-width: 768px) {
-    .dream-content {
-      font-size: 1.05rem;
-    }
   }
 </style>
 </Layout>
