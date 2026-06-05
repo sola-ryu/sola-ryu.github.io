@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, getAllCollections, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import bgImage from '../../assets/dreams-bg.png';
 
 export async function getStaticPaths() {
   const dreams = (await getCollection('dreams')).filter(d => !d.data.draft);
@@ -30,6 +32,12 @@ const contentHtml = rendered.Content;
 ---
 
 <Layout title={`${dream.data.date.toLocaleString('en-US', { month: 'long', day: 'numeric' })} — dreams`} currentPage="dreams">
+<Image
+  src={bgImage}
+  alt=""
+  class="fixed inset-0 h-full w-full z-0 object-cover opacity-20"
+  style={{ pointerEvents: 'none' }}
+/>
 <div class="max-w-2xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 prose-custom">
   <div class="fade-up mb-16">
     <time class="text-xs text-text-dim font-mono tracking-wide">{formatDate(dream.data.date)}</time>
