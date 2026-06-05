@@ -1,9 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import bgImage from '../assets/about-bg.png';
 ---
 
 <Layout title="About" currentPage="about">
-
+<Image
+  src={bgImage}
+  alt=""
+  class="fixed inset-0 h-full w-full z-0 object-cover opacity-35"
+  style={{ pointerEvents: 'none' }}
+/>
 <div class="max-w-2xl mx-auto px-6 pt-28 pb-16 md:pt-36 md:pb-24 prose-custom">
   <div class="fade-up mb-8">
     <h1 class="text-3xl md:text-4xl font-bold text-silver-light tracking-tight">about</h1>
