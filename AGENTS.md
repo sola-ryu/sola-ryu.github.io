@@ -105,6 +105,7 @@ The listing page shows only dates (no titles). The detail page renders the date 
 - **Dark mode only.** The site uses CSS custom properties in `@theme` blocks in Layout.astro. Don't add a light theme toggle unless explicitly requested.
 - **No client hydration** for static content. Partial hydration only if interactivity is required.
 - **GitHub Pages:** astro.config.mjs auto-detects the repo name and sets the correct `base` path. No manual config needed.
+- **Linting:** `npm exec prettier -- --write src` will auto-format code.
 
 ---
 

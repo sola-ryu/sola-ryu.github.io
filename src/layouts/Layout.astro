@@ -20,7 +20,7 @@ import Nav from '../components/Nav.astro';
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <style is:global>
-      @import "tailwindcss";
+      @import 'tailwindcss';
 
       @custom-variant post (&:where([data-page=post], [data-page=post] *));
       @custom-variant dreams (&:where([data-page=dreams], [data-page=dreams] *));
@@ -35,7 +35,7 @@ import Nav from '../components/Nav.astro';
         --color-text-dim: #4a4a62;
         --color-accent: #a78bfa;
         --color-accent-dim: #8b6cf0;
-        --color-accent-glow: rgba(167, 139, 250, 0.10);
+        --color-accent-glow: rgba(167, 139, 250, 0.1);
         --color-silver: #c0c0cc;
         --color-silver-light: #dcdce8;
 
@@ -60,7 +60,9 @@ import Nav from '../components/Nav.astro';
 
         a {
           color: var(--color-accent);
-          transition: color 0.2s ease, text-shadow 0.2s ease;
+          transition:
+            color 0.2s ease,
+            text-shadow 0.2s ease;
         }
 
         a:hover {
@@ -75,7 +77,11 @@ import Nav from '../components/Nav.astro';
           transform: translateX(-50%);
           width: 1200px;
           height: 800px;
-          background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.03) 0%, transparent 55%);
+          background: radial-gradient(
+            ellipse at center,
+            rgba(167, 139, 250, 0.03) 0%,
+            transparent 55%
+          );
           pointer-events: none;
           z-index: 0;
         }
@@ -95,14 +101,28 @@ import Nav from '../components/Nav.astro';
           animation: fadeUp 0.5s ease-out both;
         }
 
-        .fade-up-delay-1 { animation-delay: 0.05s; }
-        .fade-up-delay-2 { animation-delay: 0.1s; }
-        .fade-up-delay-3 { animation-delay: 0.15s; }
-        .fade-up-delay-4 { animation-delay: 0.2s; }
+        .fade-up-delay-1 {
+          animation-delay: 0.05s;
+        }
+        .fade-up-delay-2 {
+          animation-delay: 0.1s;
+        }
+        .fade-up-delay-3 {
+          animation-delay: 0.15s;
+        }
+        .fade-up-delay-4 {
+          animation-delay: 0.2s;
+        }
 
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       }
 
@@ -118,49 +138,118 @@ import Nav from '../components/Nav.astro';
       }
 
       @layer components {
-        .prose-custom { @apply max-w-none; }
-        .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4 { @apply text-silver-light font-semibold tracking-tight; }
-        .prose-custom h1 { @apply text-2xl mt-8 mb-4; }
-        .prose-custom h2 { @apply text-xl mt-7 mb-3; }
-        .prose-custom h3 { @apply text-lg mt-5 mb-2; }
-        .prose-custom h1::before, .prose-custom h2::before, .prose-custom h3::before {
-          content: ''; display: block; margin-bottom: -1.5em; margin-left: -1.25rem; width: 2px; height: 1.2em;
-          background: linear-gradient(to bottom, var(--color-accent), transparent); opacity: 0.4;
+        .prose-custom {
+          @apply max-w-none;
         }
-        .prose-custom p { @apply leading-relaxed mb-4; }
-        .prose-custom a { @apply border-b border-accent/20 hover:border-accent/60 transition-colors duration-200; color: var(--color-accent-dim); }
-        .prose-custom a:hover { color: var(--color-accent); }
-        .prose-custom code { @apply bg-surface px-1.5 py-0.5 rounded text-sm text-accent font-mono; }
-        .prose-custom pre { @apply bg-bg-elevated border border-border rounded-lg p-4 overflow-x-auto mb-6; }
-        .prose-custom pre code { @apply bg-transparent p-0 text-text; }
-        .prose-custom blockquote { @apply border-l-2 border-accent/50 pl-4 italic text-text-muted my-4; }
-        .prose-custom ul, .prose-custom ol { @apply mb-4; }
-        .prose-custom li { @apply mb-1; }
-        .prose-custom img { @apply rounded-lg my-6; }
-        .prose-custom hr { @apply border-border my-8; }
+        .prose-custom h1,
+        .prose-custom h2,
+        .prose-custom h3,
+        .prose-custom h4 {
+          @apply text-silver-light font-semibold tracking-tight;
+        }
+        .prose-custom h1 {
+          @apply mt-8 mb-4 text-2xl;
+        }
+        .prose-custom h2 {
+          @apply mt-7 mb-3 text-xl;
+        }
+        .prose-custom h3 {
+          @apply mt-5 mb-2 text-lg;
+        }
+        .prose-custom h1::before,
+        .prose-custom h2::before,
+        .prose-custom h3::before {
+          content: '';
+          display: block;
+          margin-bottom: -1.5em;
+          margin-left: -1.25rem;
+          width: 2px;
+          height: 1.2em;
+          background: linear-gradient(to bottom, var(--color-accent), transparent);
+          opacity: 0.4;
+        }
+        .prose-custom p {
+          @apply mb-4 leading-relaxed;
+        }
+        .prose-custom a {
+          @apply border-accent/20 hover:border-accent/60 border-b transition-colors duration-200;
+          color: var(--color-accent-dim);
+        }
+        .prose-custom a:hover {
+          color: var(--color-accent);
+        }
+        .prose-custom code {
+          @apply bg-surface text-accent rounded px-1.5 py-0.5 font-mono text-sm;
+        }
+        .prose-custom pre {
+          @apply bg-bg-elevated border-border mb-6 overflow-x-auto rounded-lg border p-4;
+        }
+        .prose-custom pre code {
+          @apply text-text bg-transparent p-0;
+        }
+        .prose-custom blockquote {
+          @apply border-accent/50 text-text-muted my-4 border-l-2 pl-4 italic;
+        }
+        .prose-custom ul,
+        .prose-custom ol {
+          @apply mb-4;
+        }
+        .prose-custom li {
+          @apply mb-1;
+        }
+        .prose-custom img {
+          @apply my-6 rounded-lg;
+        }
+        .prose-custom hr {
+          @apply border-border my-8;
+        }
 
         .reading-time {
-          display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.7rem;
-          color: var(--color-text-dim); letter-spacing: 0.03em; text-transform: uppercase;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          font-size: 0.7rem;
+          color: var(--color-text-dim);
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
         }
 
         .tag-pill {
-          @apply text-xs px-2.5 py-1 rounded-full border transition-colors duration-200;
-          background: transparent; color: var(--color-text-dim); border-color: var(--color-border);
+          @apply rounded-full border px-2.5 py-1 text-xs transition-colors duration-200;
+          background: transparent;
+          color: var(--color-text-dim);
+          border-color: var(--color-border);
         }
-        .tag-pill:hover { border-color: rgba(167, 139, 250, 0.3); color: var(--color-accent-dim); }
+        .tag-pill:hover {
+          border-color: rgba(167, 139, 250, 0.3);
+          color: var(--color-accent-dim);
+        }
 
-        .divider { height: 1px; background: linear-gradient(to right, transparent, var(--color-border), transparent); }
+        .divider {
+          height: 1px;
+          background: linear-gradient(to right, transparent, var(--color-border), transparent);
+        }
 
         .page-heading::after {
-          content: ''; position: absolute; bottom: -4px; left: 0; width: 32px; height: 2px;
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 32px;
+          height: 2px;
           background: linear-gradient(to right, var(--color-accent), transparent);
         }
 
-        .section-rule { width: 1px; height: 24px; background: linear-gradient(to bottom, transparent, var(--color-text-dim), transparent); }
+        .section-rule {
+          width: 1px;
+          height: 24px;
+          background: linear-gradient(to bottom, transparent, var(--color-text-dim), transparent);
+        }
 
         .post-card {
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
           border-radius: 8px;
           padding: 0.75rem;
           margin: -0.75rem;
@@ -176,16 +265,29 @@ import Nav from '../components/Nav.astro';
       }
     </style>
   </head>
-  <body class="min-h-full bg-bg text-text antialiased selection:bg-accent/20" data-page={currentPage}>
+  <body
+    class="bg-bg text-text selection:bg-accent/20 min-h-full antialiased"
+    data-page={currentPage}
+  >
     <Nav currentPage={currentPage} />
-    <div class="ambient-glow fixed top-[-200px] left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.03)_0%,transparent_55%)] pointer-events-none z-0" />
-    <div class="noise-overlay fixed inset-0 opacity-[0.012] pointer-events-none z-1" style='background-image:url("data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E")' />
-    <div id="progress" class="fixed top-0 left-0 right-0 h-[2px] bg-accent/40 z-[100]"></div>
+    <div
+      class="ambient-glow pointer-events-none fixed top-[-200px] left-1/2 z-0 h-[800px] w-[1200px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.03)_0%,transparent_55%)]"
+    >
+    </div>
+    <div
+      class="noise-overlay pointer-events-none fixed inset-0 z-1 opacity-[0.012]"
+      style='background-image:url("data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E")'
+    >
+    </div>
+    <div id="progress" class="bg-accent/40 fixed top-0 right-0 left-0 z-[100] h-[2px]"></div>
     <div class="relative z-20">
       <slot />
     </div>
-    <footer class="py-8 text-center text-xs text-text-dim/40 tracking-widest uppercase" style="letter-spacing: 0.15em;">
-      <span class="inline-block w-px h-3 bg-accent/20 mx-auto mb-3" />
+    <footer
+      class="text-text-dim/40 py-8 text-center text-xs tracking-widest uppercase"
+      style="letter-spacing: 0.15em;"
+    >
+      <span class="bg-accent/20 mx-auto mb-3 inline-block h-3 w-px"></span>
       standing on a bridge
     </footer>
   </body>

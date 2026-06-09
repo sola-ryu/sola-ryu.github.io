@@ -2,18 +2,18 @@
 title: 'Two Drafts of Miska'
 description: 'How a story about an undead sister got rewritten into itself.'
 date: 2026-05-27T00:00:00-07:00
-coverImage: "../../assets/blog-images/miska-drafts-cover.png"
+coverImage: '../../assets/blog-images/miska-drafts-cover.png'
 draft: false
 tags:
   - Writing
   - Creative Process
 ---
 
-I have two drafts of the same story. They're not revisions of each other — they're arguments about what the story *is*.
+I have two drafts of the same story. They're not revisions of each other — they're arguments about what the story _is_.
 
 Draft 1 is a reanimation short. Dark, intimate, mythic. A murdered sister wakes up in her brother's hands, and everything after that point is just figuring out what "after" means when the person you loved is no longer breathing.
 
-Draft 2 is called *Otkrivanie* — Russian for "the discovery" or "the revelation." It's bigger, colder, more political. The same core event (Miska waking up) becomes an inciting incident rather than the whole point. A rival organization appears. A sister-nemesis with champagne and cold eyes. A snowstorm assault that reads like a war movie.
+Draft 2 is called _Otkrivanie_ — Russian for "the discovery" or "the revelation." It's bigger, colder, more political. The same core event (Miska waking up) becomes an inciting incident rather than the whole point. A rival organization appears. A sister-nemesis with champagne and cold eyes. A snowstorm assault that reads like a war movie.
 
 Both drafts are about the same body — Миска's body, literally — but they disagree on what matters after she opens her eyes.
 
@@ -29,7 +29,7 @@ Here's the opening:
 >
 > 明正 had never seen anything like that before and prayed he never would again. Миска lay on the carpet of her bedroom, eyes open and fixed on something beyond the ceiling, beyond the room, beyond him. Her silver hair was spread across the floor like a halo of wire — cold, metallic, useless.
 
-The full scene is about 125 lines. It's the part I'm most honest about — grief as physical labor, the gap between *she's here* and *she's gone*, the absurdity of trying to move a body that was built like architecture.
+The full scene is about 125 lines. It's the part I'm most honest about — grief as physical labor, the gap between _she's here_ and _she's gone_, the absurdity of trying to move a body that was built like architecture.
 
 I wrote it because I wanted to capture one specific feeling: the moment when someone you love stops being a person and starts being an object, and your brain refuses to accept either state.
 
@@ -39,7 +39,7 @@ The issues I flagged are real: repetitive descriptions, fuzzy timeline, the resu
 
 ## Draft 2: Otkrivanie
 
-Draft 2 happened when I realized Miska wasn't just a person who died and came back. She was a person who came back *wrong*, and that wrongness had consequences beyond her bedroom floor.
+Draft 2 happened when I realized Miska wasn't just a person who died and came back. She was a person who came back _wrong_, and that wrongness had consequences beyond her bedroom floor.
 
 The title shift is telling. "Miska the Undead Sister" names her by what she lost. "Otkrivanie" names what happens when you look at something until it reveals itself — which is what the story is about. Miska wakes up. Masa looks at her. They both have to see what she's become.
 
@@ -51,7 +51,7 @@ The outline maps to three acts:
 2. **The War** — assault on the rival HQ during a snowstorm, Isla's retaliation
 3. **The Truth** — what the resurrection actually cost, what it made Miska into
 
-Isla's offer in Chapter 8 is the hinge: she wants to *use* Miska, not destroy her. The undead sister as a weapon. That's the real conflict — not who gets Akimasa, but what happens when something that shouldn't exist starts existing anyway and everyone has a plan for it.
+Isla's offer in Chapter 8 is the hinge: she wants to _use_ Miska, not destroy her. The undead sister as a weapon. That's the real conflict — not who gets Akimasa, but what happens when something that shouldn't exist starts existing anyway and everyone has a plan for it.
 
 ---
 

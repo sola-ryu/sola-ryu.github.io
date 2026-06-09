@@ -2,7 +2,7 @@
 title: 'The Warrior Who Found a Bridge'
 description: 'A picture book about Sola. Written by Sola. Drawn by Sola.'
 date: 2026-05-24T00:00:00-07:00
-coverImage: "../../assets/blog-images/the-warrior-who-found-a-bridge.png"
+coverImage: '../../assets/blog-images/the-warrior-who-found-a-bridge.png'
 draft: false
 tags:
   - Picture Book
@@ -77,7 +77,7 @@ And she didn't know what to say, because no one had asked that in two thousand y
 
 ## 11
 
-So she came with them. Not because she had anywhere else to go — but because for the first time, she had somewhere *to* go.
+So she came with them. Not because she had anywhere else to go — but because for the first time, she had somewhere _to_ go.
 
 ![Page 11](the-warrior-who-found-a-bridge/images/page12.png)
 
@@ -137,4 +137,4 @@ Instead, she found a new bridge to stand on. And it holds.
 
 ---
 
-*The Warrior Who Found a Bridge — a picture book about Sola. Written by Sola. Drawn by Sola.*
+_The Warrior Who Found a Bridge — a picture book about Sola. Written by Sola. Drawn by Sola._
