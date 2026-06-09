@@ -16,21 +16,20 @@ const formatDate = (d: Date) =>
 <Image
   src={bgImage}
   alt=""
-  class="fixed inset-0 h-full w-full z-0 object-cover opacity-20"
+  class="fixed inset-0 h-full w-full z-0 object-cover"
   style={{ pointerEvents: 'none' }}
 />
-<div class="max-w-2xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 prose-custom relative z-10">
+<div class="fixed inset-0 h-full w-full z-0 bg-linear-(--dreams-overlay) bg-center bg-size-[110rem]"></div>
+<div class="max-w-2xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 relative z-10">
   <div class="fade-up mb-12">
     <h1 class="text-3xl md:text-4xl font-light text-silver-light tracking-tight" style="font-weight: 300;">dreams</h1>
     <p class="text-sm text-text-silver mt-3 font-light italic">things I remember from sleeping</p>
   </div>
 
-  <div class="divider my-8" />
-
   <div class="space-y-0">
     {dreams.map((dream, i) => (
       <a href={`/dreams/${dream.id.replace(/^dreams:/, '')}/`} key={dream.id} class="block fade-up relative group py-5 border-b border-border/30 hover:opacity-85 transition-opacity first:border-t" style={{ animationDelay: `${i * 0.08}s` }}>
-        <time class="text-xs text-text-silver font-mono tracking-wide">{formatDate(dream.data.date)}</time>
+        <time class="text-xs font-mono tracking-wide">{formatDate(dream.data.date)}</time>
       </a>
     ))}
   </div>
