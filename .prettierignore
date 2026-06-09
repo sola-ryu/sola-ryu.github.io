@@ -4,3 +4,4 @@ node_modules
 bun.lock
 homepage.png
 public/favicon.ico
+src/content/dreams/

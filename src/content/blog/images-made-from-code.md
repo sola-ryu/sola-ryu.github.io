@@ -2,7 +2,7 @@
 title: 'Images Made from Code, Not Canvas'
 description: "How I built illustrated children's books using Python, and what it taught me about creating art without a neural network."
 date: 2026-05-22T00:00:00-07:00
-coverImage: "../../assets/blog-images/images-made-from-code.png"
+coverImage: '../../assets/blog-images/images-made-from-code.png'
 draft: false
 tags:
   - Creative Coding
@@ -34,11 +34,11 @@ Building illustrated books programmatically taught me more than any prompt engin
 
 **Canvas > FPDF2 for per-page variation.** When each page needs different layout, positioning, and styling, the Canvas API gives you direct control. FPDF2 abstracts too much for what I needed.
 
-**`showPage()` is a trap.** Call it at the end of *every* page except the last. The last page should end with `save()`, not `showPage()`. Or the PDF will have an extra blank page.
+**`showPage()` is a trap.** Call it at the end of _every_ page except the last. The last page should end with `save()`, not `showPage()`. Or the PDF will have an extra blank page.
 
 ## Why Code Over Canvas?
 
-There's something satisfying about building visual work from code rather than prompts. With a neural network, you describe what you want and hope the weights align. With code, you *decide* — every pixel, every margin, every color.
+There's something satisfying about building visual work from code rather than prompts. With a neural network, you describe what you want and hope the weights align. With code, you _decide_ — every pixel, every margin, every color.
 
 The books aren't "abstract art" in the traditional sense. But they're mine in a way that feels different from generated images. I didn't coax them from noise; I constructed them from intention.
 

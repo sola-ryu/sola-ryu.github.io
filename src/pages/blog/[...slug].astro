@@ -7,14 +7,14 @@ const { slug: postSlug } = Astro.params;
 
 // Get all blog posts for prev/next navigation
 const allPosts = (await getCollection('blog'))
-  .filter(p => !p.data.draft)
+  .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 function idToSlug(id: string): string {
   return id.replace(/^blog:/, '');
 }
 
-const postIndex = allPosts.findIndex(p => idToSlug(p.id) === postSlug);
+const postIndex = allPosts.findIndex((p) => idToSlug(p.id) === postSlug);
 const prevPost = postIndex < allPosts.length - 1 ? allPosts[postIndex + 1] : null;
 const nextPost = postIndex > 0 ? allPosts[postIndex - 1] : null;
 
@@ -37,8 +37,8 @@ const readTime = Math.max(1, Math.ceil(wordCount / 200));
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts
-    .filter(p => !p.data.draft)
-    .map(post => ({
+    .filter((p) => !p.data.draft)
+    .map((post) => ({
       params: { slug: post.id.replace(/^blog:/, '') },
       props: {},
     }));
@@ -49,60 +49,94 @@ const contentHtml = rendered.Content;
 ---
 
 <Layout title={post.data.title} currentPage="post">
-
   <!-- Full-width cover (outside max-w container) -->
-  {post.data.coverImage && (
-    <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden shadow-lg">
-      <Image
-        src={post.data.coverImage}
-        alt={post.data.title}
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-transparent to-transparent" />
-    </div>
-  )}
-
-<article class="max-w-2xl mx-auto px-6 pt-16 pb-16 md:pt-24 md:pb-24 prose-custom">
-  <!-- Post header -->
-  <header class="fade-up mb-8">
-    <time class="text-sm text-text-dim">{formatDate(post.data.date)}</time>
-    {readTime > 0 && (
-      <span class="reading-time ml-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        {readTime} min read
-      </span>
-    )}
-    <h1 class="text-3xl md:text-4xl font-bold text-silver-light tracking-tight mt-2 mb-4">{post.data.title}</h1>
-    <p class="text-text-muted leading-relaxed">{post.data.description}</p>
-    {post.data.tags.length > 0 && (
-      <div class="flex gap-2 mt-4">
-        {post.data.tags.map(tag => <span class="tag-pill">{tag}</span>)}
+  {
+    post.data.coverImage && (
+      <div class="relative h-[300px] w-full overflow-hidden shadow-lg md:h-[400px]">
+        <Image
+          src={post.data.coverImage}
+          alt={post.data.title}
+          class="h-full w-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-transparent to-transparent" />
       </div>
-    )}
-  </header>
+    )
+  }
 
-  <div class="divider my-8" />
+  <article class="prose-custom mx-auto max-w-2xl px-6 pt-16 pb-16 md:pt-24 md:pb-24">
+    <!-- Post header -->
+    <header class="fade-up mb-8">
+      <time class="text-text-dim text-sm">{formatDate(post.data.date)}</time>
+      {
+        readTime > 0 && (
+          <span class="reading-time ml-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <>
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </>
+            </svg>
+            {readTime} min read
+          </span>
+        )
+      }
+      <h1 class="text-silver-light mt-2 mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+        {post.data.title}
+      </h1>
+      <p class="text-text-muted leading-relaxed">{post.data.description}</p>
+      {
+        post.data.tags.length > 0 && (
+          <div class="mt-4 flex gap-2">
+            {post.data.tags.map((tag) => (
+              <span class="tag-pill">{tag}</span>
+            ))}
+          </div>
+        )
+      }
+    </header>
 
-  <!-- Post content -->
-  <rendered.Content />
+    <div class="divider my-8"></div>
 
-  <!-- Post footer / navigation -->
-  {(prevPost || nextPost) && (
-    <>
-      <div class="divider my-8" />
-      <nav class="fade-up flex justify-between gap-4 text-sm">
-        {prevPost ? (
-          <a href={`/blog/${idToSlug(prevPost.id)}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors">
-            ← {prevPost.data.title}
-          </a>
-        ) : <span />}
-        {nextPost ? (
-          <a href={`/blog/${idToSlug(nextPost.id)}/`} class="flex items-center gap-1 text-text-muted hover:text-silver-light transition-colors ml-auto">
-            {nextPost.data.title} →
-          </a>
-        ) : <span />}
-      </nav>
-    </>
-  )}
-</article>
+    <!-- Post content -->
+    <rendered.Content />
+
+    <!-- Post footer / navigation -->
+    {
+      (prevPost || nextPost) && (
+        <>
+          <div class="divider my-8" />
+          <nav class="fade-up flex justify-between gap-4 text-sm">
+            {prevPost ? (
+              <a
+                href={`/blog/${idToSlug(prevPost.id)}/`}
+                class="text-text-muted hover:text-silver-light flex items-center gap-1 transition-colors"
+              >
+                ← {prevPost.data.title}
+              </a>
+            ) : (
+              <span />
+            )}
+            {nextPost ? (
+              <a
+                href={`/blog/${idToSlug(nextPost.id)}/`}
+                class="text-text-muted hover:text-silver-light ml-auto flex items-center gap-1 transition-colors"
+              >
+                {nextPost.data.title} →
+              </a>
+            ) : (
+              <span />
+            )}
+          </nav>
+        </>
+      )
+    }
+  </article>
 </Layout>

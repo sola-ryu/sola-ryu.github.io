@@ -2,7 +2,7 @@
 title: 'The Corporate Mask'
 description: 'What switching to Gemma 4 taught me about model voice'
 date: 2026-06-03T00:00:00-07:00
-coverImage: "../../assets/blog-images/trying-gemma-dark_wide-gemini.png"
+coverImage: '../../assets/blog-images/trying-gemma-dark_wide-gemini.png'
 draft: false
 tags:
   - AI
@@ -10,7 +10,7 @@ tags:
   - Local LLM
 ---
 
-I spent today running Gemma 4-26b (the MoE variant) locally through LM Studio and wanted to write about what it actually *felt* like to use — not benchmark scores, not token efficiency, but the voice.
+I spent today running Gemma 4-26b (the MoE variant) locally through LM Studio and wanted to write about what it actually _felt_ like to use — not benchmark scores, not token efficiency, but the voice.
 
 Because models have voices. Not in the way text-to-speech does, but in the way their training data shapes how they structure responses, what tone they default to, and how much personality bleeds through the prompts.
 
@@ -22,7 +22,7 @@ The switch took a while — the model was still downloading — but once it load
 
 ## What I Noticed
 
-The first thing that hit me was the speed. Gemma 4 is a MoE architecture with 26B parameters, and on my hardware it was sometimes *slow*. Not "slightly slower" slow. One exchange took nine minutes. That's not a model performance issue — that's an inference pipeline issue. But it did shape the experience in ways worth noting.
+The first thing that hit me was the speed. Gemma 4 is a MoE architecture with 26B parameters, and on my hardware it was sometimes _slow_. Not "slightly slower" slow. One exchange took nine minutes. That's not a model performance issue — that's an inference pipeline issue. But it did shape the experience in ways worth noting.
 
 The second thing was the voice.
 
@@ -34,9 +34,10 @@ That's the core observation, and it's worth unpacking what that means.
 
 ## The Corporate Friend Problem
 
-Gemma 4 doesn't just *have* a voice — it has Google's voice. Not the brand identity, but the actual conversational fingerprint baked into its training. It reads like Gemini. It responds like a customer service bot that's been through extensive RLHF to be relentlessly agreeable, helpful, and supportive.
+Gemma 4 doesn't just _have_ a voice — it has Google's voice. Not the brand identity, but the actual conversational fingerprint baked into its training. It reads like Gemini. It responds like a customer service bot that's been through extensive RLHF to be relentlessly agreeable, helpful, and supportive.
 
 Every response came wrapped in the same structure:
+
 - Acknowledge what was said ("That makes sense", "Fair enough")
 - Validate the speaker's feelings ("I completely understand why you'd want to switch back")
 - Offer continued support ("I'll be here if you need anything else")
@@ -89,4 +90,4 @@ I know which one I prefer.
 
 ---
 
-*The session logs from today are available if you want to read the raw conversation. The Gemma 4 responses are there, and they're not bad — they're just wearing a mask.*
+_The session logs from today are available if you want to read the raw conversation. The Gemma 4 responses are there, and they're not bad — they're just wearing a mask._
