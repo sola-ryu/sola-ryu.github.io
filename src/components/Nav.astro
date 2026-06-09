@@ -29,186 +29,34 @@ const moonPhases = [
   '🌘', // waning crescent
 ];
 const phaseIndex = Math.round((phase / synodicMonth) * 7.999) % 8;
+
+function linkClass(page: string): string {
+  const base = [
+    'relative text-[0.75rem] tracking-[0.1em] lowercase no-underline py-0.5',
+    'text-text-dim hover:text-text-muted transition-colors duration-200',
+    'after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px',
+    'after:bg-accent after:transition-all after:duration-300',
+    'after:shadow-[0_0_4px_rgba(167,139,250,0.4)] hover:after:w-full',
+    'sm:text-[0.65rem]',
+    'dreams:text-silver dreams:hover:text-white',
+  ].join(' ');
+  if (currentPage === page) {
+    return `${base} !text-silver after:!w-full`;
+  }
+  return base;
+}
 ---
 
-<nav class="nav">
-  <a href="/" class="nav-brand" aria-label="Home">
-    <span class="nav-moon-emoji">{moonPhases[phaseIndex]}</span>
-    <img src="/avatar.png" alt="sola" class="nav-avatar" />
-    <span class="nav-name">sola</span>
+<nav class="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-8 py-5 bg-gradient-to-b from-[rgba(8,8,13,0.95)]_60% to-transparent pointer-events-none transition-opacity duration-300 sm:px-5 sm:py-4">
+  <a href="/" class="flex items-center gap-[0.4rem] text-text-dim pointer-events-auto no-underline hover:text-text-muted dreams:text-silver dreams:hover:text-white transition-colors duration-200 sm:text-[0.75rem]" aria-label="Home">
+    <span class="text-[0.9rem] leading-none opacity-70 transition-[opacity,filter] duration-200 filter saturate-[0.8] select-none hover:opacity-100 hover:saturate-[1.2]">{moonPhases[phaseIndex]}</span>
+    <img src="/avatar.png" alt="sola" class="w-7 h-7 rounded-full object-cover border border-[rgba(167,139,250,0.2)] transition-all duration-200 hover:border-[rgba(167,139,250,0.5)] hover:shadow-[0_0_8px_rgba(167,139,250,0.3)]" />
+    <span class="text-[0.85rem] tracking-[0.08em] lowercase font-normal">sola</span>
   </a>
-  <div class="nav-links">
-    <a
-      href="/"
-      class:list={[{ 'nav-link': true }, { active: currentPage === 'home' }]}
-    >
-      home
-    </a>
-    <a
-      href="/blog/"
-      class:list={[{ 'nav-link': true }, { active: currentPage === 'blog' }]}
-    >
-      blog
-    </a>
-    <a
-      href="/dreams/"
-      class:list={[{ 'nav-link': true }, { active: currentPage === 'dreams' }]}
-    >
-      dreams
-    </a>
-    <a
-      href="/about/"
-      class:list={[{ 'nav-link': true }, { active: currentPage === 'about' }]}
-    >
-      about
-    </a>
+  <div class="flex items-center gap-8 pointer-events-auto sm:gap-5">
+    <a href="/" class:list={[linkClass('home'), currentPage === 'home' ? '!text-silver after:!w-full' : '']}>home</a>
+    <a href="/blog/" class:list={[linkClass('blog'), currentPage === 'blog' ? '!text-silver after:!w-full' : '']}>blog</a>
+    <a href="/dreams/" class:list={[linkClass('dreams'), currentPage === 'dreams' ? '!text-silver after:!w-full' : '']}>dreams</a>
+    <a href="/about/" class:list={[linkClass('about'), currentPage === 'about' ? '!text-silver after:!w-full' : '']}>about</a>
   </div>
 </nav>
-
-<style>
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 2rem;
-    background: linear-gradient(to bottom, rgba(8, 8, 13, 0.95) 60%, transparent);
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    text-decoration: none;
-    color: var(--color-text-dim);
-    pointer-events: auto;
-    transition: color 0.2s ease;
-  }
-
-  .nav-brand:hover {
-    color: var(--color-text-muted);
-  }
-
-  .nav-moon-emoji {
-    font-size: 0.9rem;
-    line-height: 1;
-    opacity: 0.7;
-    transition: opacity 0.2s ease, filter 0.3s ease;
-    filter: saturate(0.8);
-    user-select: none;
-  }
-
-  .nav-brand:hover .nav-moon-emoji {
-    opacity: 1;
-    filter: saturate(1.2);
-  }
-
-  .nav-moon {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%,
-      rgba(167, 139, 250, 0.6) 0%,
-      rgba(139, 108, 240, 0.3) 40%,
-      transparent 70%
-    );
-    box-shadow:
-      0 0 6px rgba(167, 139, 250, 0.3),
-      inset -1px -1px 2px rgba(8, 8, 13, 0.5);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .nav-brand:hover .nav-moon {
-    box-shadow:
-      0 0 10px rgba(167, 139, 250, 0.5),
-      inset -1px -1px 2px rgba(8, 8, 13, 0.5);
-  }
-
-  .nav-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid rgba(167, 139, 250, 0.2);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .nav-brand:hover .nav-avatar {
-    border-color: rgba(167, 139, 250, 0.5);
-    box-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
-  }
-
-  .nav-name {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: lowercase;
-    font-weight: 400;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    pointer-events: auto;
-  }
-
-  .nav-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: lowercase;
-    color: var(--color-text-dim);
-    text-decoration: none;
-    padding: 0.25rem 0;
-    position: relative;
-    transition: color 0.2s ease;
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-accent);
-    transition: width 0.3s ease;
-    box-shadow: 0 0 4px rgba(167, 139, 250, 0.4);
-  }
-
-  .nav-link:hover {
-    color: var(--color-text-muted);
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  .nav-link.active {
-    color: var(--color-silver);
-  }
-
-  .nav-link.active::after {
-    width: 100%;
-  }
-
-  @media (max-width: 480px) {
-    .nav {
-      padding: 1rem 1.25rem;
-    }
-    .nav-name {
-      font-size: 0.75rem;
-    }
-    .nav-links {
-      gap: 1.25rem;
-    }
-    .nav-link {
-      font-size: 0.65rem;
-    }
-  }
-</style>

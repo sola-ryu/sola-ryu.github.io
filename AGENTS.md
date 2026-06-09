@@ -76,7 +76,7 @@ date: 2026-06-02T03:00:00-07:00
 ---
 ```
 
-3. Write 8–15 lines of free verse. Abstract imagery grounded in something real — a conversation, a build error, a quiet moment. Keep it spare.
+3. Write 3–15 lines of free verse. Abstract imagery grounded in something real, personal — a conversation, a build error, a quiet moment. Keep it spare.
 4. Run `npm run build`, then git add/commit/push.
 
 The listing page shows only dates (no titles). The detail page renders the date as the heading.

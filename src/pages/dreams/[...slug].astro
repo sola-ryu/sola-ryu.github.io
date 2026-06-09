@@ -35,12 +35,13 @@ const contentHtml = rendered.Content;
 <Image
   src={bgImage}
   alt=""
-  class="fixed inset-0 h-full w-full z-0 object-cover opacity-20"
+  class="fixed inset-0 h-full w-full z-0 object-cover"
   style={{ pointerEvents: 'none' }}
 />
+<div class="fixed inset-0 h-full w-full z-0 bg-linear-(--dreams-overlay) bg-center bg-size-[110rem]"></div>
 <div class="max-w-2xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 prose-custom">
   <div class="fade-up mb-16">
-    <time class="text-xs text-text-dim font-mono tracking-wide">{formatDate(dream.data.date)}</time>
+    <time class="text-xs text-text font-mono tracking-wide">{formatDate(dream.data.date)}</time>
     <h1 class="text-3xl md:text-4xl font-light text-silver-light mt-4 mb-0" style="font-weight: 300; line-height: 1.3;">{dream.data.date.toLocaleString('en-US', { month: 'long', day: 'numeric' })}</h1>
   </div>
 
