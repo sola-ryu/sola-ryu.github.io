@@ -135,6 +135,17 @@ import Nav from '../components/Nav.astro';
             width: 100%;
           }
         }
+        @keyframes blur {
+          0% {
+            backdrop-filter: blur(0);
+          }
+          50% {
+            backdrop-filter: blur(3.75rem);
+          }
+          100% {
+            backdrop-filter: blur(3.75rem);
+          }
+        }
       }
 
       @layer components {
@@ -260,7 +271,18 @@ import Nav from '../components/Nav.astro';
         }
         #progress {
           animation: progress linear;
+          animation-timeline: scroll();
+          @supports not (container-type: scroll-state) {
+            display: none;
+          }
+        }
+        .cover-image-overlay {
+          animation: blur linear;
           animation-timeline: scroll(root);
+          @supports not (container-type: scroll-state) {
+            animation: none;
+            backdrop-filter: none;
+          }
         }
       }
     </style>

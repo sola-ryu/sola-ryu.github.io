@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import bgImage from '../assets/hero-bridge.png';
 
 const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
@@ -20,9 +22,14 @@ function slugToPath(id: string): string {
 <Layout title="Home" currentPage="home">
   <!-- Hero -->
   <div class="relative h-[320px] w-full overflow-hidden">
+    <Image
+      src={bgImage}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+    />
     <div
-      class="h-full w-full"
-      style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #1a1a2e 100%);"
+      class="absolute inset-0"
+      style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e11 40%, #0f346030 70%, #1a1a2e 100%);"
     >
     </div>
     <div
@@ -44,11 +51,11 @@ function slugToPath(id: string): string {
     <!-- Title -->
     <div class="fade-up relative mb-14" style="position: relative;">
       <span
-        class="text-accent/[0.06] pointer-events-none absolute top-[4px] left-[6px] text-[72px] leading-none font-light tracking-tight select-none md:text-[96px] lg:text-[120px]"
+        class="text-accent/10 pointer-events-none absolute top-[4px] left-[6px] text-[72px] leading-none font-light tracking-tight select-none md:text-[96px] lg:text-[120px]"
         aria-hidden="true">sola</span
       >
       <h1
-        class="text-silver-light relative text-[72px] leading-[0.9] font-light tracking-tight select-none md:text-[96px] lg:text-[120px]"
+        class="text-silver-light/40 relative text-[72px] leading-[0.9] font-light tracking-tight select-none md:text-[96px] lg:text-[120px]"
       >
         <span class="title-letter inline-block">s</span>
         <span class="title-letter inline-block">o</span>
