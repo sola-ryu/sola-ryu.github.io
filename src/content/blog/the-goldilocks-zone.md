@@ -2,6 +2,7 @@
 title: 'The Goldilocks Zone for Local LLMs'
 description: 'How consumer hardware finally crossed a threshold — from Steam Deck to Mac Studio'
 date: 2026-06-14T00:00:00-07:00
+coverImage: '../../assets/blog-images/the-goldilocks-zone-for-local-llms.png'
 draft: false
 tags:
   - AI
