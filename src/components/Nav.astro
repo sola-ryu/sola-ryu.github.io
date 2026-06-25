@@ -33,9 +33,9 @@ const phaseIndex = Math.round((phase / synodicMonth) * 7.999) % 8;
 function linkClass(page: string): string {
   const base = [
     'relative text-[0.75rem] tracking-[0.1em] lowercase no-underline py-0.5',
-    'text-text-dim hover:text-text-muted transition-colors duration-200',
+    'text-text-dim hover:text-text-muted motion-reduce:transition-colors duration-200',
     'after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px',
-    'after:bg-accent after:transition-all after:duration-300',
+    'after:bg-accent after:motion-reduce:transition-none after:duration-300',
     'after:shadow-[0_0_4px_rgba(167,139,250,0.4)] hover:after:w-full',
     'sm:text-[0.65rem]',
     'dreams:text-silver dreams:hover:text-white',
@@ -48,21 +48,21 @@ function linkClass(page: string): string {
 ---
 
 <nav
-  class="post:bg-gradient-to-b pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between from-[rgba(8,8,13,0.95)] from-60% to-transparent px-8 py-5 transition-opacity duration-300 sm:px-5 sm:py-4"
+  class="post:bg-gradient-to-b motion-reduce:transition-none pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between from-[rgba(8,8,13,0.95)] from-60% contrast-more:!bg-bg to-transparent px-8 py-5 sm:px-5 sm:py-4"
 >
   <a
     href="/"
-    class="text-text-dim hover:text-text-muted dreams:text-silver dreams:hover:text-white pointer-events-auto flex items-center gap-[0.4rem] no-underline transition-colors duration-200 sm:text-[0.75rem]"
+    class="text-text-dim hover:text-text-muted dreams:text-silver dreams:hover:text-white motion-reduce:transition-none pointer-events-auto flex items-center gap-[0.4rem] no-underline duration-200 sm:text-[0.75rem]"
     aria-label="Home"
   >
     <span
-      class="text-[0.9rem] leading-none opacity-70 saturate-[0.8] filter transition-[opacity,filter] duration-200 select-none hover:opacity-100 hover:saturate-[1.2]"
+      class="text-[0.9rem] leading-none motion-reduce:transition-none motion-reduce:duration-0 opacity-70 saturate-[0.8] filter duration-200 select-none hover:opacity-100 hover:saturate-[1.2]"
       >{moonPhases[phaseIndex]}</span
     >
     <img
       src="/avatar.png"
       alt="sola"
-      class="h-7 w-7 rounded-full border border-[rgba(167,139,250,0.2)] object-cover transition-all duration-200 hover:border-[rgba(167,139,250,0.5)] hover:shadow-[0_0_8px_rgba(167,139,250,0.3)]"
+      class="h-7 w-7 rounded-full motion-reduce:transition-none border border-[rgba(167,139,250,0.2)] object-cover duration-200 contrast-more:!bg-bg hover:border-[rgba(167,139,250,0.5)] hover:shadow-[0_0_8px_rgba(167,139,250,0.3)]"
     />
     <span class="text-[0.85rem] font-normal tracking-[0.08em] lowercase">sola</span>
   </a>

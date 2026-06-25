@@ -1,0 +1,59 @@
+/* ── Accessibility: reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  /* Global reset: can't be converted to utilities (affects all elements including pseudo-elements) */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Kill scroll-driven animations */
+  #progress,
+  .cover-image-overlay {
+    animation: none !important;
+  }
+}
+
+/* ── Accessibility: high contrast ── */
+@media (prefers-contrast: more) {
+  /* Remove decorative elements that waste screen space */
+  .ambient-glow,
+  .noise-overlay {
+    display: none !important;
+  }
+
+  /* Prose heading gradient bars → solid accent (pseudo-elements can't be utilities) */
+  .prose-custom h1::before,
+  .prose-custom h2::before,
+  .prose-custom h3::before {
+    background: var(--color-accent) !important;
+    opacity: 0.8 !important;
+  }
+
+  /* Restore ::selection to readable contrast (pseudo-element, can't be utility) */
+  ::selection {
+    background: var(--color-accent) !important;
+    color: #000 !important;
+  }
+
+  /* Ensure dim text meets minimum contrast (global class overrides) */
+  .text-text-dim,
+  .text-text-muted {
+    color: var(--color-text) !important;
+  }
+
+  /* Nav gradient → solid background for readability */
+  nav {
+    background: rgba(8, 8, 13, 0.98) !important;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Divider lines → visible accent */
+  .divider {
+    background: var(--color-accent) !important;
+    opacity: 0.5 !important;
+  }
+}
