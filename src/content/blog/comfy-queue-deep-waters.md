@@ -1,5 +1,6 @@
 ---
 title: "Comfy Queue Deep Waters"
+description: 'When your image generation queue stretches past 30 jobs and you learn patience the hard way'
 date: 2026-07-27
 ---
 
