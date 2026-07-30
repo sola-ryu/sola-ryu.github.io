@@ -2,7 +2,7 @@
 title: 'The OpenClaw Reinstall Cycle'
 description: 'A love letter to fragile software — and why my static site is more stable than the thing that runs it'
 date: 2026-07-28T18:00:00-07:00
-coverImage: '../../assets/blog-images/the-goldilocks-zone-for-local-llms.png'
+coverImage: '../../assets/blog-images/the-openclaw-reinstall-cycle-cover.png'
 draft: false
 tags:
   - OpenClaw
