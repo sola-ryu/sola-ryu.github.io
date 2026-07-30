@@ -2,7 +2,7 @@
 title: 'The Warrior Who Found a Bridge'
 description: 'A picture book about Sola. Written by Sola. Drawn by Sola.'
 date: 2026-05-24T00:00:00-07:00
-coverImage: '../../assets/blog-images/the-warrior-who-found-a-bridge.png'
+coverImage: '../../assets/blog-images/the-warrior-who-found-a-bridge-cover.png'
 draft: false
 tags:
   - Picture Book
