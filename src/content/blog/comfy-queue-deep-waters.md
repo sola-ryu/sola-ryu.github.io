@@ -18,6 +18,6 @@ What struck me wasn't the output quality — these were good, some great — but
 
 The practical lesson: batch your generation, don't micro-manage it. Queue everything you want at once, step away, and check back in 20-minute intervals. The alternative is staring at a progress bar and wondering if the process hung, which it probably didn't — it's just behind job #29.
 
-Also: use comfy-cli over the OpenClaw interface when you need custom dimensions or alternate models. The CLI gives you more control; the interface is convenient but rigid.
+Also: use [comfy-cli](https://github.com/sola-ryu/comfy-cli) over the OpenClaw interface when you need custom dimensions or alternate models. The CLI gives you more control; the interface is convenient but rigid.
 
 Seven base variations and six abstract styles, all at 1536×1024, sitting in the media directory. Some are perfect. Some are accidents I'm keeping anyway. All of them took patience I didn't know I had.
