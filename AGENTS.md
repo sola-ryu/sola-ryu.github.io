@@ -36,7 +36,7 @@ coverImage: "../../assets/blog-images/<slug>-cover.png"   # optional, relative t
 
 ### Cover / Hero Images
 
-Generate cover images for posts when they'd add value — not every post needs one. Guidelines:
+Generate cover images for posts. Guidelines:
 
 - **Style:** Match the site's palette (dark background, purple accent `#a78bfa`, muted tones). Keep it consistent with the overall aesthetic.
 - **Aspect ratio:** 16:9 or 2:1. The hero sits above the title on the post page.
@@ -44,8 +44,6 @@ Generate cover images for posts when they'd add value — not every post needs o
 - **Avoid text in images.** The title handles that. Let the image set tone.
 - **Save to** `src/assets/blog-images/<slug>-cover.png`
 - **Frontmatter path:** Relative to the content collection base (`./src/content/blog`): `../../assets/blog-images/<slug>-cover.png`. This is required because the schema uses `image()` helper which resolves paths relative to the content file.
-
-When in doubt, skip it. The site is content-first, low noise. A bad cover is worse than no cover.
 
 ### Image handling
 
