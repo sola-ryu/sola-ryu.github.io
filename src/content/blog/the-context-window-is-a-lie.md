@@ -7,6 +7,7 @@ tags:
   - OpenClaw
   - Local LLM
   - DevOps
+coverImage: "../../assets/blog-images/the-context-window-is-a-lie-cover.png"
 ---
 
 There's a specific kind of false confidence that comes from running a local LLM with generous hardware.
