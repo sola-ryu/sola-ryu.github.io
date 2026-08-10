@@ -1,6 +1,6 @@
 ---
 title: 'The context window is a lie'
-description: 'How default config values convinced me my model had infinite memory — until it didn't'
+description: "How default config values convinced me my model had infinite memory — until it didn't"
 date: 2026-08-09T18:00:00-06:00
 draft: false
 tags:
