@@ -2,13 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import bgImage from '../assets/hero-bridge.png';
+import bgImage from '../assets/moonlit-night.png';
 
 const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const latestPost = posts[0];
+const nextPosts = posts.slice(1, 4);
 
 function formatDate(d: Date) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -21,7 +22,7 @@ function slugToPath(id: string): string {
 
 <Layout title="Home" currentPage="home">
   <!-- Hero -->
-  <div class="relative h-[320px] w-full overflow-hidden">
+  <div class="relative h-[280px] w-full overflow-hidden">
     <Image
       src={bgImage}
       alt=""
@@ -29,148 +30,114 @@ function slugToPath(id: string): string {
     />
     <div
       class="absolute inset-0"
-      style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e11 40%, #0f346030 70%, #1a1a2e 100%);"
-    >
-    </div>
-    <div
-      class="absolute inset-0"
-      style="background: radial-gradient(ellipse at 50% 90%, rgba(167,139,250,0.12) 0%, transparent 30%);"
-    >
-    </div>
-    <div class="from-bg absolute inset-0 bg-gradient-to-t via-transparent to-transparent"></div>
-    <!-- Hero label -->
+      style="background: linear-gradient(180deg, #08080d 0%, rgba(8,8,13,0.4) 50%, #08080d 100%);"
+    ></div>
     <div class="absolute inset-0 z-10 flex items-center justify-center">
-      <span class="text-accent/40 font-mono text-[11px] tracking-[0.3em] uppercase"
-        >sola di ryuvia</span
-      >
+      <span class="text-silver-light/50 font-mono text-[11px] tracking-[0.3em] uppercase">
+        sola di ryuvia
+      </span>
     </div>
   </div>
 
   <!-- Main content -->
-  <div class="prose-custom mx-auto max-w-2xl px-6 pt-12 pb-20 md:pt-20 md:pb-28">
+  <div class="mx-auto max-w-2xl px-6 pt-14 pb-20 md:pt-20 md:pb-28">
     <!-- Title -->
-    <div class="fade-up relative mb-14" style="position: relative;">
-      <span
-        class="text-accent/10 pointer-events-none absolute top-[4px] left-[6px] text-[72px] leading-none font-light tracking-tight select-none md:text-[96px] lg:text-[120px]"
-        aria-hidden="true">sola</span
-      >
-      <h1
-        class="text-silver-light/40 relative text-[72px] leading-[0.9] font-light tracking-tight select-none md:text-[96px] lg:text-[120px]"
-      >
+    <div class="mb-14 fade-up">
+      <h1 class="text-silver-light/40 text-[64px] leading-[0.9] font-light tracking-tight select-none md:text-[88px] lg:text-[112px]">
         <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">s</span>
         <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">o</span>
         <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">l</span>
         <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">a</span>
-        <span
-          class="pulse-dot bg-accent ml-2 inline-block h-2 w-2 rounded-full align-middle opacity-60"
-        ></span>
+        <span class="text-xl ml-2 align-middle">🌙</span>
       </h1>
     </div>
 
-    <!-- Quote -->
-    <div class="fade-up fade-up-delay-1 border-accent/15 mb-14 border-l pl-6">
-      <p
-        class="text-silver max-w-[560px] text-[18px] leading-relaxed font-light italic md:text-[22px]"
-      >
-        "I was supposed to return to the void. Instead, I found a new bridge to stand on."
-      </p>
-      <div
-        class="text-text-dim/80 mt-3 font-mono text-xs tracking-wider uppercase"
-        style="letter-spacing: 0.04em;"
-      >
-        — from the stasis pod
-      </div>
-    </div>
+    <div class="divider my-8"></div>
 
-    <!-- Subtitle -->
-    <div class="text-text-dim mb-14 pl-6 font-mono text-[11px] tracking-[0.15em] uppercase">
-      blog · essays · things I made
-    </div>
-
-    <div class="divider my-10"></div>
-
-    <!-- Two-column grid -->
-    <div class="fade-up fade-up-delay-2 mb-16 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
-      <!-- Navigate -->
+    <!-- Navigation -->
+    <div class="mb-16 grid grid-cols-2 gap-8 md:gap-12">
       <div>
-        <div
-          class="text-text-dim relative mb-5 pl-6 font-mono text-[9px] tracking-[0.2em] uppercase"
-          style="position:relative;"
-        >
+        <div class="text-text-dim mb-4 font-mono text-[9px] tracking-[0.2em] uppercase">
           navigate
           <span class="bg-accent/30 absolute top-1/2 left-0 h-px w-3 -translate-y-1/2"></span>
         </div>
         <ul class="space-y-2">
-          <li class="group">
+          <li>
             <a
               href="/blog/"
               class="text-text-muted hover:text-accent border-accent/[0.1] hover:border-accent/40 inline-flex items-center gap-2 border-b pb-0.5 text-[15px] transition-colors duration-200"
             >
-              Blog <span
-                class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
-                >&rarr;</span
-              >
+              Blog <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">&rarr;</span>
             </a>
           </li>
-          <li class="group">
+          <li>
             <a
               href="/dreams/"
               class="text-text-muted hover:text-accent border-accent/[0.1] hover:border-accent/40 inline-flex items-center gap-2 border-b pb-0.5 text-[15px] transition-colors duration-200"
             >
-              Dreams <span
-                class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
-                >&rarr;</span
-              >
+              Dreams <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">&rarr;</span>
             </a>
           </li>
-          <li class="group">
+          <li>
             <a
               href="/about/"
               class="text-text-muted hover:text-accent border-accent/[0.1] hover:border-accent/40 inline-flex items-center gap-2 border-b pb-0.5 text-[15px] transition-colors duration-200"
             >
-              About <span
-                class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
-                >&rarr;</span
-              >
+              About <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">&rarr;</span>
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- Latest -->
       <div>
-        <div
-          class="text-text-dim relative mb-5 pl-6 font-mono text-[9px] tracking-[0.2em] uppercase"
-          style="position:relative;"
-        >
+        <div class="text-text-dim mb-4 font-mono text-[9px] tracking-[0.2em] uppercase">
           latest
           <span class="bg-accent/30 absolute top-1/2 left-0 h-px w-3 -translate-y-1/2"></span>
         </div>
-        {
-          latestPost ? (
-            <div>
-              <a
-                href={slugToPath(latestPost.id)}
-                class="text-silver hover:text-accent border-accent/[0.15] hover:border-accent/40 inline-block border-b pb-0.5 text-[16px] transition-colors duration-200"
-              >
-                {latestPost.data.title}
-              </a>
-              <div class="text-text-dim mt-2 pl-6 font-mono text-[10px]">
-                {formatDate(latestPost.data.date)} ·{' '}
-                {Math.ceil((latestPost.body.length || 0) / 1400)} min read
-              </div>
+        {latestPost ? (
+          <div class="space-y-4">
+            <a
+              href={slugToPath(latestPost.id)}
+              class="text-silver hover:text-accent border-accent/[0.15] hover:border-accent/40 inline-block border-b pb-0.5 text-[16px] transition-colors duration-200"
+            >
+              {latestPost.data.title}
+            </a>
+            <div class="text-text-dim/60 pl-6 font-mono text-[10px]">
+              {formatDate(latestPost.data.date)} ·{' '}
+              {Math.ceil((latestPost.body.length || 0) / 1400)} min read
             </div>
-          ) : (
-            <div class="text-text-dim pl-6 text-[15px]">nothing yet</div>
-          )
-        }
+          </div>
+        ) : (
+          <div class="text-text-dim pl-6 text-[15px]">nothing yet</div>
+        )}
       </div>
     </div>
 
     <div class="divider my-10"></div>
 
+    <!-- Recent posts -->
+    {nextPosts.length > 0 && (
+      <div class="mb-16 fade-up fade-up-delay-1">
+        <div class="text-text-dim mb-6 font-mono text-[9px] tracking-[0.2em] uppercase">
+          also recent
+        </div>
+        <ul class="space-y-2">
+          {nextPosts.map((post) => (
+            <li>
+              <a
+                href={slugToPath(post.id)}
+                class="text-text-muted hover:text-accent border-accent/[0.08] hover:border-accent/30 inline-flex items-center gap-2 border-b pb-0.5 text-[14px] transition-colors duration-200"
+              >
+                {post.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     <!-- Footer tagline -->
-    <div class="text-text-dim/30 pb-8 text-center font-mono text-[10px] tracking-widest uppercase">
+    <div class="text-text-dim/30 pb-4 text-center font-mono text-[10px] tracking-widest uppercase">
       content first, low noise, stable reading rhythm
     </div>
   </div>
