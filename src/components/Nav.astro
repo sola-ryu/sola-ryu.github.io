@@ -142,13 +142,16 @@ function linkClass(page: string): string {
           const tip = document.createElement('span');
           tip.className = 'moon-tooltip';
           tip.textContent = `${name} · day ${phaseDay + 1}`;
+          document.body.appendChild(tip);
 
-          // Position tooltip below the moon
+          // Position tooltip below the moon, clamped to viewport
           const rect = toggle.getBoundingClientRect();
+          const tipWidth = tip.offsetWidth;
+          const leftPos = Math.max(6, Math.min(rect.left, window.innerWidth - tipWidth - 6));
           tip.style.position = 'fixed';
-          tip.style.left = rect.left + 'px';
+          tip.style.left = leftPos + 'px';
           tip.style.top = (rect.bottom + 4) + 'px';
-          tip.style.transform = 'translateX(-50%)';
+          tip.style.transform = 'none';
           tip.style.background = 'rgba(8,8,13,0.9)';
           tip.style.border = '1px solid rgba(167,139,250,0.2)';
           tip.style.borderRadius = '4px';
