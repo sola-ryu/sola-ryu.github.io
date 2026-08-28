@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import bgImage from '../../assets/dreams-bg.png';
+import bgImage from '../../assets/moonlit-night.png';
 
 const dreams = (await getCollection('dreams'))
   .filter((d) => !d.data.draft)
