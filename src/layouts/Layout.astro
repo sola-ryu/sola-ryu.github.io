@@ -327,6 +327,31 @@ import Nav from '../components/Nav.astro';
         @media (prefers-reduced-motion: reduce) {
           .particle { animation: none; opacity: 0; }
         }
+
+        /* Stasis mode — double-click moon to toggle */
+        body.stasis-mode *,
+        body.stasis-mode *::before,
+        body.stasis-mode *::after {
+          animation-play-state: paused !important;
+          transition-duration: 3s !important;
+        }
+
+        body.stasis-mode .particle {
+          opacity: 0 !important;
+        }
+
+        body.stasis-mode .ambient-glow {
+          opacity: 0.3 !important;
+        }
+
+        body.stasis-mode::after {
+          content: '';
+          position: fixed;
+          inset: 0;
+          background: rgba(8, 8, 13, 0.15);
+          pointer-events: none;
+          z-index: 9998;
+        }
       }
     </style>
   </head>

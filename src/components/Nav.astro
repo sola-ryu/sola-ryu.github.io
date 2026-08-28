@@ -17,24 +17,25 @@ const synodicMonth = 29.53058867;
 const age = (now.getTime() - knownNewMoon) / (1000 * 60 * 60 * 24);
 const phase = ((age % synodicMonth) + synodicMonth) % synodicMonth;
 
-// Map phase to moon emoji
+// Map phase to moon emoji and name
 const moonPhases = [
-  '🌑', // new moon
-  '🌒', // waxing crescent
-  '🌓', // first quarter
-  '🌔', // waxing gibbous
-  '🌕', // full moon
-  '🌖', // waning gibbous
-  '🌗', // last quarter
-  '🌘', // waning crescent
+  { emoji: '🌑', name: 'new moon' },
+  { emoji: '🌒', name: 'waxing crescent' },
+  { emoji: '🌓', name: 'first quarter' },
+  { emoji: '🌔', name: 'waxing gibbous' },
+  { emoji: '🌕', name: 'full moon' },
+  { emoji: '🌖', name: 'waning gibbous' },
+  { emoji: '🌗', name: 'last quarter' },
+  { emoji: '🌘', name: 'waning crescent' },
 ];
 const phaseIndex = Math.round((phase / synodicMonth) * 7.999) % 8;
+const phaseDay = Math.floor(phase);
 
 function linkClass(page: string): string {
   const base = [
     'relative text-[0.75rem] tracking-[0.1em] lowercase no-underline py-0.5',
     'text-text-dim hover:text-text-muted motion-reduce:transition-colors duration-200',
-    'after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px',
+    'after:content-[\"\"] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px',
     'after:bg-accent after:motion-reduce:transition-none after:duration-300',
     'after:shadow-[0_0_4px_rgba(167,139,250,0.4)] hover:after:w-full',
     'sm:text-[0.65rem]',
@@ -56,9 +57,10 @@ function linkClass(page: string): string {
     aria-label="Home"
   >
     <span
-      class="text-[0.9rem] leading-none motion-reduce:transition-none motion-reduce:duration-0 opacity-70 saturate-[0.8] filter duration-200 select-none hover:opacity-100 hover:saturate-[1.2]"
-      >{moonPhases[phaseIndex]}</span
-    >
+      class="moon-toggle text-[0.9rem] leading-none motion-reduce:transition-none motion-reduce:duration-0 opacity-70 saturate-[0.8] filter duration-200 select-none hover:opacity-100 hover:saturate-[1.2] cursor-help"
+      title="Click for phase · Double-click for stasis"
+      aria-label="Moon phase"
+    >{moonPhases[phaseIndex].emoji}</span>
     <img
       src="/avatar.png"
       alt="sola"
@@ -91,3 +93,109 @@ function linkClass(page: string): string {
     >
   </div>
 </nav>
+
+<script>
+  // Moon phase reveal — single click cycles through phases, shows name
+  (() => {
+    const toggle = document.querySelector('.moon-toggle');
+    if (!toggle) return;
+
+    const phaseNames = [
+      'new moon', 'waxing crescent', 'first quarter', 'waxing gibbous',
+      'full moon', 'waning gibbous', 'last quarter', 'waning crescent',
+    ];
+    const phaseEmojis = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+    const now = new Date();
+    const synodicMonth = 29.53058867;
+    const knownNewMoon = new Date(2000, 5, 5).getTime();
+    const age = (now.getTime() - knownNewMoon) / (1000 * 60 * 60 * 24);
+    const currentPhase = Math.round(((age % synodicMonth) + synodicMonth) % synodicMonth / synodicMonth * 7.999) % 8;
+    const phaseDay = Math.floor(((age % synodicMonth) + synodicMonth) % synodicMonth);
+
+    let cycling = false;
+    let cycleInterval: ReturnType<typeof setInterval>;
+    let tooltipTimeout: ReturnType<typeof setTimeout>;
+
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (cycling) return;
+
+      // Cancel any pending tooltip hide
+      clearTimeout(tooltipTimeout);
+
+      cycling = true;
+      let idx = 0;
+
+      cycleInterval = setInterval(() => {
+        toggle.textContent = phaseEmojis[idx % 8];
+        idx++;
+        if (idx >= 16) {
+          clearInterval(cycleInterval);
+          cycling = false;
+
+          // Show tooltip with phase info
+          const current = phaseEmojis[currentPhase];
+          const name = phaseNames[currentPhase];
+          toggle.textContent = current;
+
+          // Create tooltip
+          const tip = document.createElement('span');
+          tip.className = 'moon-tooltip';
+          tip.textContent = `${name} · day ${phaseDay + 1}`;
+
+          // Position tooltip below the moon
+          const rect = toggle.getBoundingClientRect();
+          tip.style.position = 'fixed';
+          tip.style.left = rect.left + 'px';
+          tip.style.top = (rect.bottom + 4) + 'px';
+          tip.style.transform = 'translateX(-50%)';
+          tip.style.background = 'rgba(8,8,13,0.9)';
+          tip.style.border = '1px solid rgba(167,139,250,0.2)';
+          tip.style.borderRadius = '4px';
+          tip.style.padding = '3px 8px';
+          tip.style.fontSize = '10px';
+          tip.style.fontFamily = 'monospace';
+          tip.style.color = '#a78bfa';
+          tip.style.whiteSpace = 'nowrap';
+          tip.style.pointerEvents = 'none';
+          tip.style.zIndex = '9999';
+          tip.style.opacity = '0';
+          tip.style.transition = 'opacity 0.2s ease';
+          document.body.appendChild(tip);
+
+          requestAnimationFrame(() => { tip.style.opacity = '1'; });
+
+          tooltipTimeout = setTimeout(() => {
+            tip.style.opacity = '0';
+            setTimeout(() => tip.remove(), 200);
+          }, 3000);
+        }
+      }, 80);
+    });
+  })();
+
+  // Stasis mode — double click freezes everything
+  (() => {
+    const toggle = document.querySelector('.moon-toggle');
+    if (!toggle) return;
+
+    let stasisActive = false;
+    let lastClick = 0;
+
+    toggle.addEventListener('click', (e) => {
+      const now = Date.now();
+      if (now - lastClick < 350) {
+        // Double click — toggle stasis
+        e.preventDefault();
+        stasisActive = !stasisActive;
+
+        if (stasisActive) {
+          document.body.classList.add('stasis-mode');
+        } else {
+          document.body.classList.remove('stasis-mode');
+        }
+      }
+      lastClick = now;
+    });
+  })();
+</script>
