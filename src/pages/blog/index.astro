@@ -20,16 +20,16 @@ function idToSlug(id: string): string {
   <div class="fixed inset-0 z-0 overflow-hidden">
     <!-- Deep space gradient -->
     <div class="absolute inset-0 bg-[#05050a]"></div>
-    
+
     <!-- Subtle nebula/atmosphere -->
     <div class="absolute inset-0" style="background: radial-gradient(ellipse at 30% 20%, rgba(167,139,250,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(139,108,240,0.03) 0%, transparent 50%);"></div>
-    
+
     <!-- Vignette: darker edges, lighter center = window effect -->
     <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 40%, rgba(5,5,10,0.8) 100%);"></div>
-    
+
     <!-- Subtle grid lines: like looking through a viewport frame -->
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(167,139,250,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    
+
     <!-- Outer frame border -->
     <div class="absolute inset-3 md:inset-4 border border-[rgba(167,139,250,0.08)] rounded-sm pointer-events-none"></div>
   </div>
@@ -59,7 +59,7 @@ function idToSlug(id: string): string {
                       src={post.data.coverImage}
                       alt=""
                       width={600}
-                      height={600}
+                      height={300}
                       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
