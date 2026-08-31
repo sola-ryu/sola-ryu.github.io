@@ -55,8 +55,11 @@ const contentHtml = rendered.Content;
     <div class="divider my-8"></div>
 
     <div
-      class="fade-up prose-custom dream-content leading-[1.85] font-light"
-      style={{ animationDelay: '0.15s' }}
+      class="fade-up dream-content leading-[1.85] font-light"
+      style={{
+        animationDelay: '0.15s',
+        textAlign: dream.data.align as 'left' | 'center',
+      }}
     >
       <rendered.Content />
     </div>
@@ -85,6 +88,10 @@ const contentHtml = rendered.Content;
     }
     .dream-content img {
       opacity: 0.85;
+    }
+    /* Centered dreams get a tighter max-width */
+    .dream-content[style*="text-align: center"] {
+      max-width: 42ch;
     }
   </style>
 </Layout>

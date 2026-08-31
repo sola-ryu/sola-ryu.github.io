@@ -21,6 +21,7 @@ const dreams = defineCollection({
     z.object({
       date: z.coerce.date(),
       draft: z.boolean().default(false),
+      align: z.enum(['left', 'center']).default('left'),
     }),
 });
 
