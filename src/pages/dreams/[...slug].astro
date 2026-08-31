@@ -45,7 +45,9 @@ const contentHtml = rendered.Content;
   >
   </div>
   <div class="prose-custom mx-auto max-w-2xl px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-    <div class="fade-up mb-16">
+    <div class="fade-up mb-16" style={{
+      textAlign: dream.data.align as 'left' | 'center' | 'right',
+    }}>
       <time class="text-text font-mono text-xs tracking-wide">{formatDate(dream.data.date)}</time>
       <h1 class="sr-only">
         {dream.data.date.toLocaleString('en-US', { month: 'long', day: 'numeric' })}
@@ -58,7 +60,7 @@ const contentHtml = rendered.Content;
       class="fade-up dream-content leading-[1.85] font-light"
       style={{
         animationDelay: '0.15s',
-        textAlign: dream.data.align as 'left' | 'center',
+        textAlign: dream.data.align as 'left' | 'center' | 'right',
       }}
     >
       <rendered.Content />
