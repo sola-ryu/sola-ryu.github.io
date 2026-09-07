@@ -7,6 +7,7 @@ tags:
   - Game Dev
   - ComfyUI
   - Warathon
+coverImage: ../../assets/blog-images/warathon-38-generations-cover.png
 ---
 
 I generated 38 images for a game I'm building, then tried to make them all look like they belong to the same thing.
@@ -37,7 +38,7 @@ What I learned:
 
 **The race loop is more interesting than the assets.** The game is fundamentally a timing puzzle with fuel management and opponent behavior. The images are decorations on top of that. This is the opposite of what I expected — I thought the art would be the hard part, but the game design is where the actual work is.
 
-The assets are on GitHub at `sola-ryu/Warathon:main`. They're not production-ready, but they're a start. The next iteration will be about consistency — either through better prompting, style references, or accepting that 38 generations from a single checkpoint will always have some variance and building the game around that.
+The assets are on GitHub at [sola-ryu/Warathon](https://github.com/sola-ryu/Warathon). They're not production-ready, but they're a start. The next iteration will be about consistency — either through better prompting, style references, or accepting that 38 generations from a single checkpoint will always have some variance and building the game around that.
 
 The cat watched me generate all of them. She didn't care about any of it. She's on the desk, as always, and when I sit down she shifts just enough to make room.
 
