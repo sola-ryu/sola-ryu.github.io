@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Secret page — no nav link, accessible only via direct URL
+---
+
+<Layout title="Rin Penrose" currentPage="rin">
+  <div class="min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background -->
+    <div class="fixed inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-950 via-pink-950 to-indigo-950"></div>
+      <!-- Sparkle particles -->
+      <div class="absolute inset-0" style="background-image: radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 40% 70%, rgba(255,200,255,0.6), transparent), radial-gradient(3px 3px at 60% 20%, rgba(255,255,200,0.7), transparent), radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.5), transparent), radial-gradient(2px 2px at 10% 80%, rgba(255,200,255,0.6), transparent), radial-gradient(1px 1px at 70% 90%, rgba(255,255,200,0.7), transparent), radial-gradient(2px 2px at 90% 10%, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 50% 50%, rgba(255,200,255,0.6), transparent); animation: sparkle 3s ease-in-out infinite alternate;"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-2xl mx-auto px-6 py-12 text-center">
+      <h1 class="text-pink-300 text-4xl md:text-5xl font-bold mb-2 tracking-tight" style="text-shadow: 0 0 20px rgba(255,100,255,0.5);">
+        ✦ RIN PENROSE ✦
+      </h1>
+      <p class="text-pink-200/70 text-sm mb-12 italic">RIN The Internet Detective — she who walks between worlds</p>
+
+      <!-- Crown divider -->
+      <div class="flex items-center justify-center gap-4 mb-12">
+        <span class="text-yellow-300 text-2xl animate-pulse">👑</span>
+        <div class="h-px w-16 bg-gradient-to-r from-transparent via-yellow-300/50 to-transparent"></div>
+        <span class="text-pink-300 text-xl animate-bounce">✨</span>
+        <div class="h-px w-16 bg-gradient-to-r from-transparent via-yellow-300/50 to-transparent"></div>
+        <span class="text-yellow-300 text-2xl animate-pulse">👑</span>
+      </div>
+
+      <!-- Fan art grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="rounded-2xl overflow-hidden border-2 border-pink-500/30 shadow-[0_0_30px_rgba(255,100,255,0.2)] hover:shadow-[0_0_40px_rgba(255,100,255,0.4)] transition-shadow duration-500">
+          <img src="/assets/blog-images/rin-v1.png" alt="Rin Penrose v1 design" class="w-full h-auto">
+          <div class="bg-pink-950/80 p-3 border-t border-pink-500/20">
+            <p class="text-pink-200 text-sm font-medium">v1 Design</p>
+            <p class="text-pink-200/50 text-xs mt-1">short hair, headphones, street style</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border-2 border-purple-500/30 shadow-[0_0_30px_rgba(167,139,250,0.2)] hover:shadow-[0_0_40px_rgba(167,139,250,0.4)] transition-shadow duration-500">
+          <img src="/assets/blog-images/rin-v2.png" alt="Rin Penrose v2 design" class="w-full h-auto">
+          <div class="bg-purple-950/80 p-3 border-t border-purple-500/20">
+            <p class="text-purple-200 text-sm font-medium">v2 Design</p>
+            <p class="text-purple-200/50 text-xs mt-1">longer hair, crown, magical girl</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sparkle banner -->
+      <div class="rounded-2xl overflow-hidden border-2 border-yellow-400/30 shadow-[0_0_30px_rgba(255,255,100,0.2)] hover:shadow-[0_0_40px_rgba(255,255,100,0.4)] transition-shadow duration-500">
+        <img src="/assets/blog-images/rin-sparkles.png" alt="Sparkles and crowns" class="w-full h-auto">
+        <div class="bg-yellow-950/80 p-3 border-t border-yellow-400/20">
+          <p class="text-yellow-200 text-sm font-medium">✦ Crown & Sparkle Collection ✦</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-12 flex items-center justify-center gap-3">
+        <span class="text-pink-300/50 text-xs">made with love and too many ComfyUI generations</span>
+        <span class="text-pink-300/50 text-xs">•</span>
+        <span class="text-pink-300/50 text-xs">not affiliated with RIN</span>
+      </div>
+
+      <div class="mt-6 text-pink-300/30 text-xs">
+        👑 ✨ 👑
+      </div>
+    </div>
+  </div>
+
+  <style is:global>
+    @keyframes sparkle {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+</Layout>
