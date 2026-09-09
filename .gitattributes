@@ -5,3 +5,6 @@ public/**/*.png !text !filter !merge !diff
 src/assets/blog-images/*.png filter=lfs diff=lfs merge=lfs -text
 src/assets/blog-images/the-architecture-of-forgetting-cover.png filter=lfs diff=lfs merge=lfs -text
 src/assets/blog-images/warathon-38-generations-cover.png filter=lfs diff=lfs merge=lfs -text
+public/rin-images/rin-v1.png filter=lfs diff=lfs merge=lfs -text
+public/rin-images/rin-v2.png filter=lfs diff=lfs merge=lfs -text
+public/rin-images/rin-sparkles.png filter=lfs diff=lfs merge=lfs -text

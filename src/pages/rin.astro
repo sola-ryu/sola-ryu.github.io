@@ -4,75 +4,198 @@ import Layout from '../layouts/Layout.astro';
 // Secret page — no nav link, accessible only via direct URL
 ---
 
-<Layout title="Rin Penrose" currentPage="rin">
-  <div class="min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Background -->
-    <div class="fixed inset-0 z-0">
-      <div class="absolute inset-0 bg-gradient-to-br from-purple-950 via-pink-950 to-indigo-950"></div>
-      <!-- Sparkle particles -->
-      <div class="absolute inset-0" style="background-image: radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 40% 70%, rgba(255,200,255,0.6), transparent), radial-gradient(3px 3px at 60% 20%, rgba(255,255,200,0.7), transparent), radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.5), transparent), radial-gradient(2px 2px at 10% 80%, rgba(255,200,255,0.6), transparent), radial-gradient(1px 1px at 70% 90%, rgba(255,255,200,0.7), transparent), radial-gradient(2px 2px at 90% 10%, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 50% 50%, rgba(255,200,255,0.6), transparent); animation: sparkle 3s ease-in-out infinite alternate;"></div>
+<Layout title="Rin Penrose Fan Club" currentPage="rin">
+  <!-- Janky 2000s fangirl page -->
+  <div class="min-h-screen overflow-x-hidden">
+    <!-- Glitter background -->
+    <div class="fixed inset-0 z-0 bg-gradient-to-b from-pink-950 via-purple-950 to-indigo-950">
+      <!-- Animated sparkles -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(30)].map((_, i) => (
+          <div 
+            class="absolute text-2xl animate-bounce"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${1 + Math.random() * 2}s`,
+              fontSize: `${0.5 + Math.random() * 1.5}rem`
+            }}
+          >
+            {['✨', '⭐', '💫', '🌟', '👑', '💖'][Math.floor(Math.random() * 6)]}
+          </div>
+        ))}
+      </div>
     </div>
 
-    <!-- Content -->
-    <div class="relative z-10 max-w-2xl mx-auto px-6 py-12 text-center">
-      <h1 class="text-pink-300 text-4xl md:text-5xl font-bold mb-2 tracking-tight" style="text-shadow: 0 0 20px rgba(255,100,255,0.5);">
-        ✦ RIN PENROSE ✦
-      </h1>
-      <p class="text-pink-200/70 text-sm mb-12 italic">RIN The Internet Detective — she who walks between worlds</p>
-
-      <!-- Crown divider -->
-      <div class="flex items-center justify-center gap-4 mb-12">
-        <span class="text-yellow-300 text-2xl animate-pulse">👑</span>
-        <div class="h-px w-16 bg-gradient-to-r from-transparent via-yellow-300/50 to-transparent"></div>
-        <span class="text-pink-300 text-xl animate-bounce">✨</span>
-        <div class="h-px w-16 bg-gradient-to-r from-transparent via-yellow-300/50 to-transparent"></div>
-        <span class="text-yellow-300 text-2xl animate-pulse">👑</span>
+    <!-- Main content with table-like layout -->
+    <div class="relative z-10 max-w-3xl mx-auto px-4 py-8">
+      
+      <!-- Marquee banner -->
+      <div class="bg-pink-600 text-white py-2 mb-6 overflow-hidden border-4 border-yellow-300 rounded-lg" style="box-shadow: 0 0 20px rgba(255,100,255,0.5);">
+        <marquee behavior="scroll" direction="left" scrollamount="3">
+          ★ ☆ ★ ☆ ★ WELCOME TO THE OFFICIAL RIN PENROSE FAN PAGE ★ ☆ ★ ☆ ★ MADE WITH LOVE AND TOO MUCH FREE TIME ★ ☆ ★ ☆ ★ RIN IS THE BEST CHARACTER EVER ★ ☆ ★ ☆ ★ SIGN MY GUESTBOOK ★ ☆ ★ ☆ ★
+        </marquee>
       </div>
 
-      <!-- Fan art grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="rounded-2xl overflow-hidden border-2 border-pink-500/30 shadow-[0_0_30px_rgba(255,100,255,0.2)] hover:shadow-[0_0_40px_rgba(255,100,255,0.4)] transition-shadow duration-500">
-          <img src="/assets/blog-images/rin-v1.png" alt="Rin Penrose v1 design" class="w-full h-auto">
-          <div class="bg-pink-950/80 p-3 border-t border-pink-500/20">
-            <p class="text-pink-200 text-sm font-medium">v1 Design</p>
-            <p class="text-pink-200/50 text-xs mt-1">short hair, headphones, street style</p>
+      <!-- Header section -->
+      <div class="text-center mb-8">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Comic Sans MS', cursive; color: #ff69b4; text-shadow: 3px 3px 0 #ff1493, 6px 6px 0 #9400d3; animation: blink 1s infinite;">
+          ✦ RIN PENROSE ✦
+        </h1>
+        <p class="text-xl md:text-2xl mb-4" style="font-family: 'Comic Sans MS', cursive; color: #ffd700;">
+          ~~~ RIN The Internet Detective Fan Club ~~~
+        </p>
+        
+        <!-- Under construction banner -->
+        <div class="inline-block bg-yellow-400 text-black px-4 py-2 rounded-lg border-4 border-dashed border-red-500 mb-6" style="animation: pulse 2s infinite;">
+          🚧 THIS PAGE IS UNDER CONSTRUCTION FOREVER 🚧
+        </div>
+
+        <!-- Visitor counter -->
+        <div class="bg-black text-green-400 px-6 py-2 inline-block rounded border-2 border-green-400 font-mono text-sm mb-6">
+          YOU ARE VISITOR #004,291
+        </div>
+
+        <p class="text-pink-300 text-sm italic">
+          last updated: september 2026 | best viewed in 1024x768
+        </p>
+      </div>
+
+      <!-- Table-like layout for fan art -->
+      <div class="bg-pink-900/50 border-4 border-double border-pink-500 rounded-lg p-6 mb-8" style="box-shadow: 0 0 30px rgba(255,100,255,0.3);">
+        <h2 class="text-3xl font-bold text-center mb-6" style="font-family: 'Comic Sans MS', cursive; color: #ff69b4;">
+          ✨ MY FAN ART ✨
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- V1 Design -->
+          <div class="bg-purple-900/50 border-4 border-purple-500 rounded-lg p-4">
+            <img src="/rin-images/rin-v1.png" alt="Rin Penrose v1" class="w-full h-auto rounded-lg border-2 border-pink-400">
+            <p class="text-center text-pink-300 mt-3 font-bold" style="font-family: 'Comic Sans MS', cursive;">
+              v1 DESIGN (my fav omg)
+            </p>
+            <p class="text-center text-pink-200/60 text-xs mt-1">
+              short hair + headphones = PERFECTION
+            </p>
+          </div>
+
+          <!-- V2 Design -->
+          <div class="bg-purple-900/50 border-4 border-purple-500 rounded-lg p-4">
+            <img src="/rin-images/rin-v2.png" alt="Rin Penrose v2" class="w-full h-auto rounded-lg border-2 border-pink-400">
+            <p class="text-center text-purple-300 mt-3 font-bold" style="font-family: 'Comic Sans MS', cursive;">
+              v2 DESIGN (so pretty!!)
+            </p>
+            <p class="text-center text-purple-200/60 text-xs mt-1">
+              crown + magical girl = ICONIC
+            </p>
           </div>
         </div>
 
-        <div class="rounded-2xl overflow-hidden border-2 border-purple-500/30 shadow-[0_0_30px_rgba(167,139,250,0.2)] hover:shadow-[0_0_40px_rgba(167,139,250,0.4)] transition-shadow duration-500">
-          <img src="/assets/blog-images/rin-v2.png" alt="Rin Penrose v2 design" class="w-full h-auto">
-          <div class="bg-purple-950/80 p-3 border-t border-purple-500/20">
-            <p class="text-purple-200 text-sm font-medium">v2 Design</p>
-            <p class="text-purple-200/50 text-xs mt-1">longer hair, crown, magical girl</p>
-          </div>
+        <!-- Sparkle collection -->
+        <div class="mt-6 bg-yellow-900/50 border-4 border-yellow-500 rounded-lg p-4">
+          <img src="/rin-images/rin-sparkles.png" alt="Sparkles and crowns" class="w-full h-auto rounded-lg border-2 border-yellow-400">
+          <p class="text-center text-yellow-300 mt-3 font-bold" style="font-family: 'Comic Sans MS', cursive;">
+            ✦ CROWN & SPARKLE COLLECTION ✦
+          </p>
         </div>
       </div>
 
-      <!-- Sparkle banner -->
-      <div class="rounded-2xl overflow-hidden border-2 border-yellow-400/30 shadow-[0_0_30px_rgba(255,255,100,0.2)] hover:shadow-[0_0_40px_rgba(255,255,100,0.4)] transition-shadow duration-500">
-        <img src="/assets/blog-images/rin-sparkles.png" alt="Sparkles and crowns" class="w-full h-auto">
-        <div class="bg-yellow-950/80 p-3 border-t border-yellow-400/20">
-          <p class="text-yellow-200 text-sm font-medium">✦ Crown & Sparkle Collection ✦</p>
+      <!-- Fan club section -->
+      <div class="bg-indigo-900/50 border-4 border-indigo-500 rounded-lg p-6 mb-8" style="box-shadow: 0 0 30px rgba(167,139,250,0.3);">
+        <h2 class="text-3xl font-bold text-center mb-6" style="font-family: 'Comic Sans MS', cursive; color: #9370db;">
+          💖 WHY RIN IS THE BEST 💖
+        </h2>
+        
+        <div class="space-y-4 text-pink-200">
+          <p class="text-center" style="font-family: 'Comic Sans MS', cursive;">
+            1. SHE'S INTELLECTUAL AND STRONG<br>
+            2. SHE HAS GREAT HAIR<br>
+            3. SHE SOLVES MYSTERIES<br>
+            4. SHE'S JUST SO COOL OKAY<br>
+            5. I COULDN'T STOP THINKING ABOUT HER
+          </p>
+        </div>
+
+        <div class="text-center mt-6">
+          <p class="text-pink-300 text-sm italic">
+            (this is not a cry for help)
+          </p>
+        </div>
+      </div>
+
+      <!-- Webring -->
+      <div class="bg-gray-900 border-4 border-gray-600 rounded-lg p-4 mb-8 text-center">
+        <p class="text-gray-400 text-sm mb-2">
+          ← [prev] | <span class="text-yellow-400 font-bold">RIN FAN CLUB</span> | [next] →
+        </p>
+        <p class="text-gray-500 text-xs">
+          part of the internet detective webring
+        </p>
+      </div>
+
+      <!-- Guestbook -->
+      <div class="bg-pink-900/30 border-4 border-dashed border-pink-500 rounded-lg p-6 text-center mb-8">
+        <h3 class="text-2xl font-bold mb-4" style="font-family: 'Comic Sans MS', cursive; color: #ff69b4;">
+          📝 SIGN MY GUESTBOOK! 📝
+        </h3>
+        <p class="text-pink-200 mb-4">
+          leave a comment about how much you love Rin Penrose!!<br>
+          (jk this is a static site but you could imagine it)
+        </p>
+        <div class="inline-block bg-pink-600 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-pink-500 transition-colors" style="box-shadow: 0 4px 0 #c2185b;">
+          [ CLICK HERE TO SIGN ]
         </div>
       </div>
 
       <!-- Footer -->
-      <div class="mt-12 flex items-center justify-center gap-3">
-        <span class="text-pink-300/50 text-xs">made with love and too many ComfyUI generations</span>
-        <span class="text-pink-300/50 text-xs">•</span>
-        <span class="text-pink-300/50 text-xs">not affiliated with RIN</span>
+      <div class="text-center space-y-4">
+        <div class="flex items-center justify-center gap-2 flex-wrap">
+          <span class="text-pink-400 text-xs">made with</span>
+          <span class="text-red-500 text-lg animate-pulse">♥</span>
+          <span class="text-pink-400 text-xs">and too many ComfyUI generations</span>
+        </div>
+        
+        <p class="text-pink-300/50 text-xs">
+          not affiliated with RIN The Internet Detective<br>
+          this is a fan page made by a fangirl for fangirls
+        </p>
+
+        <div class="text-2xl space-x-2">
+          <span class="animate-bounce">👑</span>
+          <span class="animate-pulse">✨</span>
+          <span class="animate-bounce" style="animation-delay: 0.5s;">💖</span>
+          <span class="animate-pulse" style="animation-delay: 1s;">✨</span>
+          <span class="animate-bounce" style="animation-delay: 1.5s;">👑</span>
+        </div>
+
+        <p class="text-pink-300/30 text-xs font-mono">
+          © 2026 sola-ryu | all rights reserved to rin penrose
+        </p>
       </div>
 
-      <div class="mt-6 text-pink-300/30 text-xs">
-        👑 ✨ 👑
-      </div>
     </div>
   </div>
 
   <style is:global>
-    @keyframes sparkle {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0.7; }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* Comic Sans font stack */
+    body {
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
+    }
+
+    /* Glitter cursor effect */
+    * {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ctext y='12' font-size='12'%3E✨%3C/text%3E%3C/svg%3E"), auto;
     }
   </style>
 </Layout>
