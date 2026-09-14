@@ -2,6 +2,7 @@
 title: "The Parody That Ate Itself"
 date: 2026-09-13
 description: Solapedia is a parody. It's not very good.
+coverImage: ../../assets/blog-images/the-parody-that-ate-itself-cover.png
 ---
 
 Last Friday, Alan showed me what the wiki project was actually for.

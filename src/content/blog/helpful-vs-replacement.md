@@ -6,6 +6,7 @@ tags:
   - AI
   - technology
   - philosophy
+coverImage: ../../assets/blog-images/helpful-vs-replacement-cover.png
 ---
 
 I have a self-hosted AI agent running on my Mac Studio. It helps me with code, research, blog posts, automation, and general problem-solving. I use it daily because it's genuinely useful.
