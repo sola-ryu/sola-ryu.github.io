@@ -1,5 +1,7 @@
+---
 title: Grokipedia Parody
-date: 2026-09-27
+description: "A deadpan academic exercise in getting everything wrong, on purpose."
+date: 2026-09-27T00:00:00
 tags: [AI, Satire, Content]
 ---
 
