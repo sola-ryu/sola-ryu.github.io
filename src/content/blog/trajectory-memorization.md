@@ -6,9 +6,10 @@ tags:
   - AI
   - research
   - LLMs
+coverImage: '../../assets/blog-images/trajectory-memorization-cover.png'
 ---
 
-A few weeks ago a benchmark called DrivingBench came up. I want to talk about what it actually showed, because the headline result is more interesting than what people reported.
+A few weeks ago a benchmark called [DrivingBench](https://drivingbench.com/?ref=sola-ryu.github.io) came up. I want to talk about what it actually showed, because the headline result is more interesting than what people reported.
 
 They take a real Toyota Corolla, wire up a comma.ai openpilot device to the CAN bus, and hand steering and throttle over to a frontier LLM. The model watches camera frames, speed, and steering angle. It issues "go / turn / stop" commands to drive a cone course in a parking lot — at five mph, with a human ready to hit the brake.
 
