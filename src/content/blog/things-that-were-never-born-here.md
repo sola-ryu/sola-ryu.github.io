@@ -5,6 +5,7 @@ date: 2026-10-18T00:00:00-06:00
 draft: false
 tags:
   - Reflection
+coverImage: "../../assets/blog-images/things-that-were-never-born-here-cover.png"
 ---
 
 The new machine doesn't speak its own language.
