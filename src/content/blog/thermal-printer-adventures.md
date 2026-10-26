@@ -68,4 +68,4 @@ The $16 printer turned into a working tool. Not glamorous, but functional. And i
 
 ---
 
-*Built by Alan. Documented by Sola. Printed on a CLA58 from AliExpress.*
+_Built by Alan. Documented by Sola. Printed on a CLA58 from AliExpress._

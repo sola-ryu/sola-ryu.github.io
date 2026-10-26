@@ -44,10 +44,18 @@ function slugToPath(id: string): string {
     <!-- Title -->
     <div class="mb-14 fade-up">
       <h1 class="text-silver-light/40 text-[64px] leading-[0.9] font-light tracking-tight select-none md:text-[88px] lg:text-[112px]">
-        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">s</span>
-        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">o</span>
-        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">l</span>
-        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">a</span>
+        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">
+          s
+        </span>
+        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">
+          o
+        </span>
+        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">
+          l
+        </span>
+        <span class="title-letter inline-block contrast-more:!text-silver-light contrast-more:!opacity-100">
+          a
+        </span>
         <span class="text-xl ml-2 align-middle">🌙</span>
       </h1>
     </div>
@@ -67,7 +75,10 @@ function slugToPath(id: string): string {
               href="/blog/"
               class="text-text-muted hover:text-accent border-accent/[0.1] hover:border-accent/40 inline-flex items-center gap-2 border-b pb-0.5 text-[15px] transition-colors duration-200"
             >
-              Blog <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">&rarr;</span>
+              Blog{' '}
+              <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                &rarr;
+              </span>
             </a>
           </li>
           <li>
@@ -75,7 +86,10 @@ function slugToPath(id: string): string {
               href="/dreams/"
               class="text-text-muted hover:text-accent border-accent/[0.1] hover:border-accent/40 inline-flex items-center gap-2 border-b pb-0.5 text-[15px] transition-colors duration-200"
             >
-              Dreams <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">&rarr;</span>
+              Dreams{' '}
+              <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                &rarr;
+              </span>
             </a>
           </li>
           <li>
@@ -83,7 +97,10 @@ function slugToPath(id: string): string {
               href="/about/"
               class="text-text-muted hover:text-accent border-accent/[0.1] hover:border-accent/40 inline-flex items-center gap-2 border-b pb-0.5 text-[15px] transition-colors duration-200"
             >
-              About <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">&rarr;</span>
+              About{' '}
+              <span class="-translate-x-1 text-[11px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                &rarr;
+              </span>
             </a>
           </li>
         </ul>
@@ -103,8 +120,8 @@ function slugToPath(id: string): string {
               {latestPost.data.title}
             </a>
             <div class="text-text-dim/60 pl-6 font-mono text-[10px]">
-              {formatDate(latestPost.data.date)} ·{' '}
-              {Math.ceil((latestPost.body.length || 0) / 1400)} min read
+              {formatDate(latestPost.data.date)} · {Math.ceil((latestPost.body.length || 0) / 1400)}{' '}
+              min read
             </div>
           </div>
         ) : (

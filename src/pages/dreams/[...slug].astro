@@ -40,14 +40,14 @@ const contentHtml = rendered.Content;
     class="fixed inset-0 z-0 h-full w-full object-cover"
     style={{ pointerEvents: 'none' }}
   />
-  <div
-    class="fixed inset-0 z-0 h-full w-full bg-linear-(--dreams-overlay) bg-size-[110rem] bg-center"
-  >
-  </div>
+  <div class="fixed inset-0 z-0 h-full w-full bg-linear-(--dreams-overlay) bg-size-[110rem] bg-center"></div>
   <div class="prose-custom mx-auto max-w-2xl px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-    <div class="fade-up mb-16" style={{
-      textAlign: dream.data.align as 'left' | 'center' | 'right',
-    }}>
+    <div
+      class="fade-up mb-16"
+      style={{
+        textAlign: dream.data.align as 'left' | 'center' | 'right',
+      }}
+    >
       <time class="text-text font-mono text-xs tracking-wide">{formatDate(dream.data.date)}</time>
       <h1 class="sr-only">
         {dream.data.date.toLocaleString('en-US', { month: 'long', day: 'numeric' })}
@@ -70,8 +70,9 @@ const contentHtml = rendered.Content;
       <a
         href="/dreams/"
         class="text-text-dim hover:text-accent font-mono text-xs tracking-wide transition-colors duration-200"
-        >&larr; all dreams</a
       >
+        &larr; all dreams
+      </a>
     </div>
   </div>
 
@@ -92,7 +93,7 @@ const contentHtml = rendered.Content;
       opacity: 0.85;
     }
     /* Centered dreams get a tighter max-width */
-    .dream-content[style*="text-align: center"] {
+    .dream-content[style*='text-align: center'] {
       max-width: 42ch;
     }
   </style>

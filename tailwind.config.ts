@@ -1,19 +1,33 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: [
-    './src/**/*.{astro,html,js,jsx,json,md,svelte,ts,tsx,vue}',
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,json,md,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Maple Mono', 'LXGW WenKai', 'STKaiti', 'KaiTi', 'serif'],
-        mono: ['Maple Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        mono: [
+          'Maple Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'monospace',
+        ],
         article: ['Newsreader', 'LXGW WenKai', 'Noto Serif SC', 'serif'],
         'serif-cn': ['Noto Serif SC', 'LXGW WenKai', 'serif'],
         meta: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
         ui: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
-        code: ['Maple Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        code: [
+          'Maple Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'monospace',
+        ],
         heading: ['Newsreader', 'LXGW WenKai', 'serif'],
         note: ['Newsreader', 'LXGW WenKai', 'serif'],
         display: ['Newsreader', 'LXGW WenKai', 'serif'],
@@ -51,11 +65,11 @@ export default {
         'page-header-spacing-mobile': '28px',
       },
       fontSize: {
-        'h1': '3.052em',
-        'h2': '2.441em',
-        'h3': '1.953em',
-        'h4': '1.563em',
-        'h5': '1.25em',
+        h1: '3.052em',
+        h2: '2.441em',
+        h3: '1.953em',
+        h4: '1.563em',
+        h5: '1.25em',
       },
       boxShadow: {
         // Reference CSS variables so shadows respond to theme changes
@@ -68,12 +82,12 @@ export default {
       },
       keyframes: {
         'card-in': {
-          'from': { opacity: '0', transform: 'translateY(12px)' },
-          'to': { opacity: '1', transform: 'translateY(0)' },
+          from: { opacity: '0', transform: 'translateY(12px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
         'not-found-in': {
-          'from': { opacity: '0', transform: 'translateY(10px)' },
-          'to': { opacity: '1', transform: 'translateY(0)' },
+          from: { opacity: '0', transform: 'translateY(10px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

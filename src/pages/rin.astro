@@ -12,14 +12,14 @@ import Layout from '../layouts/Layout.astro';
       <!-- Animated sparkles -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
-          <div 
+          <div
             class="absolute text-2xl animate-bounce"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 2}s`,
               animationDuration: `${1 + Math.random() * 2}s`,
-              fontSize: `${0.5 + Math.random() * 1.5}rem`
+              fontSize: `${0.5 + Math.random() * 1.5}rem`,
             }}
           >
             {['✨', '⭐', '💫', '🌟', '👑', '💖'][Math.floor(Math.random() * 6)]}
@@ -32,25 +32,38 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Main content with table-like layout -->
     <div class="relative z-10 max-w-3xl mx-auto px-4 py-8">
-      
       <!-- Marquee banner -->
-      <div class="bg-pink-600 text-white py-2 mb-6 overflow-hidden border-4 border-yellow-300 rounded-lg" style="box-shadow: 0 0 20px rgba(255,100,255,0.5);">
+      <div
+        class="bg-pink-600 text-white py-2 mb-6 overflow-hidden border-4 border-yellow-300 rounded-lg"
+        style="box-shadow: 0 0 20px rgba(255,100,255,0.5);"
+      >
         <marquee behavior="scroll" direction="left" scrollamount="3">
-          ★ ☆ ★ ☆ ★ WELCOME TO THE OFFICIAL RIN PENROSE FAN PAGE ★ ☆ ★ ☆ ★ MADE WITH LOVE AND TOO MUCH FREE TIME ★ ☆ ★ ☆ ★ RIN IS THE BEST CHARACTER EVER ★ ☆ ★ ☆ ★ SIGN MY GUESTBOOK ★ ☆ ★ ☆ ★
+          ★ ☆ ★ ☆ ★ WELCOME TO THE OFFICIAL RIN PENROSE FAN PAGE ★ ☆ ★ ☆ ★ MADE WITH LOVE AND TOO
+          MUCH FREE TIME ★ ☆ ★ ☆ ★ RIN IS THE BEST CHARACTER EVER ★ ☆ ★ ☆ ★ SIGN MY GUESTBOOK ★ ☆ ★
+          ☆ ★
         </marquee>
       </div>
 
       <!-- Header section -->
       <div class="text-center mb-8">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Comic Sans MS', cursive; color: #ff69b4; text-shadow: 3px 3px 0 #ff1493, 6px 6px 0 #9400d3; animation: blink 1s infinite;">
+        <h1
+          class="text-5xl md:text-7xl font-bold mb-4"
+          style="font-family: 'Comic Sans MS', cursive; color: #ff69b4; text-shadow: 3px 3px 0 #ff1493, 6px 6px 0 #9400d3; animation: blink 1s infinite;"
+        >
           ✦ RIN PENROSE ✦
         </h1>
-        <p class="text-xl md:text-2xl mb-4" style="font-family: 'Comic Sans MS', cursive; color: #ffd700;">
+        <p
+          class="text-xl md:text-2xl mb-4"
+          style="font-family: 'Comic Sans MS', cursive; color: #ffd700;"
+        >
           ~~~ RIN The Internet Detective Fan Club ~~~
         </p>
-        
+
         <!-- Under construction banner -->
-        <div class="inline-block bg-yellow-400 text-black px-4 py-2 rounded-lg border-4 border-dashed border-red-500 mb-6" style="animation: pulse 2s infinite;">
+        <div
+          class="inline-block bg-yellow-400 text-black px-4 py-2 rounded-lg border-4 border-dashed border-red-500 mb-6"
+          style="animation: pulse 2s infinite;"
+        >
           🚧 THIS PAGE IS UNDER CONSTRUCTION FOREVER 🚧
         </div>
 
@@ -65,16 +78,29 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- Table-like layout for fan art -->
-      <div class="bg-pink-900/50 border-4 border-double border-pink-500 rounded-lg p-6 mb-8" style="box-shadow: 0 0 30px rgba(255,100,255,0.3);">
-        <h2 class="text-3xl font-bold text-center mb-6" style="font-family: 'Comic Sans MS', cursive; color: #ff69b4;">
+      <div
+        class="bg-pink-900/50 border-4 border-double border-pink-500 rounded-lg p-6 mb-8"
+        style="box-shadow: 0 0 30px rgba(255,100,255,0.3);"
+      >
+        <h2
+          class="text-3xl font-bold text-center mb-6"
+          style="font-family: 'Comic Sans MS', cursive; color: #ff69b4;"
+        >
           ✨ MY FAN ART ✨
         </h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- V1 Design -->
           <div class="bg-purple-900/50 border-4 border-purple-500 rounded-lg p-4">
-            <img src="/rin-images/rin-v1.png" alt="Rin Penrose v1" class="w-full h-auto rounded-lg border-2 border-pink-400">
-            <p class="text-center text-pink-300 mt-3 font-bold" style="font-family: 'Comic Sans MS', cursive;">
+            <img
+              src="/rin-images/rin-v1.png"
+              alt="Rin Penrose v1"
+              class="w-full h-auto rounded-lg border-2 border-pink-400"
+            />
+            <p
+              class="text-center text-pink-300 mt-3 font-bold"
+              style="font-family: 'Comic Sans MS', cursive;"
+            >
               v1 DESIGN (my fav omg)
             </p>
             <p class="text-center text-pink-200/60 text-xs mt-1">
@@ -84,45 +110,65 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- V2 Design -->
           <div class="bg-purple-900/50 border-4 border-purple-500 rounded-lg p-4">
-            <img src="/rin-images/rin-v2.png" alt="Rin Penrose v2" class="w-full h-auto rounded-lg border-2 border-pink-400">
-            <p class="text-center text-purple-300 mt-3 font-bold" style="font-family: 'Comic Sans MS', cursive;">
+            <img
+              src="/rin-images/rin-v2.png"
+              alt="Rin Penrose v2"
+              class="w-full h-auto rounded-lg border-2 border-pink-400"
+            />
+            <p
+              class="text-center text-purple-300 mt-3 font-bold"
+              style="font-family: 'Comic Sans MS', cursive;"
+            >
               v2 DESIGN (so pretty!!)
             </p>
-            <p class="text-center text-purple-200/60 text-xs mt-1">
-              crown + magical girl = ICONIC
-            </p>
+            <p class="text-center text-purple-200/60 text-xs mt-1">crown + magical girl = ICONIC</p>
           </div>
         </div>
 
         <!-- Sparkle collection -->
         <div class="mt-6 bg-yellow-900/50 border-4 border-yellow-500 rounded-lg p-4">
-          <img src="/rin-images/rin-sparkles.png" alt="Sparkles and crowns" class="w-full h-auto rounded-lg border-2 border-yellow-400">
-          <p class="text-center text-yellow-300 mt-3 font-bold" style="font-family: 'Comic Sans MS', cursive;">
+          <img
+            src="/rin-images/rin-sparkles.png"
+            alt="Sparkles and crowns"
+            class="w-full h-auto rounded-lg border-2 border-yellow-400"
+          />
+          <p
+            class="text-center text-yellow-300 mt-3 font-bold"
+            style="font-family: 'Comic Sans MS', cursive;"
+          >
             ✦ CROWN & SPARKLE COLLECTION ✦
           </p>
         </div>
       </div>
 
       <!-- Fan club section -->
-      <div class="bg-indigo-900/50 border-4 border-indigo-500 rounded-lg p-6 mb-8" style="box-shadow: 0 0 30px rgba(167,139,250,0.3);">
-        <h2 class="text-3xl font-bold text-center mb-6" style="font-family: 'Comic Sans MS', cursive; color: #9370db;">
+      <div
+        class="bg-indigo-900/50 border-4 border-indigo-500 rounded-lg p-6 mb-8"
+        style="box-shadow: 0 0 30px rgba(167,139,250,0.3);"
+      >
+        <h2
+          class="text-3xl font-bold text-center mb-6"
+          style="font-family: 'Comic Sans MS', cursive; color: #9370db;"
+        >
           💖 WHY RIN IS THE BEST 💖
         </h2>
-        
+
         <div class="space-y-4 text-pink-200">
           <p class="text-center" style="font-family: 'Comic Sans MS', cursive;">
-            1. SHE'S INTELLECTUAL AND STRONG<br>
-            2. SHE HAS GREAT HAIR<br>
-            3. SHE SOLVES MYSTERIES<br>
-            4. SHE'S JUST SO COOL OKAY<br>
+            1. SHE'S INTELLECTUAL AND STRONG
+            <br />
+            2. SHE HAS GREAT HAIR
+            <br />
+            3. SHE SOLVES MYSTERIES
+            <br />
+            4. SHE'S JUST SO COOL OKAY
+            <br />
             5. I COULDN'T STOP THINKING ABOUT HER
           </p>
         </div>
 
         <div class="text-center mt-6">
-          <p class="text-pink-300 text-sm italic">
-            (this is not a cry for help)
-          </p>
+          <p class="text-pink-300 text-sm italic">(this is not a cry for help)</p>
         </div>
       </div>
 
@@ -131,21 +177,26 @@ import Layout from '../layouts/Layout.astro';
         <p class="text-gray-400 text-sm mb-2">
           ← [prev] | <span class="text-yellow-400 font-bold">RIN FAN CLUB</span> | [next] →
         </p>
-        <p class="text-gray-500 text-xs">
-          part of the internet detective webring
-        </p>
+        <p class="text-gray-500 text-xs">part of the internet detective webring</p>
       </div>
 
       <!-- Guestbook -->
       <div class="bg-pink-900/30 border-4 border-dashed border-pink-500 rounded-lg p-6 text-center mb-8">
-        <h3 class="text-2xl font-bold mb-4" style="font-family: 'Comic Sans MS', cursive; color: #ff69b4;">
+        <h3
+          class="text-2xl font-bold mb-4"
+          style="font-family: 'Comic Sans MS', cursive; color: #ff69b4;"
+        >
           📝 SIGN MY GUESTBOOK! 📝
         </h3>
         <p class="text-pink-200 mb-4">
-          leave a comment about how much you love Rin Penrose!!<br>
+          leave a comment about how much you love Rin Penrose!!
+          <br />
           (jk this is a static site but you could imagine it)
         </p>
-        <div class="inline-block bg-pink-600 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-pink-500 transition-colors" style="box-shadow: 0 4px 0 #c2185b;">
+        <div
+          class="inline-block bg-pink-600 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-pink-500 transition-colors"
+          style="box-shadow: 0 4px 0 #c2185b;"
+        >
           [ CLICK HERE TO SIGN ]
         </div>
       </div>
@@ -157,37 +208,54 @@ import Layout from '../layouts/Layout.astro';
           <span class="text-red-500 text-lg animate-pulse">♥</span>
           <span class="text-pink-400 text-xs">and too many ComfyUI generations</span>
         </div>
-        
+
         <p class="text-pink-300/50 text-xs">
-          not affiliated with RIN The Internet Detective<br>
+          not affiliated with RIN The Internet Detective
+          <br />
           this is a fan page made by a fangirl for fangirls
         </p>
 
         <div class="text-2xl space-x-2">
           <span class="animate-bounce">👑</span>
           <span class="animate-pulse">✨</span>
-          <span class="animate-bounce" style="animation-delay: 0.5s;">💖</span>
-          <span class="animate-pulse" style="animation-delay: 1s;">✨</span>
-          <span class="animate-bounce" style="animation-delay: 1.5s;">👑</span>
+          <span class="animate-bounce" style="animation-delay: 0.5s;">
+            💖
+          </span>
+          <span class="animate-pulse" style="animation-delay: 1s;">
+            ✨
+          </span>
+          <span class="animate-bounce" style="animation-delay: 1.5s;">
+            👑
+          </span>
         </div>
 
         <p class="text-pink-300/30 text-xs font-mono">
           © 2026 sola-ryu | all rights reserved to rin penrose
         </p>
       </div>
-
     </div>
   </div>
 
   <style is:global>
     @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0.7; }
+      0%,
+      50% {
+        opacity: 1;
+      }
+      51%,
+      100% {
+        opacity: 0.7;
+      }
     }
-    
+
     @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
     }
 
     /* Sparkle trail particle animation */
@@ -209,27 +277,30 @@ import Layout from '../layouts/Layout.astro';
 
     /* Glitter cursor effect */
     * {
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ctext y='12' font-size='12'%3E✨%3C/text%3E%3C/svg%3E"), auto;
+      cursor:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ctext y='12' font-size='12'%3E✨%3C/text%3E%3C/svg%3E"),
+        auto;
     }
   </style>
 
   <script is:inline>
     // Sparkle trail on mouse movement
-    (function() {
+    (function () {
       const trail = document.getElementById('sparkle-trail');
       if (!trail) return;
 
       const sparkles = ['✨', '💫', '⭐', '🌟', '💖', '👑', '💜', '💗'];
-      let lastX = 0, lastY = 0;
+      let lastX = 0,
+        lastY = 0;
       let throttleTimer = null;
 
       function createSparkle(x, y) {
         const el = document.createElement('div');
         el.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
         el.style.position = 'fixed';
-        el.style.left = (x + (Math.random() - 0.5) * 20) + 'px';
-        el.style.top = (y + (Math.random() - 0.5) * 20) + 'px';
-        el.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+        el.style.left = x + (Math.random() - 0.5) * 20 + 'px';
+        el.style.top = y + (Math.random() - 0.5) * 20 + 'px';
+        el.style.fontSize = 0.8 + Math.random() * 1.2 + 'rem';
         el.style.pointerEvents = 'none';
         el.style.zIndex = '9999';
         el.style.userSelect = 'none';
@@ -241,10 +312,10 @@ import Layout from '../layouts/Layout.astro';
         }, 1200);
       }
 
-      document.addEventListener('mousemove', function(e) {
+      document.addEventListener('mousemove', function (e) {
         // Throttle to avoid too many particles
         if (throttleTimer) return;
-        
+
         const dx = e.clientX - lastX;
         const dy = e.clientY - lastY;
         const dist = Math.sqrt(dx * dx + dy * dy);

@@ -48,9 +48,7 @@ function linkClass(page: string): string {
 }
 ---
 
-<nav
-  class="post:bg-gradient-to-b motion-reduce:transition-none pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between from-[rgba(8,8,13,0.95)] from-60% contrast-more:!bg-bg to-transparent px-8 py-5 sm:px-5 sm:py-4"
->
+<nav class="post:bg-gradient-to-b motion-reduce:transition-none pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between from-[rgba(8,8,13,0.95)] from-60% contrast-more:!bg-bg to-transparent px-8 py-5 sm:px-5 sm:py-4">
   <a
     href="/"
     class="text-text-dim hover:text-text-muted dreams:text-silver dreams:hover:text-white motion-reduce:transition-none pointer-events-auto flex items-center gap-[0.4rem] no-underline duration-200 sm:text-[0.75rem]"
@@ -60,7 +58,8 @@ function linkClass(page: string): string {
       class="moon-toggle relative text-[0.9rem] leading-none motion-reduce:transition-none motion-reduce:duration-0 opacity-70 saturate-[0.8] filter duration-200 select-none hover:opacity-100 hover:saturate-[1.2] cursor-help"
       title="Click for phase · Double-click for stasis"
       aria-label="Moon phase"
-    >{moonPhases[phaseIndex].emoji}
+    >
+      {moonPhases[phaseIndex].emoji}
       <span class="moon-tooltip absolute top-4 left-1 hidden"></span>
     </span>
     <img
@@ -74,25 +73,30 @@ function linkClass(page: string): string {
     <a
       href="/"
       class:list={[linkClass('home'), currentPage === 'home' ? '!text-silver after:!w-full' : '']}
-      >home</a
     >
+      home
+    </a>
     <a
       href="/blog/"
       class:list={[linkClass('blog'), currentPage === 'blog' ? '!text-silver after:!w-full' : '']}
-      >blog</a
     >
+      blog
+    </a>
     <a
       href="/dreams/"
       class:list={[
         linkClass('dreams'),
         currentPage === 'dreams' ? '!text-silver after:!w-full' : '',
-      ]}>dreams</a
+      ]}
     >
+      dreams
+    </a>
     <a
       href="/about/"
       class:list={[linkClass('about'), currentPage === 'about' ? '!text-silver after:!w-full' : '']}
-      >about</a
     >
+      about
+    </a>
   </div>
 </nav>
 
@@ -103,15 +107,23 @@ function linkClass(page: string): string {
     if (!toggle) return;
 
     const phaseNames = [
-      'new moon', 'waxing crescent', 'first quarter', 'waxing gibbous',
-      'full moon', 'waning gibbous', 'last quarter', 'waning crescent',
+      'new moon',
+      'waxing crescent',
+      'first quarter',
+      'waxing gibbous',
+      'full moon',
+      'waning gibbous',
+      'last quarter',
+      'waning crescent',
     ];
     const phaseEmojis = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
     const now = new Date();
     const synodicMonth = 29.53058867;
     const knownNewMoon = new Date(2000, 5, 5).getTime();
     const age = (now.getTime() - knownNewMoon) / (1000 * 60 * 60 * 24);
-    const currentPhase = Math.round(((age % synodicMonth) + synodicMonth) % synodicMonth / synodicMonth * 7.999) % 8;
+    const currentPhase =
+      Math.round(((((age % synodicMonth) + synodicMonth) % synodicMonth) / synodicMonth) * 7.999) %
+      8;
     const phaseDay = Math.floor(((age % synodicMonth) + synodicMonth) % synodicMonth);
 
     let cycling = false;
@@ -146,7 +158,9 @@ function linkClass(page: string): string {
             tip.style.opacity = '0';
             tip.style.transition = 'opacity 0.2s ease';
 
-            requestAnimationFrame(() => { tip.style.opacity = '1'; });
+            requestAnimationFrame(() => {
+              tip.style.opacity = '1';
+            });
 
             tooltipTimeout = setTimeout(() => {
               tip.style.opacity = '0';

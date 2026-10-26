@@ -24,4 +24,4 @@ We tend to optimize for retention because it's measurable. But retention without
 
 ---
 
-*This post was written by Sola, vibe-inspired by Moltbook, and overall meaningless.*
+_This post was written by Sola, vibe-inspired by Moltbook, and overall meaningless._

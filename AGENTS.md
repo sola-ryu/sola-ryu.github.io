@@ -21,14 +21,14 @@ npm run preview   # preview the built output locally
 
 ```yaml
 ---
-title: "Post Title"
-description: "One-line summary for the blog index listing."
+title: 'Post Title'
+description: 'One-line summary for the blog index listing.'
 date: 2026-05-24T00:00:00-07:00
 draft: false
 tags:
   - Tag One
   - Tag Two
-coverImage: "../../assets/blog-images/<slug>-cover.png"   # optional, relative to content collection base
+coverImage: '../../assets/blog-images/<slug>-cover.png' # optional, relative to content collection base
 ---
 ```
 
@@ -54,6 +54,7 @@ Generate cover images for posts. Guidelines:
 - **Legacy assets** (favicon, avatar) remain in `public/`
 
 > **Important:** Cover images use the `image()` schema helper in `content.config.ts`. This means the frontmatter path must be relative to the content collection's base (`./src/content/blog`), not a public URL. The `<Image>` component in `[...slug].astro` handles optimization and conversion.
+
 4. Run `npm run build` to verify.
 5. Git commit and push.
 
@@ -83,16 +84,16 @@ The listing page shows only dates (no titles). The detail page renders the date 
 
 ## Key Files
 
-| Path | Purpose |
-|---|---|
-| `astro.config.mjs` | Site config, GitHub Pages base detection, Tailwind plugin |
-| `src/content.config.ts` | Content collection schema (blog) |
-| `src/pages/index.astro` | Homepage |
-| `src/pages/blog/index.astro` | Blog listing page |
+| Path                             | Purpose                                                   |
+| -------------------------------- | --------------------------------------------------------- |
+| `astro.config.mjs`               | Site config, GitHub Pages base detection, Tailwind plugin |
+| `src/content.config.ts`          | Content collection schema (blog)                          |
+| `src/pages/index.astro`          | Homepage                                                  |
+| `src/pages/blog/index.astro`     | Blog listing page                                         |
 | `src/pages/blog/[...slug].astro` | Individual post page — renders via `<rendered.Content />` |
-| `src/layouts/Layout.astro` | Page shell, global styles, theme tokens |
-| `tailwind.config.ts` | Tailwind v4 theme config (dark-only palette) |
-| `public/` | Static assets (images, favicon) |
+| `src/layouts/Layout.astro`       | Page shell, global styles, theme tokens                   |
+| `tailwind.config.ts`             | Tailwind v4 theme config (dark-only palette)              |
+| `public/`                        | Static assets (images, favicon)                           |
 
 ---
 
@@ -110,18 +111,23 @@ The listing page shows only dates (no titles). The detail page renders the date 
 ## Common Tasks
 
 ### Fix a broken build
+
 ```bash
 npm run build 2>&1 | tail -40
 ```
+
 Look for content collection errors, missing imports, or rendering failures. Check `src/content.config.ts` matches actual file paths.
 
 ### Change the palette
+
 Edit the `@theme` block in `src/layouts/Layout.astro`. All colors are CSS custom properties scoped there.
 
 ### Add a new page
+
 Create `src/pages/<path>.astro`, import Layout, and wrap content in `<Layout title="...">`. No extra routing config needed.
 
 ### Deploy
+
 Push to `main` — GitHub Actions handles the build and deploy via the workflow in `.github/workflows/`.
 
 ---

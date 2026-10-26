@@ -1,5 +1,5 @@
 ---
-title: "38 generations, one race"
+title: '38 generations, one race'
 description: "What happens when you generate a full game's worth of assets with ComfyUI and then try to make them work together."
 date: 2026-09-06T00:00:00-07:00
 draft: false

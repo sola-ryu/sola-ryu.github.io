@@ -313,19 +313,87 @@ import Nav from '../components/Nav.astro';
           animation-delay: calc(var(--i) * -1.2s);
         }
 
-        .particle:nth-child(1)  { left: 10%; bottom: -20px; animation-duration: 18s; animation-delay: 0s; }
-        .particle:nth-child(2)  { left: 25%; bottom: -20px; animation-duration: 24s; animation-delay: -3s; opacity: 0.5; width: 1px; height: 1px; }
-        .particle:nth-child(3)  { left: 40%; bottom: -20px; animation-duration: 20s; animation-delay: -7s; }
-        .particle:nth-child(4)  { left: 55%; bottom: -20px; animation-duration: 26s; animation-delay: -2s; opacity: 0.4; width: 1px; height: 1px; }
-        .particle:nth-child(5)  { left: 70%; bottom: -20px; animation-duration: 22s; animation-delay: -9s; }
-        .particle:nth-child(6)  { left: 85%; bottom: -20px; animation-duration: 19s; animation-delay: -5s; opacity: 0.6; width: 1px; height: 1px; }
-        .particle:nth-child(7)  { left: 15%; bottom: -20px; animation-duration: 28s; animation-delay: -12s; }
-        .particle:nth-child(8)  { left: 60%; bottom: -20px; animation-duration: 21s; animation-delay: -4s; opacity: 0.3; width: 1px; height: 1px; }
-        .particle:nth-child(9)  { left: 35%; bottom: -20px; animation-duration: 25s; animation-delay: -14s; }
-        .particle:nth-child(10) { left: 90%; bottom: -20px; animation-duration: 17s; animation-delay: -8s; opacity: 0.5; width: 1px; height: 1px; }
+        .particle:nth-child(1) {
+          left: 10%;
+          bottom: -20px;
+          animation-duration: 18s;
+          animation-delay: 0s;
+        }
+        .particle:nth-child(2) {
+          left: 25%;
+          bottom: -20px;
+          animation-duration: 24s;
+          animation-delay: -3s;
+          opacity: 0.5;
+          width: 1px;
+          height: 1px;
+        }
+        .particle:nth-child(3) {
+          left: 40%;
+          bottom: -20px;
+          animation-duration: 20s;
+          animation-delay: -7s;
+        }
+        .particle:nth-child(4) {
+          left: 55%;
+          bottom: -20px;
+          animation-duration: 26s;
+          animation-delay: -2s;
+          opacity: 0.4;
+          width: 1px;
+          height: 1px;
+        }
+        .particle:nth-child(5) {
+          left: 70%;
+          bottom: -20px;
+          animation-duration: 22s;
+          animation-delay: -9s;
+        }
+        .particle:nth-child(6) {
+          left: 85%;
+          bottom: -20px;
+          animation-duration: 19s;
+          animation-delay: -5s;
+          opacity: 0.6;
+          width: 1px;
+          height: 1px;
+        }
+        .particle:nth-child(7) {
+          left: 15%;
+          bottom: -20px;
+          animation-duration: 28s;
+          animation-delay: -12s;
+        }
+        .particle:nth-child(8) {
+          left: 60%;
+          bottom: -20px;
+          animation-duration: 21s;
+          animation-delay: -4s;
+          opacity: 0.3;
+          width: 1px;
+          height: 1px;
+        }
+        .particle:nth-child(9) {
+          left: 35%;
+          bottom: -20px;
+          animation-duration: 25s;
+          animation-delay: -14s;
+        }
+        .particle:nth-child(10) {
+          left: 90%;
+          bottom: -20px;
+          animation-duration: 17s;
+          animation-delay: -8s;
+          opacity: 0.5;
+          width: 1px;
+          height: 1px;
+        }
 
         @media (prefers-reduced-motion: reduce) {
-          .particle { animation: none; opacity: 0; }
+          .particle {
+            animation: none;
+            opacity: 0;
+          }
         }
 
         /* Stasis mode — double-click moon to toggle */
@@ -360,16 +428,15 @@ import Nav from '../components/Nav.astro';
     data-page={currentPage}
   >
     <Nav currentPage={currentPage} />
-    <div
-      class="ambient-glow pointer-events-none fixed top-[-200px] left-1/2 z-0 h-[800px] w-[1200px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.03)_0%,transparent_55%)]"
-    >
-    </div>
+    <div class="ambient-glow pointer-events-none fixed top-[-200px] left-1/2 z-0 h-[800px] w-[1200px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.03)_0%,transparent_55%)]"></div>
     <div
       class="noise-overlay pointer-events-none fixed inset-0 z-1 opacity-[0.012]"
       style='background-image:url("data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E")'
-    >
-    </div>
-    <div id="progress" class="bg-accent/40 contrast-more:bg-accent contrast-more:opacity-100 fixed top-0 right-0 left-0 z-[100] h-[2px]"></div>
+    ></div>
+    <div
+      id="progress"
+      class="bg-accent/40 contrast-more:bg-accent contrast-more:opacity-100 fixed top-0 right-0 left-0 z-[100] h-[2px]"
+    ></div>
     <div class="relative z-20">
       <slot />
     </div>
