@@ -6,33 +6,30 @@ import bgImage from '../../assets/moonlit-night.png';
 
 const dreams = (await getCollection('dreams'))
   .filter((d) => !d.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  .sort((a, b) =>
+    new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
 
 function idToSlug(id: string): string {
   return id.replace(/^dreams:/, '');
 }
 
-// Group dreams by year-month
+// Group dreams by year-month (ISO key for deterministic ordering)
 const monthGroups: Record<string, typeof dreams> = {};
 dreams.forEach((d) => {
-  const ym = d.data.date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit' });
-  if (!monthGroups[ym]) monthGroups[ym] = [];
-  monthGroups[ym].push(d);
+  const date = new Date(d.data.date);
+  const key = date.toISOString().slice(0, 7);
+  if (!monthGroups[key]) monthGroups[key] = [];
+  monthGroups[key].push(d);
 });
 
 const sortedMonths = Object.keys(monthGroups).sort((a, b) => b.localeCompare(a));
 
-// ISO string from month key (MM/DD/YYYY)
-function monthKeyToISO(key: string): string {
-  const parts = key.split('/');
-  // parts: ["MM", "DD", "YYYY"]
-  return `${parts[2]}-${parts[0]}-${parts[1]}T00:00:00`;
-}
-
-// Month heading format (e.g. "November 2026")
 function formatMonthHeading(key: string): string {
-  const date = new Date(monthKeyToISO(key));
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+  return new Date(key + '-01T00:00:00').toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+  });
 }
 ---
 <Layout title="Dreams" currentPage="dreams">
@@ -55,14 +52,16 @@ function formatMonthHeading(key: string): string {
           <h2 class="text-sm font-medium text-slate-500 tracking-widest uppercase mb-4 border-b border-slate-800 pb-2">
             {formatMonthHeading(monthKey)}
           </h2>
-          <div class="space-y-0">
-            {monthGroups[monthKey].map((dream, i) => (
+          <div class="grid grid-cols-4 gap-x-3 gap-y-2">
+            {monthGroups[monthKey].map((dream) => (
               <a
                 href={`/dreams/${idToSlug(dream.id)}/`}
-                class="fade-up group border-border/30 relative block border-b py-5 transition-opacity hover:opacity-85"
-                style={{ animationDelay: `${i * 0.05}s` }}
+                class="text-xs font-mono text-cyan-500/80 hover:opacity-85 transition-opacity"
               >
-                <time class="font-mono text-xs tracking-wide">{dream.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</time>
+                {new Date(dream.data.date).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                })}
               </a>
             ))}
           </div>
